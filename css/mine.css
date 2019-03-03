@@ -1,0 +1,376 @@
+.index_money{
+    margin-top: 0.5rem;
+    background-color: #fff;
+    padding: 0.75rem;
+    overflow: hidden;
+}
+.money_top{
+    overflow: hidden;
+}
+.money_top1{
+    width: 1rem;
+    height: 1rem;
+    display: block;
+    float: left;
+    background: url(../image/find/fx_yfw_icon.png) no-repeat;
+    background-size: 100% 100%;
+    margin-top: 0.1rem;
+    margin-right: 0.3rem;
+}
+.money_top2{
+    color: #444;
+    float: left;
+}
+.money_top3{
+    width: 1rem;
+    height: 1rem;
+    display: block;
+    float: left;
+    background: url(../image/find/fx_ysc_icon.png) no-repeat;
+    background-size: 100% 100%;
+    margin-top: 0.1rem;
+    margin-right: 0.3rem;
+}
+.money_top4{
+    width: 1rem;
+    height: 1rem;
+    display: block;
+    float: left;
+    background: url(../image/find/fx_ytg_icon.png) no-repeat;
+    background-size: 100% 100%;
+    margin-top: 0.1rem;
+    margin-right: 0.3rem;
+}
+.money_top3 img{
+    width: 0.7rem;
+    height: 0.7rem;
+    float: left;
+    margin-top: 0.1rem;
+    margin-right: 0.2rem;
+}
+.money_quantity{
+    overflow: hidden;
+}
+.find_img{
+    width: 2.5rem;
+    transform:scale(1.5);
+    -ms-transform:scale(1.5);
+    -webkit-transform:scale(1.5);
+    -o-transform:scale(1.5);
+    -moz-transform:scale(1.5);
+}
+.pull-left_c{
+    float: left;
+    width: 48%;
+}
+.pull-left_r{
+    float: right;
+    margin-top: 0.4rem;
+    padding: 0.2rem 0.8rem;
+    border: 1px solid #fe5d2c;
+    border-radius: 1rem;
+}
+.pull-left_r p{
+    color:#fe5d2c!important;
+}
+.padding-right{
+    padding-right:6%;
+}
+.padding-left{
+    padding-left: 6%;
+}
+.money_jb{
+    font-size: 0.8rem;
+    color: #000;
+}
+/**/
+.index_bg {
+    background:url("../image/wdqb_bg.png") no-repeat;
+    background-size: 100% 100%;
+    padding: 0.75rem;
+    color: #fff;
+    margin-top: 2.25rem;
+}
+.mine_money_top .left{
+    float: left;
+}
+.mine_money_top .right{
+    float: right;
+    font-size: 0.6rem;
+    padding: 0 0.6rem;
+    border: 1px solid #fff;
+    border-radius: 1rem;
+}
+.mine_money_top{
+    overflow: hidden;
+    opacity: 0.8;
+}
+.mine_money_c{
+    text-align: center;
+    font-size:1.2rem;
+    margin-top: 0.5rem;
+}
+.mine_money_bottom{
+    overflow: hidden;
+}
+.mine_money_sr{
+    padding: 0.5rem;
+    background-color: #fff;
+    text-align: center;
+}
+.mine_money_cz{
+    padding:0.75rem;
+    background-color: #fff;
+    overflow: hidden;
+}
+.money_cz{
+    text-align: center;
+    border: 1px solid #ddd;
+    display: block;
+    padding: 0.2rem;
+    border-radius: 1rem
+}
+
+/**/
+.money_top10{
+    width: 0.15rem;
+    height: 0.8rem;
+    display: block;
+    float: left;
+    background: #fe5d2c;
+    margin-top: 0.2rem;
+    margin-right: 0.5rem;
+}
+.mine_money{
+    margin-top: 0.5rem;
+    background-color: #fff;
+    overflow: hidden;
+}
+.mine_bg{
+    background:url("../image/find/wdyz_bg.png") no-repeat;
+    background-size: 100% 100%;
+    padding: 0.75rem;
+    color: #fff;
+    margin-top: 2.25rem;
+}
+.money_top11{
+    width: 0.9rem;
+    height: 0.9rem;
+    display: block;
+    float: left;
+    background: url(../image/find/wd_yzgl_icon.png) no-repeat;
+    background-size: 100% 100%;
+    margin-top: 0.1rem;
+    margin-right: 0.3rem;
+    margin-bottom: 0.7rem;
+}
+.mind-left_c{
+    float: left;
+    width: 65%;
+}
+.mind-left_r{
+    float: right;
+    margin-top: 0.5rem;
+    padding: 0.2rem 0.8rem;
+}
+.mind-left_r img{
+    width: 0.4rem;
+}
+.mind_bottom{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #fff;
+    border-top: 1px solid #ddd;
+}
+/**/
+.mine_yb_bg{
+    background:url("../image/find/wdyb_bg.png") no-repeat;
+    background-size: 100% 100%;
+    padding: 0.75rem;
+    color: #fff;
+    margin-top: 2.25rem;
+}
+.money_top12{
+    width: 0.9rem;
+    height: 0.9rem;
+    display: block;
+    float: left;
+    background: url(../image/find/wd_ybgl_icon.png) no-repeat;
+    background-size: 100% 100%;
+    margin-top: 0.1rem;
+    margin-right: 0.3rem;
+}
+/**/
+.mine_yd_bg{
+    background:url("../image/find/wdyd_bg.png") no-repeat;
+    background-size: 100% 100%;
+    padding: 0.75rem;
+    color: #fff;
+    margin-top: 2.25rem;
+}
+.money_top13{
+    width: 0.9rem;
+    height: 0.9rem;
+    display: block;
+    float: left;
+    background: url(../image/find/wd_ydgl_icon.png) no-repeat;
+    background-size: 100% 100%;
+    margin-top: 0.1rem;
+    margin-right: 0.3rem;
+}
+/**/
+.mine_jb_bg{
+    background:url("../image/wdqb_bg.png") no-repeat;
+    background-size: 100% 100%;
+    padding: 0.75rem;
+    color: #fff;
+    margin-top: 2.25rem;
+}
+.money_top14{
+    width: 1rem;
+    height: 0.9rem;
+    display: block;
+    float: left;
+    background: url(../image/find/wd_jbgl_icon.png) no-repeat;
+    background-size: 100% 100%;
+    margin-top: 0.1rem;
+    margin-right: 0.3rem;
+}
+.mind_bottom_qd{
+    padding: 0.4rem 1.5rem;
+    border: 1px solid #41ac44;
+    border-radius: 1rem;
+    width: 80%;
+    display: block;
+    margin: 0 auto;
+    color: #41ac44;
+}
+/**/
+.mine_money_djq{
+    margin:0.75rem 0 ;
+
+    overflow: hidden;
+}
+.money_djq{
+    text-align: center;
+    display: block;
+}
+.money_top15{
+    width: 1rem;
+    height: 1rem;
+    display: block;
+    float: left;
+    background: url(../image/find/wd_djqgl_icon.png) no-repeat;
+    background-size: 100% 100%;
+    margin-top: 0.1rem;
+    margin-right: 0.3rem;
+}
+/*代金券明细*/
+.money_djq_more{
+    background-color: #fff;
+    margin-top: 0.5rem;
+    overflow: hidden;
+    border-bottom: 1px solid #eee;
+    box-shadow: 2px 2px 2px -3px rgba(102, 102, 102, 0.72);
+}
+.money_djq_more_txt{
+    padding: 0.5rem;
+    overflow: hidden;
+    border-top: 1px solid #eee;
+}
+
+.djp_more_time{
+    margin: 0.5rem;
+    font-size: 0.6rem;
+    color: #333333;
+}
+.color_h{
+   color: #bbb;
+}
+.money_djq_more_txt1{
+    overflow: hidden;
+    border-top: 1px solid #eee;
+
+}
+.money_djq_more_txt1 .txt1{
+    float: left;
+    width: 12%;
+    position: absolute;
+    top:50%;
+    margin-top: -1.4rem;
+}
+.money_djq_more_txt1 .txt2{
+    float: left;
+    width: 100%;
+    padding-left: 12%;
+}
+.money_djq_more_txt1 .txt3{
+    float: right;
+    width: 30%;
+}
+.txt2_one{
+    overflow: hidden;
+    padding-left: 0.5rem;
+    border-left: 1px solid #fff;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+}
+.float_l{
+    width: 60%;
+    float: left;
+}
+.float_r{
+    width: 40%;
+    float: left;
+}
+.txt2_two{
+    overflow: hidden;
+    padding-left: 0.5rem;
+    border-left: 1px solid #eee;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid #eee;
+}
+.txt2_two_last{
+    overflow: hidden;
+    padding-left: 0.5rem;
+    border-left: 1px solid #eee;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+}
+/*筛选弹窗*/
+.filter_yue{
+    position: fixed;
+    top:3.25rem;
+    left: 0;
+    z-index: 99999;
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    display: none;
+}
+.filter_yue_f{
+    overflow: hidden;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 0.75rem;
+}
+.filter_yue_img{
+    width: 1rem;
+    vertical-align: sub;
+    margin-right: 0.2rem;
+}
+/*详情*/
+.money_xq{
+    padding: 0.75rem;
+    margin-top: 2.75rem;
+    background-color: #fff;
+}
+.money_xq_txt{
+    font-size: 1.8rem;
+    margin:0.3rem  0 ;
+}
+.money_xq_bottom{
+    padding: 0.75rem;
+    background-color: #fff;
+}

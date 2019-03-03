@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+
+    <title>评论</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: #f6f6f6;
+
+        }
+
+        div,
+        ul,
+        li,
+        p,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        h7,
+        img {
+            margin: 0;
+            padding: 0;
+        }
+
+        img {
+            display: block;
+        }
+
+        .main {
+            width: 100%;
+        }
+
+        .writeHead {
+            background: #fff;
+            color: #333;
+            font-size: 14px;
+            padding: 20px;
+            margin-bottom: 10px;
+        }
+
+        .updatePic {
+            display: flex;
+            justify-content: space-around;
+            background: #fff;
+            width: 100%;
+            padding: 20px 0;
+            margin-top: 10px;
+        }
+
+        .layui-upload-file {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 40%;
+            text-align: center;
+            display: none;
+        }
+
+        .tips,
+        .picArr {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 40%;
+            height: 140px;
+        }
+
+        .picArr img {
+            width: 120px;
+            height: 120px;
+        }
+
+        textarea {
+            width: 100%;
+            height: 200px;
+            border: none;
+            display: block;
+            margin: 0;
+            padding: 0;
+            color: #000;
+            font-size: 16px;
+            text-indent: 16px;
+            box-sizing: border-box;
+            white-space: space wrap;
+            padding: 10px 0;
+        }
+
+        .add {
+            margin: 0;
+            border-bottom: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+        .sureSave{
+            width:50%;
+            height:44px;
+            background:red;
+            color:#fff;
+            line-height:22px;
+            text-align: center;
+            border:1px solid #eee;
+            border-radius: 5px;
+            padding:10px;
+            box-sizing:border-box;
+        }
+        .saveBox{
+            width:100%;
+            display:flex;
+            justify-content: center;
+            margin-top:20px;
+        }
+        .resultTips{
+        position:fixed;
+        top:0;
+        bottom:0;
+        left:0;
+        right:0;
+        margin:auto;
+        width:100px;
+        height:50px;
+        background:rgba(0, 0, 0, .7);
+        text-align: center;
+        line-height: 50px;
+        border-radius:0.15rem;
+        font-size:14px;
+        color:#fff;
+        z-index:9999999;
+        display:none;
+    } 
+    </style>
+</head>
+
+<body>
+    <div class="main" id="main">
+        <div class="writeHead">评论商品</div>
+        <div class="addPic">
+            <div class="writeHead add">添加评论</div>
+            <textarea name="" id="content" cols="30" rows="10" placeholder="请在这里添加评论"></textarea>
+        </div>
+    <div class="updatePic">
+        <div class="tips" id="layui-upload-drag">
+            点击上传图片
+        </div>
+        <div class="picArr">
+            <img src="./image/fx_tycb_icon.png" alt="" id="uploadLogo">
+        </div>
+    </div>
+    <div class="saveBox" onclick="saveUpload()"><div class="sureSave">保存</div></div>
+    <div class="resultTips">
+            操作成功
+    </div>
+    </div>
+</body>
+
+</html>
+<script src="./script/layui/layui.js"></script>
+<script src="./script/jquery-3.2.1.min.js"></script>
+<script src="./script/common.js"></script>
+<script type="text/javascript" src="./script/aui-actionsheet.js"></script>
+<script src="./script/aui-toast.js"></script>
+<script src="./script/config.js"></script>
+<script src="./script/yltcrypt.js"></script>
+<script>
+    var user = getStorage("user")
+    var param = pageParam();
+    console.log(param)
+    var logoPic
+    var picArr = []
+    var upload
+    //初始数据
+    // var areaData = Area;  
+    var $form;
+    var form;
+    var $;
+    var layer;
+    layui.use(["layer"], function () {
+        layer = layui.layer;
+    })
+
+    layui.use('upload', function () {
+        upload = layui.upload;
+
+        //执行实例
+        //logo
+        upload.render({
+            elem: '#layui-upload-drag',//绑定元素
+            url: 'http://jjbapi.0571sd.com/upload/img',//上传接口
+            before: function (obj) {
+                layer.load(); //上传loading
+            },
+            done: function (res) {
+                //上传完毕回调
+                // console.log(res.data[0])
+                logoPic = res.data[0];
+                picArr.push(logoPic)
+                // console.log(picArr)
+                $("#uploadLogo").attr({ src: res.data[0] });
+                layer.closeAll('loading');
+            }
+            , error: function () {
+                //请求异常回调
+                layer.closeAll('loading');
+            }
+        });
+
+    });
+    function saveUpload(srcArr) {
+    var content = $("#content").val() 
+    if(content == ''){
+        $(".resultTips").show()
+        $(".resultTips").text("文本不可为空")
+        setTimeout(function () {
+        $(".resultTips").hide()
+        }, 800)
+        return;
+    }   
+        $.ajax({
+            type: 'POST',
+            url: PHP_SERVE_URL + '/customer/walletAddr',
+            data: {
+                openId: user.open_id,
+                oid:param.orderId,
+                info:content,
+                pic:picArr,
+                token:yltcrypt.cpt(user.open_id),
+            },
+            success: function (ret, err) {
+                console.log(JSON.stringify(ret))
+                if (ret.code == 0) {
+                    $(".resultTips").show()
+                    $(".resultTips").text("操作成功")
+                    setTimeout(function () {
+                    $(".resultTips").hide()
+                    }, 500)
+                }
+            }
+        })
+    }
+</script>

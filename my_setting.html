@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+    <link rel="dns-prefetch" href="//cdn.yangkeduo.com">
+    <link rel="dns-prefetch" href="//apiv4.yangkeduo.com">
+    <link rel="dns-prefetch" href="//api.pinduoduo.com">
+    <link rel="dns-prefetch" href="//pinduoduoimg.yangkeduo.com">
+    <link rel="dns-prefetch" href="//omsproduction.yangkeduo.com">
+    <link rel="dns-prefetch" href="//avatar.yangkeduo.com">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+    <meta name="format-detection" content="telephone=no">
+    <meta http-equiv="Cache-Control" content="no-cache,no-store,must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <meta property="og:title" content="拼多多商城">
+    <meta property="og:description" content="风靡全国的拼团商城，优质商品新鲜直供，快来一起拼多多吧">
+    <meta property="og:image" content="https://pinduoduoimg.yangkeduo.com/base/logo.jpg">
+    <title>拼多多</title>
+</head>
+
+<head>
+    <link href="https://cdn.yangkeduo.com/assets/css/react_pdd_5e2d15f27ff49c770c80.css" rel="stylesheet">
+    <link href="https://cdn.yangkeduo.com/assets/css/react_boot_05a40bc37a8d4bb56931.css" rel="stylesheet">
+    <link href="https://cdn.yangkeduo.com/assets/css/react_common_26044cf3d7bea818d629.css" rel="stylesheet">
+    <link href="https://cdn.yangkeduo.com/assets/css/react_personal_profile_e721197dd6960904f5d3.css" rel="stylesheet">
+    <!-- <link rel="stylesheet" href="./css/aui/aui.css"> -->
+    <style>
+        .aui-mask {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background: rgba(0, 0, 0, 0.3);
+            opacity: 0;
+            z-index: 20;
+            visibility: hidden;
+            /* -webkit-transition: opacity .3s,-webkit-transform .3s; */
+            /* transition: opacity .3s,transform .3s; */
+        }
+        .aui-mask.aui-mask-in {
+            visibility: visible;
+            opacity: 1;
+        }
+        .aui-actionsheet {
+            width: 100%;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            padding: 0 0.3rem;
+            z-index: 999;
+            opacity: 0;
+            -webkit-transition: opacity .3s,-webkit-transform .3s;
+            transition: opacity .3s,transform .3s;
+            -webkit-transform: translate3d(0,100%,0);
+            transform: translate3d(0,100%,0);
+        }
+        .aui-actionsheet-btn {
+            background-color: #ffffff;
+            border-radius: 6px;
+            text-align: center;
+            margin-bottom: 0.1rem;
+        }
+        .aui-actionsheet-title {
+            font-size: 12px;
+            color: #999999;
+            line-height: 0.4rem;
+        }
+        .aui-actionsheet-btn-item {
+            height: 0.5rem;
+            line-height: 0.5rem;
+            color: #0075f0;
+        }
+        .aui-border-b {
+            border-bottom: 1px solid #dddddd;
+        }
+    </style>
+</head>
+
+<body id="personalProfile">
+
+    <div id="main">
+        <div class="profile-module" data-reactroot="">
+            <div class="pm-base-tip">基本信息</div>
+            <div class="pm-profile-list">
+                <ul class="pm-pl">
+                    <li class="pm-pl-item pm-pl-item-0" onclick="openActionsheet()">
+                        <div class="pm-pli-name"><span>头像</span></div>
+                        <div class="pm-pli-value pm-pli-value-0"><img class="img" style="position:absolute" src="data:img/jpg;base64,R0lGODlhAQABAIABAAAAAP///yH5BAEAAAEALAAAAAABAAEAAAICTAEAOw==" />
+                        </div>
+                    </li>
+                    <li class="pm-pl-item pm-pl-item-1" onclick="location.href='my_setting_name.html'">
+                        <div class="pm-pli-name"><span>昵称</span></div>
+                        <div class="pm-pli-value pm-pli-value-1"><span id="userAvatar">153****9151</span> </div>
+                    </li>
+                    <!-- <li class="pm-pl-item pm-pl-item-2">
+                        <div class="pm-pli-name"><span>性别</span></div>
+                        <div class="pm-pli-value pm-pli-value-2"><span>未知</span> </div>
+                    </li>
+                    <li class="pm-pl-item pm-pl-item-3">
+                        <div class="pm-pli-name"><span>常住地</span></div>
+                        <div class="pm-pli-value pm-pli-value-3"> <span class="lead-edit">未填写</span></div>
+                    </li>
+                    <li class="pm-pl-item pm-pl-item-4">
+                        <div class="pm-pli-name"><span>生日</span></div>
+                        <div class="pm-pli-value pm-pli-value-4"> <span class="birthday lead-edit">未填写，填写后会匹配星座</span></div>
+                    </li>
+                    <li class="pm-pl-item pm-pl-item-5">
+                        <div class="pm-pli-name"><span>个性签名</span></div>
+                        <div class="pm-pli-value pm-pli-value-5"> <span class="signature lead-edit">未填写</span></div>
+                    </li> -->
+                </ul>
+            </div>
+        </div>
+    </div>
+    <form id="uploadForm1">
+        <input type="file" accept="image/*" name='file' value="相册" style="display:none;" id="picture">
+    </form>
+    <form id="uploadForm2">
+        <input type="file" value="相机" name="file" accept="image/*" capture="camera" style="display:none;" id="camera">
+    </form>
+    <!-- accept="image/*"  -->
+</body>
+<!-- <script type="text/javascript" src="./script/api.js"></script> -->
+<script src="./script/jquery-3.2.1.min.js"></script>
+<script src="./script/common.js"></script>
+<script type="text/javascript" src="./script/aui-actionsheet.js"></script>
+<script src="./script/aui-toast.js"></script>
+<script src="./script/config.js"></script>
+<script src="./script/yltcrypt.js"></script>
+<script>
+    console.log(getStorage('user'))
+    var user;
+    user = getStorage("user");
+
+    function goClip() {
+        window.location.href = "./clip_image.html"
+    }
+
+    function openActionsheet() {
+        var actionsheet = new auiActionsheet();
+        actionsheet.init({
+            frameBounces: true, //当前页面是否弹动，（主要针对安卓端）
+            title: "更换头像",
+            cancelTitle: '取消',
+            buttons: ['拍一张', '从手机相册中选择']
+        }, function (ret) {
+            if (ret.buttonIndex == 1) {
+                // getPicture(ret.buttonIndex);
+                $("#camera").click()
+                $("#camera").change(function () {
+                    $(".img").attr("src", URL.createObjectURL($(this)[0].files[0]));
+                    var formData = new FormData($("#uploadForm2")[0]); //先实例化formdata
+                    $.ajax({
+                        type: "POST",
+                        url: "http://jjbapi.0571sd.com/upload/img",
+                        data: formData,
+                        contentType: false,
+                        processData: false,
+                        success: function (ret) {
+                            if (ret.code == 0) {
+                                $(".img").attr("src", ret.data[0]);
+                                saveData(ret.data[0]);
+                            } else {
+                                console.log("失败")
+                            }
+                        },
+                        error: function (data) {
+                            // console.log();
+                        }
+                    });
+                });
+            } else if (ret.buttonIndex == 2) {
+                $("#picture").click()
+                $("#picture").change(function () {
+                    $(".img").attr("src", URL.createObjectURL($(this)[0].files[0]));
+                    var formData = new FormData($("#uploadForm1")[0]); //先实例化formdata
+                    $.ajax({
+                        type: "POST",
+                        url: "http://jjbapi.0571sd.com/upload/img",
+                        data: formData,
+                        contentType: false,
+                        processData: false,
+                        success: function (ret) {
+                            if (ret.code == 0) {
+                                console.log(JSON.stringify(ret))
+                                $(".img").attr("src", ret.data[0]);
+                                saveData(ret.data[0]);
+                            } else {
+                                console.log("失败+++")
+                            }
+                        },
+                        error: function (data) {
+                            console.log(data);
+                        }
+                    });
+                });
+            }
+        });
+    }
+    //保存头像
+    function saveData(data) {
+        console.log(user.openId)
+        //上传成功直接保存
+        $.ajax({
+            type: "POST",
+            url: PHP_SERVE_URL + "/customer/setAvatar",
+            data: {
+                openId: user.open_id,
+                avatar: data,
+                token: yltcrypt.cpt(user.open_id)
+            },
+            success: function (ret) {
+                console.log(JSON.stringify(ret))
+                if (ret.code == 0) {
+                    // $(".img").attr("src", ret.data);
+                    console.log(ret.code)
+                    user.avatar = data
+                    setStorage("user",user);
+                } else {
+                    console.log("失败")
+                }
+            },
+            error: function (ret) {
+                console.log(ret);
+            }
+        });
+    }
+
+
+    $(".img").attr("src", user.avatar);
+$("#userAvatar").val(user.nick_name)
+</script>
+
+
+
+
+</html>

@@ -1,0 +1,110 @@
+.s_ifooter {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background: #fff;
+    /*border-top: 1px solid #dcdcdc;*/
+    font-size: 0;
+    padding: 0.1rem 0;
+    /*z-index: 100000 !important;*/
+    z-index: 8
+}
+
+.s_ifooter_bottom_hight {
+    height: 2.2rem;
+}
+
+.s_ifooter dl {
+    display: inline-block;
+    width: 25%;
+    font-size: 0.6rem;
+    text-align: center;
+    position: relative;
+
+}
+
+.s_ifooter-layer {
+    content: '';
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 100001;
+    background: rgba(0, 0, 0, 0.4);
+
+}
+
+.s_ifooter dl dt {
+    font-family: sans-serif;
+}
+
+.s_ifooter dl img {
+    height: 1.4rem;
+    display: inline;
+}
+
+.s_ifooter dl dd {
+    font-size: 0.5rem;
+    margin-top: -0.3rem;
+    font-family: sans-serif;
+    color: #999999;
+    margin-top: -0.3rem;
+}
+
+.s_ifooter .s_footmenu {
+    position: absolute;
+    width: 3rem;
+    height: 3rem;
+    line-height: 2.95rem;
+    background: #fff;
+    top: -1rem;
+    margin: auto;
+    left: 0;
+    right: 0;
+    text-align: center;
+    border-radius: 50%;
+    border: 1px solid #dcdcdc;
+    border-bottom: 0;
+}
+
+.s_ifooter .s_footmenu img {
+    width: 2.5rem;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.s_ifooter .s_imaleft {
+    margin-left: 20%;
+}
+
+.s_ifooter .wheel-button {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.s_ifooter .wheel-button {
+    position: relative;
+}
+
+.s_ipop {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 10000 !important;
+}
+
+.s_izdiv {
+    position: absolute;
+    width: 3.5rem;
+    height: 2rem;
+    bottom: 0;
+    left: -0.3rem;
+    background: #fff;
+}

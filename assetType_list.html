@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0">
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <link rel="stylesheet" type="text/css" href="./css/aui/aui.css">
+    <link rel="stylesheet" href="./css/common.css">
+    <title>奖金明细</title>
+    <style>
+        html {
+            width: 100%;
+        }
+
+        body {
+            background: #f6f6f6;
+            width: 100%;
+        }
+
+        #list {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        #header {
+            background: #f6f6f6;
+            position: fixed;
+            color: #000;
+        }
+
+        #drawList li {
+            overflow-x: hidden;
+            /*overflow-y: auto;*/
+            background: #f6f6f6;
+            padding: .5rem .7rem;
+            border-bottom: 1px solid #ccc;
+        }
+
+        #drawList li>div.list_font_left {
+            float: left;
+        }
+
+        #drawList li>div .list_font1 {
+            color: #aaaaaa;
+            font-size: .6rem;
+        }
+
+        #drawList li>div .list_font2 {
+            color: #333333;
+            font-size: .8rem;
+        }
+
+        #drawList li>div.list_font_right {
+            float: right;
+        }
+
+        [v-cloak] {
+            display: none;
+        }
+    </style>
+</head>
+
+<body style="padding-top:2.2rem;">
+    <div class="list" id="list" v-cloak>
+        <header class="aui-bar aui-bar-nav" id="header">
+            <a class="aui-pull-left aui-btn" onclick="history.back();">
+                <span class="aui-iconfont aui-icon-left" style="color:#000;"></span>
+            </a>
+            <div class="aui-title">资产明细</div>
+        </header>
+        <ul id="drawList">
+            <li v-for="item in bonusList">
+                <div class="list_font_left">
+                    <div class="list_font2">{{item.memo}}</div>
+                    <div class="list_font1">{{item.addTime}}</div>
+                </div>
+                <div class="list_font_right">
+                    <div class="list_font2">{{item.changeMoney}}</div>
+                    <div class="list_font1">余额：{{item.leftMoney}}</div>
+                </div>
+            </li>
+        </ul>
+        <div v-if="bonusList.length==0" class="aui-padded-10 aui-text-center color-gray">暂无数据！</div>
+    </div>
+</body>
+
+</html>
+<script src="./script/jquery-3.2.1.min.js"></script>
+
+<script src="./script/common.js"></script>
+<script src="./script/config.js"></script>
+<script src="./script/iscroll.js"></script>
+<script src="./script/vue.js"></script>
+<script src="./script/aui-toast.js"></script>
+<!-- <script type="text/javascript" src="./script/link.js"></script> -->
+<script>
+    var user, pageParam, leftScroll;
+    var toast = new auiToast();
+
+    user = getStorage('user');
+    pageParam = pageParam();
+    if (pageParam.atype == 1) {
+        $('.aui-title').text('FGC明细');
+    } else if (pageParam.atype == 2) {
+        $('.aui-title').text('积分明细');
+    } else if (pageParam.atype == 3) {
+        $('.aui-title').text('商家贷款明细');
+    } else if (pageParam.atype == 4) {
+        $('.aui-title').text('红包明细');
+    }
+    new Vue({
+        el: "#list",
+        data: {
+            bonusList: [],
+            pageIndex: 1,
+            totalpages: 0,
+            isScroll: true,
+        },
+        methods: {
+            getList: function () {
+                var self = this
+                if (!self.isScroll) {
+                    return;
+                }
+                self.isScroll = false;
+                $.ajax({
+                    url: PHP_SERVE_URL + "/customer/assetsList",
+                    type: 'post',
+                    data: {
+                        openId: user.open_id,
+                        pageIndex: self.pageIndex,
+                        assetsType: pageParam.atype
+                    },
+                    success: function (ret, err) {
+                        if (ret.code == 0) {
+                            self.isScroll = true;
+                            self.bonusList = self.bonusList.concat(ret.data)
+                            self.totalpages = ret.totalPages
+                            // setTimeout(function () {
+                            //     leftScroll.refresh();
+                            // }, 50)
+                        } else {
+                            toast.fail({
+                                title: ret.msg,
+                                duration: 2000
+                            });
+                        }
+                    }
+                })
+            },
+        },
+        mounted: function () {
+            var self = this
+            self.getList();
+
+            // leftScroll = new IScroll("#drawList");
+            // leftScroll.on('scrollEnd', function () {
+            //     if (this.absStartY >= this.maxScrollY + 50) {
+            //         if (self.pageIndex < self.totalPages) {
+            //             self.pageIndex++;
+            //             self.getList()
+            //         } else {}
+            //     }
+            // })
+
+        },
+        updated: function () {},
+    })
+</script>

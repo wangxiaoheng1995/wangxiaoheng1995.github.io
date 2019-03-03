@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+
+    <link rel="dns-prefetch" href="//cdn.yangkeduo.com">
+    <link rel="dns-prefetch" href="//apiv4.yangkeduo.com">
+    <link rel="dns-prefetch" href="//api.pinduoduo.com">
+    <link rel="dns-prefetch" href="//pinduoduoimg.yangkeduo.com">
+    <link rel="dns-prefetch" href="//omsproduction.yangkeduo.com">
+    <link rel="dns-prefetch" href="//avatar.yangkeduo.com">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+    <meta name="format-detection" content="telephone=no">
+    <meta http-equiv="Cache-Control" content="no-cache,no-store,must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <meta property="og:title" content="拼多多商城">
+    <meta property="og:description" content="风靡全国的拼团商城，优质商品新鲜直供，快来一起拼多多吧">
+    <meta property="og:image" content="https://pinduoduoimg.yangkeduo.com/base/logo.jpg">
+    <title>拼多多</title>
+
+    <style>
+        .gosetAd{
+            position: relative;
+    width: 100%;
+    min-height: .74rem;
+    background-color: #fff;
+    color: #151516;
+    font-size:16px;
+    overflow-x: hidden;
+    -webkit-box-pack: start;
+    justify-content: flex-start;
+    -webkit-justify-content: flex-start;
+    line-height: 0.74rem;
+    text-align: center;
+        }
+        
+    </style>
+
+</head>
+
+<head>
+    <link href="https://cdn.yangkeduo.com/assets/css/react_pdd_6fb15092c0312a697dfb.css" rel="stylesheet">
+    <link href="https://cdn.yangkeduo.com/assets/css/react_boot_b75c36a0efec6307f981.css" rel="stylesheet">
+    <link href="https://cdn.yangkeduo.com/assets/css/react_common_5757ad19c083dcf89e96.css" rel="stylesheet">
+</head>
+
+<body id="order_checkout">
+    <div id="main" style="height:100%">
+        <div class="order-checkout-container " style="" data-reactroot="">
+            <div class="oc-address">
+                <div class="oc-address-info" data-active="before-white" @click="gosetAd()">
+                    <div class="oc-address-location">
+                        <div class="oc-address-location-icon"></div>
+                    </div>
+                    <div class="oc-address-main-info">
+                        <div class="oc-address-receiver"><span class="oc-address-receiver-name">{{userName}}</span><span class="oc-address-receiver-mobile">{{userTel}}</span></div>
+                        <div class="oc-address-detail">{{userPname}}
+                            <!-- -->&nbsp;
+                            <!-- -->{{userCname}}
+                            <!-- -->&nbsp;
+                            <!-- -->{{userAname}}
+                            <!-- -->&nbsp;
+                            <!-- -->{{userInfo}}</div>
+                    </div>
+                    <div class="oc-address-right-arrow">
+                        <div class="oc-address-right-arrow-icon"></div>
+                    </div>
+                </div>
+                <div class="gosetAd" style="display:none;" @click="gosetAd()">请选择地址</div>
+                <div class="bottom-line"></div>
+            </div>
+            <div class="oc-goods ">
+                <div class="oc-goods-mall"><img data-param="80_!_f_!_!_!_!_t_!" src="//t16img.yangkeduo.com/pdd_ims/6b7922e675071f68a46edf250c5c2d5f.jpg?imageMogr2/strip%7CimageView2/2/w/1300/q/80"><span>
+                        <p class="oc-goods-mall-title">佳佳办公用品</p>
+                    </span></div>
+                <div class="oc-goods-info">
+                    <div class="oc-goods-inherent-info">
+                        <div class="oc-goods-thumburl"><img quantity="80" data-param="80_!_f_!_!_!_200_t_!" src="//t10img.yangkeduo.com/images/2018-03-08/69437147034b960912214775365b1b9a.jpeg?imageMogr2/strip%7CimageView2/2/w/200/q/80"></div>
+                        <div class="oc-goods-detail"><span class="oc-goods-name">按动中性笔水性笔黑色笔芯碳素笔签字笔商务考试办公文具 笔 批发</span>
+                            <div class="oc-goods-spec">
+                                <div class="specification-item">颜色: 按动笔黑色12支+20支黑色笔芯</div>
+                            </div>
+                            <div class="oc-goods-price-block">
+                                <div class="oc-goods-price"><i>￥</i>23.08<i>/件</i>
+                                    <div class="oc-goods-label" style="font-size:0.12rem;color:#339B29;border:1px #339B29 solid">极速退款</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="oc-goods-number"><span>购买数量</span>
+                    <div class="oc-goods-number-btn">
+                        <div class="oc-goods-reduce oc-reduce-disable"></div><input type="number" class="oc-buy-number "
+                            style="width: 9px;" value="1">
+                        <div class="oc-goods-increase "></div>
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="oc-payment">
+                <div class="oc-payment-item-padding" data-active="before-white">
+                    <div class="oc-payment-item oc-payment-selected">
+                        <div class="oc-payment-item-text"><span class="oc-payment-method oc-p-2">微信支付</span></div>
+                    </div>
+                </div>
+                <div class="oc-payment-item-padding" data-active="before-white">
+                    <div class="oc-payment-item">
+                        <div class="oc-payment-item-text"><span class="oc-payment-method oc-p-1">支付宝</span></div>
+                    </div>
+                </div>
+            </div> -->
+            <div class="oc-safe-pay-statement"><span class="green-shield-icon"></span><span>平台用户信息泄露风险由</span><img
+                    class="picc-img" src="//pinduoduoimg.yangkeduo.com/order_checkout/picc_v2.png"><span>承保</span></div>
+            <div class="oc-bottom-bar ">
+                <div class="oc-pay-final">
+                    <div class="oc-caption-block"><span class="oc-pay-title" style="font-size: 0.14rem;">实付款
+                            <!-- -->:</span><span class="oc-final-amount"><i>￥</i>23.08</span><span class="oc-free-shipping"
+                            style="font-size: 0.14rem;">免运费</span></div>
+                    <div class="oc-caption-block"><span class="oc-free-shipping" hidden="">免运费</span></div>
+                </div>
+                <div class="oc-pay-btn  " data-active="before-red" @click="createdOrder()">立即支付<div id="oc-pay-text"></div>
+                </div>
+            </div>
+            <div class="oc-repay-modify-panel" style="display:none">
+                <div class="rmp-content" style="bottom:-4.4rem">
+                    <div class="rmp-header">
+                        <div class="rmp-count-down">请在
+                            <!-- -->00:00.0
+                            <!-- -->内支付</div>
+                        <div class="rmp-close"></div>
+                    </div>
+                    <div class="rmp-address-wrap" data-active="before-white">
+                        <div class="rmp-address">
+                            <div class="rmp-addr-location"></div>
+                            <div class="rmp-whole-addr"><span>浙江省
+                                    <!-- -->绍兴市
+                                    <!-- -->越城区
+                                    <!-- -->嘤嘤嘤</span></div>
+                        </div>
+                    </div>
+                    <!-- <div class="rmp-payments" id="rmp-payments">
+                        <div class="oc-payment-item-padding" data-active="before-white">
+                            <div class="oc-payment-item oc-payment-selected">
+                                <div class="oc-payment-item-text"><span class="oc-payment-method oc-p-2">微信支付</span></div>
+                            </div>
+                        </div>
+                        <div class="oc-payment-item-padding" data-active="before-white">
+                            <div class="oc-payment-item">
+                                <div class="oc-payment-item-text"><span class="oc-payment-method oc-p-1">支付宝</span></div>
+                            </div>
+                        </div>
+                    </div> -->
+                    <div class="rmp-confirm">
+                        <div class="oc-safe-pay-statement"><span class="green-shield-icon"></span><span>平台用户信息泄露风险由</span><img
+                                class="picc-img" src="//pinduoduoimg.yangkeduo.com/order_checkout/picc_v2.png"><span>承保</span></div>
+                        <div class="rmp-confirm-button">继续支付<span class="rmp-final-price">￥
+                                <!-- -->23.08</span></div>
+                    </div>
+                </div>
+            </div>
+            <div id="auto-create-group"></div>
+
+        </div>
+    </div>
+</body>
+
+<script src="./script/jquery-3.2.1.min.js"></script>
+<script src="./script/config.js"></script>
+<script src="./script/common.js"></script>
+<script src="./script/yltcrypt.js"></script>
+<script src="./script/aui-toast.js"></script>
+<script src="./script/vue.js"></script>
+<script>
+    var user = getStorage("user");
+    var param = pageParam();
+    // console.log(decodeURI(param.goodsInfo))
+    // console.log(param.itemData)
+//    console.log(param)
+    new Vue({
+        el:"#main",
+        data:{
+            productOrder:'',
+            userName:'',
+            userTel:'',
+            userPname:'',
+            userCname:'',
+            userAname:'',
+            userInfo:'',
+            goodsDetail:decodeURI(param.goodsInfo),
+        },
+        methods:{
+            getproductInfo:function(){
+                var self = this
+            },
+            getUserAddress:function(){
+                var self = this
+                $.ajax({
+                    type: 'POST',
+                    url: PHP_SERVE_URL + '/customer/myAddress',
+                    data: {
+                        openId: user.open_id,
+                    },
+                    success: function (ret, err) {
+                        if (ret.code == 0) {
+                            if(ret.data.length == 0){
+                                $(".gosetAd").show()
+                            }else if(ret.data.length == 1){
+                                 self.userName = ret.data[0].uname;
+                                 self.userTel = ret.data[0].tel;
+                                 self.userPname = ret.data[0].pname;
+                                 self.userCname = ret.data[0].cname;
+                                 self.userAname = ret.data[0].aname;
+                                 self.userInfo = ret.data[0].info;
+                            }else if(ret.data.length >1){
+                                for(var i=0;i<ret.data.length;i++){
+                                    if(ret.data[i].is_default == 2){
+                                        self.userName = ret.data[i].uname;
+                                        self.userTel = ret.data[i].tel;
+                                        self.userPname = ret.data[i].pname;
+                                        self.userCname = ret.data[i].cname;
+                                        self.userAname = ret.data[i].aname;
+                                        self.userInfo = ret.data[i].info; 
+                                    }
+                                }
+                            }
+                        }
+                    }
+                })
+            },
+            gosetAd:function(){
+                var self = this
+                window.location.href = "set_address.html?goodsInfo=" + param.goodsInfo
+            },
+            createdOrder:function(){
+                var self = this
+                var peopleAd = self.userPname+""+ self.userCname+""+self.userAname+""+self.userInfo
+                var peopleInfo = {"name":self.userName,"tel":self.userTel,"address":peopleAd,}
+                console.log(peopleInfo)
+                console.log(JSON.parse(self.goodsDetail).goods)
+                console.log(JSON.parse(self.goodsDetail).btype)
+                console.log(user.open_id)
+                $.ajax({
+                    type: 'POST',
+                    url: PHP_SERVE_URL + "/shop/buildOrder",
+                    data: {
+                        openId: user.open_id,
+                        goods: JSON.stringify(JSON.parse(self.goodsDetail).goods),
+                        userInfo:JSON.stringify(peopleInfo),
+                        btype:JSON.parse(self.goodsDetail).btype,
+                    },
+                    success: function (ret, res) {
+                        console.log(JSON.stringify(ret))
+                        if (ret.code == 0) {
+                        }
+                    }
+                })
+            }
+        },
+        mounted:function(){
+            var self = this
+            // console.log(self.goodsDetail)
+            // self.getUserAddress()   
+            // console.log(param.itemData == undefined )
+            if(param.itemData != undefined){ 
+                
+                var paramJson = JSON.parse(param.itemData)
+                self.userName =paramJson.uname;
+                self.userTel = paramJson.tel;
+                self.userPname = paramJson.pname;
+                self.userCname = paramJson.cname;
+                self.userAname = paramJson.aname;
+                self.userInfo = paramJson.info;
+            }else{
+                self.getUserAddress()
+            }
+            
+            
+        }
+    })
+</script>
+
+</html>

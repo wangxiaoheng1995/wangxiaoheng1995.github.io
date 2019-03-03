@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>物流</title>
+    <style>
+        body{
+            background:#f6f6f6;
+            padding:0;
+            margin:0;
+        }
+        div,ul,li,p{
+            padding:0;
+            margin:0;
+            
+        }
+        ul li{
+            list-style: none;
+        }
+      .logistics-header{
+          display:flex;
+          align-items: center;
+          background:#fff;
+          padding:10px;
+      }
+      .logistics-company-info p{
+          font-size:16px;
+          color:#333;
+          margin-left:12px;
+      }
+      .isReceiving{
+         border-top:1px solid #ccc;
+         display:flex;
+         justify-content: space-between;
+         align-items: center;
+         padding:5px 10px;
+         background:#fff;
+      }
+      .isReceiving p{
+        color:gray;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        width:70%;
+      }
+      .logistics-detail {
+          padding:0 20px;
+          margin-top:10px;
+          background:#fff;
+      }
+      .logistics-status{
+          font-size:16px;
+          color:#000;
+          padding:10px 0;
+          border-bottom:1px solid #ccc;
+      } 
+      .logistics-detail  ul li{
+          padding:10px 0;
+          border-bottom:1px solid #ccc;
+      }
+      .logistics-detail  ul li p{
+          padding:5px 20px;
+          font-size:14px;
+          color:gray;
+      }
+    </style>
+</head>
+<body>
+    <div id="main">
+
+        <div class="logistics-header">
+            <div class="logistics-company-logo">
+                  <img src="../image/fx_tycb_icon.png" alt="" style="width:78px;height:78px;border-radius:5px;">
+            </div>
+            <div class="logistics-company-info">
+                <p>物流公司：<span>{{companyName}}</span></p>
+                <p>物流单号：<span>{{companyOrder}}</span></p>
+                <p>物流电话：<span>11223344551</span></p>    
+            </div>
+        </div>
+        <div class="isReceiving">
+            <p>北大院</p>
+            <span style="color:gray;" v-text="orderStauts == 0?'查询失败':orderStauts == 1?'正常':orderStauts == 2?'派件中':orderStauts == 3?'已签收':orderStauts == 4?'退回':'其他问题'">待领取</span>
+        </div>
+        <div class="logistics-detail">
+            <div class="logistics-status">物流状态</div>
+             <ul>
+                 <li v-for="item in logisArr">
+                    <p>{{item.context}}</p>
+                    <p style="color:#ccc;">{{item.time}}</p>
+                 </li>
+             </ul>
+             <div style="text-align:center;margin-top:50px;" v-show="show">暂无物流信息</div>
+        </div>
+    </div>
+</body>
+</html>
+<script src="./script/jquery-3.2.1.min.js"></script>
+<script src="./script/config.js"></script>
+<script src="./script/common.js"></script>
+<script src="./script/aui-toast.js"></script>
+<script src="./script/vue.js"></script>
+<script>
+var user = getStorage("user");
+var param = pageParam()
+
+new Vue({
+    el:"#main",
+    data:{
+        logisArr:"",
+        postId:'',
+        postName:'',
+        show:false,
+        companyName:'',
+        companyOrder:'',
+        orderStauts:"",
+    },
+    methods:{
+        checkInfo:function(){
+            var self = this
+
+            $.ajax({
+                type: 'POST',
+                url: "http://www.kuaidi100.com/query",
+                data: {
+                    type: postName,
+                    postid:postId,
+                },
+                success: function (ret, res) {
+                    self.loading = true;                    
+                    if (ret.code == 0) {
+                        console.log(ret.data.length)
+                        if(ret.data.length == 0){
+                             self.show = true;
+                        }
+                        self.companyName = ret.com
+                        self.companyOrder = ret.nu
+                        self.orderStauts = ret.status
+                        self.logisArr = ret.data;
+                    }
+                }
+            })
+        }
+    }
+})
+</script>

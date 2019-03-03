@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+    <script>
+        ! function (t) {
+            (t._plt = t._plt || []).push(["tm", "ps", +new Date])
+        }(window);
+    </script>
+
+    <link rel="dns-prefetch" href="//cdn.yangkeduo.com">
+    <link rel="dns-prefetch" href="//apiv4.yangkeduo.com">
+    <link rel="dns-prefetch" href="//api.pinduoduo.com">
+    <link rel="dns-prefetch" href="//pinduoduoimg.yangkeduo.com">
+    <link rel="dns-prefetch" href="//omsproduction.yangkeduo.com">
+    <link rel="dns-prefetch" href="//avatar.yangkeduo.com">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+    <meta name="format-detection" content="telephone=no">
+    <meta http-equiv="Cache-Control" content="no-cache,no-store,must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <meta property="og:title" content="拼多多商城">
+    <meta property="og:description" content="风靡全国的拼团商城，优质商品新鲜直供，快来一起拼多多吧">
+    <meta property="og:image" content="https://pinduoduoimg.yangkeduo.com/base/logo.jpg">
+    <title>订单详情</title>
+
+    <script>
+        ! function () {
+            "use strict";
+            var p = Object.assign || function (e) {
+                    for (var t = 1; t < arguments.length; t++) {
+                        var r = arguments[t];
+                        for (var n in r) Object.prototype.hasOwnProperty.call(r, n) && (e[n] = r[n])
+                    }
+                    return e
+                },
+                l = window;
+            l._htmllog = function (e, t) {
+                var r = 2 < arguments.length && void 0 !== arguments[2] ? arguments[2] : {};
+                if (l.XMLHttpRequest) {
+                    var n = "unknow",
+                        o = (document.cookie || "").split("; ").reduce(function (e, t) {
+                            var r = t.split("=");
+                            return e[r[0]] = r[1], e
+                        }, {}),
+                        i = l.navigator;
+                    i && i.connection && (n = i.connection.effectiveType || i.connection.type || "unknown");
+                    var a = /(w+).html/.exec(document.referrer),
+                        c = p({
+                            log_version: "1.0.0",
+                            error_msg: e,
+                            page: t,
+                            page_url: location.href,
+                            refer_page_name: a && a[1],
+                            network: {
+                                unknow: 0,
+                                wifi: 1,
+                                "2g": 2,
+                                "3g": 3,
+                                "4g": 4
+                            } [n] || 0,
+                            user_id: o.pdd_user_id || "",
+                            time: +new Date
+                        }, r),
+                        s = new XMLHttpRequest;
+                    s.open("POST", "https://tne.yangkeduo.com/tne.gif", !0), s.setRequestHeader("Content-Type",
+                        "text/plain;charset=UTF-8"), s.withCredentials = !0, s.send(JSON.stringify(c))
+                }
+            }, l._peh = function (e, t, r, n, o) {
+                if (l.XMLHttpRequest && (!e || e.target !== l)) {
+                    var i = e + ", " + t + ", " + r + ", " + n + ", " + o,
+                        a = "html_error";
+                    if (o && o.stack) a += "_js", i = e + ";" + o.stack.replace(/\n/gi, "").split(/at/).slice(0,
+                        5).join("@");
+                    else if ("[object Event]" === Object.prototype.toString.call(e)) {
+                        var c = e.srcElement;
+                        i = c ? (a += "_" + String.prototype.toLowerCase.call(c.nodeName), "Error: " + c.outerHTML) :
+                            "Error: " + JSON.stringify(e)
+                    }
+                    l._htmllog(a, i)
+                }
+            }, l._peh._raw = !0, l.addEventListener("error", _peh, !0), l.onerror = _peh, l.addEventListener("load",
+                function () {
+                    l.removeEventListener("error", l._peh, !0)
+                })
+        }();
+    </script>
+
+    <script>
+        ! function (t) {
+            var n = t._plt = t._plt || [];
+            n.push(["tm", "fp", +new Date]), t.addEventListener("load", function () {
+                n.push(["tm", "ld", +new Date])
+            })
+        }(window);
+    </script>
+
+</head>
+
+<head>
+    <link href="https://cdn.yangkeduo.com/assets/css/react_pdd_6fb15092c0312a697dfb.css" rel="stylesheet">
+    <link href="https://cdn.yangkeduo.com/assets/css/react_boot_b75c36a0efec6307f981.css" rel="stylesheet">
+    <link href="https://cdn.yangkeduo.com/assets/css/react_common_5757ad19c083dcf89e96.css" rel="stylesheet">
+    <link href="https://cdn.yangkeduo.com/assets/css/react_order_ac05152a3e68906e4560.css" rel="stylesheet">
+</head>
+
+<body id="order">
+
+    <div id="main">
+        <div class="order-content">
+            <div class="head-block">
+                <div class="order-unpaid status-icon"></div>
+                <div class="details">
+                    <div class="msg-tag">等待买家付款</div>
+                    <div class="msg-content">逾期未付款，订单将自动取消</div>
+                </div>
+            </div>
+            <div class="address-block">
+                <div class="location-icon-block">
+                    <div class="location-icon"></div>
+                </div>
+                <div class="details new-details">
+                    <div class="first-line">
+                        <p class="receive-name">大猪蹄子</p>
+                        <p class="contact-mobile">15353589151</p>
+                    </div>
+                    <p class="receive-address">绍兴市 越城区 嘤嘤嘤</p>
+                </div>
+                <div class="modify-address" data-active="ghost-red">修改</div>
+            </div>
+            <div class="oc-payment">
+                <div class="oc-payment-item-padding" data-active="cell-white">
+                    <div class="oc-payment-item"><span class="oc-payment-method oc-p-2">微信支付</span></div>
+                </div>
+            </div>
+            <div id="goods-detail">
+                <div id="deliver-goods"></div>
+                <div class="mall-block">
+                    <div class="img-wrapper"><img class="mall-logo" alt="mall-logo" data-param="80_!_f_!_!_!_!_t_!" src="//t16img.yangkeduo.com/pdd_ims/84c1c161a84b4ff9230aaf4062e1a7bf.jpg?imageMogr2/strip%7CimageView2/2/w/1300/q/80" /></div>
+                    <div class="mall-name"><span class="mall-name-text">得力捷足专卖店</span><i class="mall-arrow"></i></div>
+                </div>
+                <div class="goods-block">
+                    <div class="goods-detail without-short-buttons">
+                        <div class="img-wrapper"><img class="goods-image" data-param="80_!_f_!_!_!_!_t_!" src="//omsproductionimg.yangkeduo.com/images/2017-10-20/de0ff2658eca1bbc023dd85552e63cde.jpeg@1300w_1l_80Q" /></div>
+                        <div class="details">
+                            <div class="middle-block">
+                                <div class="goods-desc">
+                                    <p>得力6906中性笔芯0.5弹簧头按动笔芯替芯按动水笔替芯20支整盒装</p>
+                                    <p class="spec">6906黑【20支/盒】</p>
+                                </div>
+                            </div>
+                            <div class="price-and-num">
+                                <div class="goods-price"><i>￥</i>13.9</div>
+                                <div class="goods-number">x
+                                    <!-- -->1</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="order-currency-block">
+                    <div class="order-currency-block-coupons"></div>
+                    <div class="order-currency-block-currency"><span class="head">实付:</span><span class="amount"><i>￥</i>13.9</span><span
+                            class="free 0">(免运费)</span></div>
+                </div>
+                <div class="contact-block">
+                    <div class="contact-block-normal">
+                        <div class="contact-item contact-mall" data-active="cell-white">
+                            <div class="icon"></div><a>联系卖家</a>
+                        </div>
+                        <div class="contact-item phone-call" data-active="cell-white">
+                            <div class="icon"></div><a id="phone_call">拨打电话</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <ul class="order-detail">
+                <li class="">
+                    <div class="row-key">订单编号：</div>
+                    <div class="row-value"><span class="row-value-desc can-copy">190221-205384582251702</span></div>
+                </li>
+                <li class="">
+                    <div class="row-key">下单时间：</div>
+                    <div class="row-value"><span class="row-value-desc">2019-02-21 12:18:57</span></div>
+                </li>
+            </ul>
+            <div class="iphone-x-order-detail"></div>
+            <div class="order-bottom-bar"><a class="button btn-highlight" data-active="red"><span>去支付</span></a><a
+                    class="button" data-active="ghost-gray"><span>取消订单</span></a></div>
+            <script>
+                ! function (e, t) {
+                    var n = e._plt = e._plt || [],
+                        a = +new Date;
+                    n.push(["tm", "fsn", a]);
+                    var r = t.getElementsByTagName("img"),
+                        i = t.documentElement.clientHeight,
+                        l = [],
+                        o = "complete" === t.readyState,
+                        m = function () {
+                            for (var e = 0; e < l.length; e++) {
+                                var t = l[e],
+                                    r = t.img.offsetTop || 0;
+                                r > 0 && i > r && (a = Math.max(t.time, a))
+                            }
+                            n.push(["tm", "fs", a])
+                        };
+
+                    function c() {
+                        for (var e = !0, t = 0; t < l.length; t++)
+                            if (!(e = e && l[t].time)) return;
+                        m()
+                    }
+                    for (var f = 0; f < r.length; f++) {
+                        var s = r[f];
+                        s.complete || function () {
+                            var e = {
+                                    img: s
+                                },
+                                t = s.addEventListener,
+                                n = function t(n) {
+                                    var a = this.removeEventListener;
+                                    a.call(this, "load", t, !1), a.call(this, "error", t, !1), e.time = +new Date,
+                                        o && c()
+                                };
+                            t.call(s, "load", n, !1), t.call(s, "error", n, !1), l.push(e)
+                        }()
+                    }
+                    o ? c() : e.addEventListener("load", m)
+                }(window, document);
+            </script>
+        </div>
+    </div>
+
+
+    <script src="https://cdn.yangkeduo.com/assets/js/react_vendor_e10b2eb5813d24851ca7.js" crossorigin></script>
+
+    <script>
+        window.isUseHttps = true
+    </script>
+    <script>
+        window.rawData = {
+            "data": {
+                "$http": "cjse96ttn4p2p0z1vo1nxf1oa",
+                "isServerRendered": true,
+                "isFinishInitLoading": true,
+                "accessToken": "KWNAO6KJ2L5MLDO5HFAWRT7T76SJTYYPSLMSQEIQOIQAN4QF4PDQ102a60b",
+                "errorRedirectUrl": "orders.html",
+                "selectedPaymentType": null,
+                "payMethod": [{
+                    "rank": 1,
+                    "name": "微信支付",
+                    "nameStyle": {
+                        "fontColor": "#151516",
+                        "fontSize": 15
+                    },
+                    "hintStyle": {
+                        "fontColor": "#58595B",
+                        "fontSize": 14
+                    },
+                    "appId": 38,
+                    "paymentType": 2,
+                    "display": true,
+                    "disabled": false,
+                    "signed": false,
+                    "selected": false
+                }, {
+                    "rank": 2,
+                    "name": "支付宝",
+                    "nameStyle": {
+                        "fontColor": "#151516",
+                        "fontSize": 15
+                    },
+                    "hintStyle": {
+                        "fontColor": "#58595B",
+                        "fontSize": 14
+                    },
+                    "appId": 35,
+                    "paymentType": 5,
+                    "display": true,
+                    "disabled": false,
+                    "signed": false,
+                    "selected": false
+                }, {
+                    "rank": 3,
+                    "name": "支付宝",
+                    "nameStyle": {
+                        "fontColor": "#151516",
+                        "fontSize": 15
+                    },
+                    "hintStyle": {
+                        "fontColor": "#58595B",
+                        "fontSize": 14
+                    },
+                    "appId": 9,
+                    "paymentType": 1,
+                    "display": true,
+                    "disabled": false,
+                    "signed": false,
+                    "selected": false
+                }],
+                "isHBInstallmentChangable": true,
+                "termIndex": 0,
+                "Dialog": null,
+                "showNewExpress": false,
+                "orderButtons": [{
+                    "type": 3,
+                    "style": {
+                        "color": 1,
+                        "clickType": 0
+                    },
+                    "briefPrompt": "去支付",
+                    "metricInfo": {
+                        "page_el_sn": "99670",
+                        "goods_id": "3902054"
+                    }
+                }, {
+                    "type": 2,
+                    "style": {
+                        "color": 0,
+                        "clickType": 0
+                    },
+                    "briefPrompt": "取消订单",
+                    "metricInfo": {
+                        "page_el_sn": "99672",
+                        "customer_num": "2",
+                        "group_status": "99"
+                    }
+                }],
+                "topBanner": {
+                    "orderStatusPrompt": "等待买家付款",
+                    "orderStatusSubPrompt": "逾期未付款，订单将自动取消",
+                    "bannerIcon": 1
+                },
+                "express": null,
+                "qqWalletPage": false,
+                "mobile": "15353589151",
+                "addressId": 4275467894,
+                "address": "",
+                "receiveName": "大猪蹄子",
+                "statusPrompt": "等待买家付款",
+                "orderService": {
+                    "http": "cjse96ttn4p2p0z1vo1nxf1oa"
+                },
+                "commonService": {
+                    "http": "cjse96ttn4p2p0z1vo1nxf1oa"
+                },
+                "serverTime": 1550730984,
+                "uid": 9549998896806,
+                "appId": 38,
+                "mallId": 129190,
+                "groupId": 7809637,
+                "groupOrderId": "674330641245270171",
+                "orderSn": "190221-205384582251702",
+                "parentOrderSn": "",
+                "status": 0,
+                "orderStatus": 0,
+                "payStatus": 0,
+                "shippingStatus": 0,
+                "orderTime": 1550722737,
+                "payTime": 0,
+                "confirmTime": 0,
+                "shippingTime": 0,
+                "receiveTime": 0,
+                "goodsAmount": 1390,
+                "shippingAmount": 0,
+                "discountAmount": 0,
+                "serviceAmount": 0,
+                "orderAmount": 1390,
+                "provinceId": 31,
+                "provinceName": "浙江省",
+                "cityId": 389,
+                "cityName": "绍兴市",
+                "districtId": 3290,
+                "districtName": "越城区",
+                "shippingAddress": "嘤嘤嘤",
+                "trackingNumber": "",
+                "commentStatus": 0,
+                "rateStatus": 1,
+                "luckyStatus": 0,
+                "isLucky": false,
+                "canDeleteOrder": 0,
+                "complain": [],
+                "groupOrder": {
+                    "groupOrderId": "674330641245270171",
+                    "customerNum": 2,
+                    "expireTime": 1550579470,
+                    "groupStatus": 99
+                },
+                "orderExtention": {
+                    "preSaleTime": 0,
+                    "buyerMemo": "",
+                    "sourceType": 5
+                },
+                "orderGoods": [{
+                    "goodsId": 3902054,
+                    "skuId": 46770786,
+                    "goodsName": "得力6906中性笔芯0.5弹簧头按动笔芯替芯按动水笔替芯20支整盒装",
+                    "goodsPrice": 1390,
+                    "goodsNumber": 1,
+                    "thumbUrl": "http:\u002F\u002Fomsproductionimg.yangkeduo.com\u002Fimages\u002F2017-10-20\u002Fde0ff2658eca1bbc023dd85552e63cde.jpeg",
+                    "spec": "6906黑【20支\u002F盒】",
+                    "goodsType": 1,
+                    "eventType": 0,
+                    "isPreSale": 0,
+                    "linkUrl": "goods.html?goods_id=3902054&is_spike=0&page_el_sn=99671&page_from=101",
+                    "shipmentDue": "172800",
+                    "orderHint": {
+                        "saleStatusHint": ""
+                    },
+                    "catId1": 2629,
+                    "catId2": 2630,
+                    "catId3": 2681,
+                    "catId4": 0
+                }],
+                "mall": {
+                    "id": 129190,
+                    "mallName": "得力捷足专卖店",
+                    "logo": "http:\u002F\u002Ft16img.yangkeduo.com\u002Fpdd_ims\u002F84c1c161a84b4ff9230aaf4062e1a7bf.jpg",
+                    "chatEnable": 1,
+                    "companyPhone": "057********61",
+                    "offlineNote": "",
+                    "mallUrl": "mall_page.html?mall_id=129190&goods_id=3902054"
+                },
+                "deliveryModify": {
+                    "modifiableRegion": [2, 3, 4, 6, 7, 8, 10, 11, 12, 13, 14, 15, 16, 17, 18, 22, 23, 24, 25, 26,
+                        27, 30, 31, 32
+                    ],
+                    "notAllowRegion": [],
+                    "differShipAmountRegion": [19, 20, 5, 21, 9, 28, 29]
+                },
+                "coupons": [],
+                "promotionEvents": [],
+                "afterSalesTrigger": 0,
+                "chatStatusPrompt": "待支付",
+                "priceDesc": {
+                    "prefix": "实付:",
+                    "suffix": "(免运费)",
+                    "suffixStyle": 0
+                },
+                "orderType": 0,
+                "urgeShipmentStatus": 0,
+                "deliveryHomeStatus": 0,
+                "depositOrderInfo": {},
+                "tailOrderInfo": {},
+                "alertInfo": {
+                    "confirmReceipt": {
+                        "message": "为保障您的售后权益，请收到货确认无误后，再确认收货哦！"
+                    }
+                },
+                "orderDescList": [{
+                    "key": "订单编号：",
+                    "value": "190221-205384582251702",
+                    "clickType": 1
+                }, {
+                    "key": "下单时间：",
+                    "value": "2019-02-21 12:18:57",
+                    "clickType": 0
+                }],
+                "homeDeliveryType": 0,
+                "applyInvoiceType": 0,
+                "useSingleGroupCard": true,
+                "bizType": 0,
+                "hideAddress": false,
+                "orderTags": [],
+                "activityType": 0,
+                "orderAttributes": {},
+                "canModifyAddress": true,
+                "groupInfoButtons": [],
+                "goodsInfoButtons": [],
+                "expenseDetail": [],
+                "fpId": "sKd6LR2OifzgBDgYPH9YCTDuR-Yx0udI11CL-NrJ2Oo",
+                "isNativePlatform": false,
+                "isWeChatPlatform": false,
+                "isQQPlatform": false,
+                "currentVersion": null,
+                "avatars": false,
+                "active": 1
+            }
+        };
+    </script>
+
+    <script>
+        ! function (e) {
+            function t(t) {
+                for (var n, o, f = t[0], d = t[1], u = t[2], p = 0, l = []; p < f.length; p++) o = f[p], a[o] && l.push(
+                    a[o][0]), a[o] = 0;
+                for (n in d) Object.prototype.hasOwnProperty.call(d, n) && (e[n] = d[n]);
+                for (i && i(t); l.length;) l.shift()();
+                return c.push.apply(c, u || []), r()
+            }
+
+            function r() {
+                for (var e, t = 0; t < c.length; t++) {
+                    for (var r = c[t], n = !0, o = 1; o < r.length; o++) {
+                        var d = r[o];
+                        0 !== a[d] && (n = !1)
+                    }
+                    n && (c.splice(t--, 1), e = f(f.s = r[0]))
+                }
+                return e
+            }
+            var n = {},
+                o = {
+                    3: 0
+                },
+                a = {
+                    3: 0
+                },
+                c = [];
+
+            function f(t) {
+                if (n[t]) return n[t].exports;
+                var r = n[t] = {
+                    i: t,
+                    l: !1,
+                    exports: {}
+                };
+                return e[t].call(r.exports, r, r.exports, f), r.l = !0, r.exports
+            }
+            f.e = function (e) {
+                var t = [];
+                o[e] ? t.push(o[e]) : 0 !== o[e] && {
+                    1: 1,
+                    10: 1,
+                    12: 1,
+                    13: 1,
+                    14: 1
+                } [e] && t.push(o[e] = new Promise(function (t, r) {
+                    for (var n = "assets/css/" + ({
+                                1: "react_common",
+                                8: "cancel-popup",
+                                9: "download-noti-popup",
+                                10: "green-shield-popup",
+                                11: "payment",
+                                12: "payment-popup",
+                                13: "react-coupon-popover",
+                                14: "react-delivery-coupon-list"
+                            } [e] || e) + "_" + {
+                                1: "5757ad19c083dcf89e96",
+                                4: "31d6cfe0d16ae931b73c",
+                                5: "31d6cfe0d16ae931b73c",
+                                6: "31d6cfe0d16ae931b73c",
+                                7: "31d6cfe0d16ae931b73c",
+                                8: "31d6cfe0d16ae931b73c",
+                                9: "31d6cfe0d16ae931b73c",
+                                10: "0b59ceab2bddd41eacb0",
+                                11: "31d6cfe0d16ae931b73c",
+                                12: "7fc46fcbfa42ccdeae58",
+                                13: "f4afb4fcd94f261b3992",
+                                14: "5686ffc8a3640d3be6d3",
+                                42: "31d6cfe0d16ae931b73c"
+                            } [e] + ".css", o = f.p + n, a = document.getElementsByTagName("link"), c =
+                            0; c < a.length; c++) {
+                        var d = (p = a[c]).getAttribute("data-href") || p.getAttribute("href");
+                        if ("stylesheet" === p.rel && (d === n || d === o)) return t()
+                    }
+                    var u = document.getElementsByTagName("style");
+                    for (c = 0; c < u.length; c++) {
+                        var p;
+                        if ((d = (p = u[c]).getAttribute("data-href")) === n || d === o) return t()
+                    }
+                    var i = document.createElement("link");
+                    i.rel = "stylesheet", i.type = "text/css", i.onload = t, i.onerror = function (t) {
+                        var n = t && t.target && t.target.src || o,
+                            a = new Error("Loading CSS chunk " + e + " failed.\n(" + n + ")");
+                        a.request = n, r(a)
+                    }, i.href = o, document.getElementsByTagName("head")[0].appendChild(i)
+                }).then(function () {
+                    o[e] = 0
+                }));
+                var r = a[e];
+                if (0 !== r)
+                    if (r) t.push(r[2]);
+                    else {
+                        var n = new Promise(function (t, n) {
+                            r = a[e] = [t, n]
+                        });
+                        t.push(r[2] = n);
+                        var c, d = document.getElementsByTagName("head")[0],
+                            u = document.createElement("script");
+                        u.charset = "utf-8", u.timeout = 120, f.nc && u.setAttribute("nonce", f.nc), u.src =
+                            function (e) {
+                                return f.p + "assets/js/" + ({
+                                    1: "react_common",
+                                    8: "cancel-popup",
+                                    9: "download-noti-popup",
+                                    10: "green-shield-popup",
+                                    11: "payment",
+                                    12: "payment-popup",
+                                    13: "react-coupon-popover",
+                                    14: "react-delivery-coupon-list"
+                                } [e] || e) + "_" + {
+                                    1: "fcac5b117992c6af3ca7",
+                                    4: "a779e1173f7d93587ba1",
+                                    5: "f58c2e199adaa4dd98a3",
+                                    6: "c5940bf25eff3f967ea5",
+                                    7: "f4c64e4cd9baf20d7322",
+                                    8: "30d511c861971603f6a1",
+                                    9: "de4b57bedfe0b4fbda50",
+                                    10: "5bf2cf0f1da8b09a6bb6",
+                                    11: "123192b95b1689dbcd02",
+                                    12: "9d34d174f6c40f59a8c9",
+                                    13: "719f61461bfe37792b54",
+                                    14: "ae9b06225a94e84083be",
+                                    42: "42b963b567aad0ef8d29"
+                                } [e] + ".js"
+                            }(e), c = function (t) {
+                                u.onerror = u.onload = null, clearTimeout(p);
+                                var r = a[e];
+                                if (0 !== r) {
+                                    if (r) {
+                                        var n = t && ("load" === t.type ? "missing" : t.type),
+                                            o = t && t.target && t.target.src,
+                                            c = new Error("Loading chunk " + e + " failed.\n(" + n + ": " + o + ")");
+                                        c.type = n, c.request = o, r[1](c)
+                                    }
+                                    a[e] = void 0
+                                }
+                            };
+                        var p = setTimeout(function () {
+                            c({
+                                type: "timeout",
+                                target: u
+                            })
+                        }, 12e4);
+                        u.onerror = u.onload = c, d.appendChild(u)
+                    } return Promise.all(t)
+            }, f.m = e, f.c = n, f.d = function (e, t, r) {
+                f.o(e, t) || Object.defineProperty(e, t, {
+                    enumerable: !0,
+                    get: r
+                })
+            }, f.r = function (e) {
+                "undefined" != typeof Symbol && Symbol.toStringTag && Object.defineProperty(e, Symbol.toStringTag, {
+                    value: "Module"
+                }), Object.defineProperty(e, "__esModule", {
+                    value: !0
+                })
+            }, f.t = function (e, t) {
+                if (1 & t && (e = f(e)), 8 & t) return e;
+                if (4 & t && "object" == typeof e && e && e.__esModule) return e;
+                var r = Object.create(null);
+                if (f.r(r), Object.defineProperty(r, "default", {
+                        enumerable: !0,
+                        value: e
+                    }), 2 & t && "string" != typeof e)
+                    for (var n in e) f.d(r, n, function (t) {
+                        return e[t]
+                    }.bind(null, n));
+                return r
+            }, f.n = function (e) {
+                var t = e && e.__esModule ? function () {
+                    return e.default
+                } : function () {
+                    return e
+                };
+                return f.d(t, "a", t), t
+            }, f.o = function (e, t) {
+                return Object.prototype.hasOwnProperty.call(e, t)
+            }, f.p = "https://cdn.yangkeduo.com/", f.oe = function (e) {
+                throw console.error(e), e
+            };
+            var d = window.webpackJsonpForReact = window.webpackJsonpForReact || [],
+                u = d.push.bind(d);
+            d.push = t, d = d.slice();
+            for (var p = 0; p < d.length; p++) t(d[p]);
+            var i = u;
+            r()
+        }([]);
+    </script>
+    <script type="text/javascript" src="https://cdn.yangkeduo.com/assets/js/react_pdd_ae3d837b0f8159369262.js"
+        crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://cdn.yangkeduo.com/assets/js/react_boot_1594e4ec5219c77eead9.js"
+        crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://cdn.yangkeduo.com/assets/js/react_common_fcac5b117992c6af3ca7.js"
+        crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://cdn.yangkeduo.com/assets/js/react_order_4ca6d29e3bbad3c98c10.js"
+        crossorigin="anonymous"></script>
+</body>
+
+
+
+<script>
+    ! function (t) {
+        (t._plt = t._plt || []).push(["tm", "dr", +new Date])
+    }(window);
+</script>
+
+
+
+</html>

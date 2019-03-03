@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0">
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>综合页面</title>
+    <link rel="stylesheet" type="text/css" href="./css/aui/aui.css">
+    <link rel="stylesheet" type="text/css" href="./css/main_menu.css">
+    <link rel="stylesheet" href="./css/wheelmenu.css" />
+    <link rel="stylesheet" type="text/css" href="./css/mine.css" />
+    <style>
+        body {
+            background-color: #f3f3f3;
+        }
+
+        .aui-col-xs-3 img {
+            width: 1.65rem;
+        }
+
+        .aui-bar {
+            background-color: #fff;
+            position: fixed;
+        }
+
+        .aui-bar-nav {
+            color: #222;
+        }
+
+        .overflow-x-hidden {
+            overflow-x: hidden;
+        }
+
+        .aui-grid [class*=aui-col-] {
+            padding: 1.2rem 0;
+        }
+
+        .aui-grid [class*=aui-col-xs-]:active {
+            background-color: rgba(245, 245, 245, 0.05);
+        }
+
+        .aui-bar-nav .aui-btn .aui-iconfont {
+            color: #222 !important;
+        }
+
+        .aui-grid [class*=aui-col-] {
+            padding: 0.6rem 0;
+        }
+
+        .money_quantity {
+            font-size: 0.6rem !important;
+        }
+
+        .mine_money_top .aui-col-xs-6 {
+            font-size: 0.6rem;
+            padding: 0.2rem 0.6rem;
+            border: 1px solid #fff;
+            border-radius: 1rem;
+        }
+    </style>
+</head>
+
+<body class="overflow-x-hidden">
+    <div id="main">
+        <header class="aui-bar aui-bar-nav" style="z-index: 10000!important;">
+            <a class="aui-pull-left aui-btn" onclick="history.back();">
+                <span class="aui-iconfont aui-icon-left"></span>
+            </a>
+            <div class="aui-title">我的资产</div>
+        </header>
+        <section class="aui-grid  bg-green index_bg " id="item">
+            <div class="zdList" style="text-align: right;" @click="goUserMoneyList()">账单</div>
+            <div class="mine_money_c " id="availableFund">
+                {{userAssets.balance}}
+            </div>
+            <div class="mine_money_bottom">
+                <span class="aui-col-xs-6">收入：+<span id="income">{{userAssets.inMoney}}</span></span>
+                <span class="aui-col-xs-6">支出：<span id="expenditure">{{userAssets.outMoney}}</span></span>
+            </div>
+            <!-- <div class="aui-font-size-14 mine_money_top">
+            <span class=" aui-col-xs-6" @click="openWin('assets_record',{atype: 1})">钻石账单</span>
+            <span class=" aui-col-xs-6" @click="openWin('assets_record',{atype: 2})">金币账单</span>
+        </div> -->
+        </section>
+
+        <div style="overflow: hidden;">
+            <div class="mine_money_cz aui-col-xs-6" onclick="openWin('exchange')">
+                <span class=" money_cz">买入FGC</span>
+            </div>
+            <div class="mine_money_cz aui-col-xs-6" onclick="openWin('trading_deal_recharge')">
+                <span class=" money_cz">交易市场</span>
+            </div>
+        </div>
+        <!---->
+        <div class="index_money">
+            <div class="aui-content ">
+                <div class="aui-user-view aui-in">
+                    <img class="aui-img-object aui-pull-left" style="width: 2.3rem;margin-right: 0.5rem; " src="../image/fx_tycb_icon.png" />
+                    <div class="aui-img-body aui-ellipsis-1 pull-left_c" onclick="changeBottom()">
+                        <span>进阶吧竞赛...</span>
+                        <p>进阶吧竞赛好玩更好赚</p>
+                    </div>
+                    <!--<div class="aui-img-body pull-left_r">-->
+                    <!--<p>立即体验</p>-->
+                    <!--</div>-->
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="./script/jquery-3.2.1.min.js"></script>
+    <script src="./script/config.js"></script>
+    <script src="./script/common.js"></script>
+    <script src="./script/aui-toast.js"></script>
+    <script src="./script/yltcrypt.js"></script>
+    <script src="./script/vue.js"></script>
+    <script>
+        var user;
+        var param;
+        var toast = new auiToast();
+
+        user = getStorage('user');
+        param = pageParam().moneyType;
+        vm = new Vue({
+            el: '#main',
+            data: {
+                userAssets: ''
+            },
+            methods: {
+                openWin: function (target, param) {
+                    api.openWin({
+                        name: target,
+                        url: target + '.html',
+                        pageParam: param,
+                    });
+                },
+                getMyAssets: function () {
+                    var self = this;
+                    $.ajax({
+                        type: 'POST',
+                        url: PHP_SERVE_URL + '/customer/assetsBudget',
+                        data: {
+                            openId: user.open_id,
+                            assetsType: param,
+                        },
+                        success: function (res, err) {
+                            console.log(JSON.stringify(res))
+                            if (res.code == 0) {
+                                self.userAssets = res.data
+                            } else {
+                                toast.fail(res, msg);
+                            }
+                        }
+                    })
+                },
+                goUserMoneyList: function () {
+                    var self = this
+                    window.location.href = "assetType_list.html?atype=" + param;
+                }
+            },
+            created: function () {
+                var self = this;
+                self.getMyAssets();
+                // api.addEventListener({
+                //     name: 'changeAssest'
+                // }, function () {
+                //     self.getMyAssets();
+                // });
+                // api.addEventListener({
+                //     name: 'recharge'
+                // }, function () {
+                //     self.getMyAssets();
+                // });
+            },
+            mounted: function () {
+                var self = this
+                self.getMyAssets();
+            }
+        });
+
+        function changeBottom() {
+            // api.sendEvent({
+            //     name: 'changeBottom',
+            //     extra: {
+            //         index: 2
+            //     }
+            // });
+            // api.closeWin();
+        }
+    </script>
+</body>
+
+</html>

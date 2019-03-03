@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <link rel="dns-prefetch" href="//cdn.yangkeduo.com">
+    <link rel="dns-prefetch" href="//apiv4.yangkeduo.com">
+    <link rel="dns-prefetch" href="//api.pinduoduo.com">
+    <link rel="dns-prefetch" href="//pinduoduoimg.yangkeduo.com">
+    <link rel="dns-prefetch" href="//omsproduction.yangkeduo.com">
+    <link rel="dns-prefetch" href="//avatar.yangkeduo.com">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+    <meta name="format-detection" content="telephone=no">
+    <meta http-equiv="Cache-Control" content="no-cache,no-store,must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <meta property="og:title" content="拼多多商城">
+    <meta property="og:description" content="风靡全国的拼团商城，优质商品新鲜直供，快来一起拼多多吧">
+    <meta property="og:image" content="https://pinduoduoimg.yangkeduo.com/base/logo.jpg">
+    <title>拼多多</title>
+</head>
+
+<head>
+    <link href="https://cdn.yangkeduo.com/assets/css/react_pdd_5e2d15f27ff49c770c80.css" rel="stylesheet">
+    <link href="https://cdn.yangkeduo.com/assets/css/react_boot_05a40bc37a8d4bb56931.css" rel="stylesheet">
+    <link href="https://cdn.yangkeduo.com/assets/css/react_common_26044cf3d7bea818d629.css" rel="stylesheet">
+    <link href="https://cdn.yangkeduo.com/assets/css/react_login_876aab633e67811f5ab6.css" rel="stylesheet">
+    <style>
+    #code-button{
+        text-align: center;
+        line-height:0.33rem;
+    }
+#submit-button{
+    text-align: center;
+    line-height: 0.467rem;
+}
+.wx_login{
+    /* position: relative; */
+    margin: 0 .4rem;
+    height: .45rem;
+    background-color: #3cb035;
+    border-radius: .05rem;
+    color: #fff;
+    font-size: .15rem;
+    line-height:.45rem;
+    margin-top:0.15rem;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+    </style>
+</head>
+
+<body id="login">
+
+    <div id="main">
+        <div id="login">
+            <div id="first" class="main">
+                <div class="login-box">
+                    <div class="login-title">选择登录方式</div>
+                    <div class="phone-login" data-active="yellow"><span>手机登录</span></div>
+                    <div class="wx_login" onclick="wxLogin()"><img src="./image/timg.png" style="width:35px;height:30px;"><span>微信登录</span></div>
+                </div>
+                <div class="login-footer">
+                    <div class="footer-img"></div>
+                    <div class="insurance-container">
+                        <div class="payment-insurance">由<img src="//pinduoduoimg.yangkeduo.com/base/brand_PICC.png">全程保障</div>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <form>
+                    <div class="login-input">
+                        <div class="input-group"><label for="user-mobile" id="icon1" class="phone-icon"></label><input
+                                type="tel" id="user-mobile" placeholder="手机号码" value=""></div>
+                        <hr>
+                        <div class="input-group">
+                            <label for="input-code" id="icon2" class="phone-icon"></label>
+                            <input type="tel" id="input-code" placeholder="验证码">
+                            <div id="code-button" onclick="getScode()">发送验证码</div>
+                        </div>
+                    </div>
+                    <div id="submit-button" onclick="goLogin()">登录</div><button class="submit-button-login">返回</button>
+                    <p><input id="agreement" type="checkbox" class="indent-after"><label for="agreement">我已经阅读并同意</label><a><span>服务协议与隐私政策</span></a></p>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+<script type="text/javascript" src="./script/api.js"></script>
+<script src="./script/jquery-3.2.1.min.js"></script>
+<script src="./script/common.js"></script>
+<script src="./script/aui-toast.js"></script>
+<script src="./script/config.js"></script>
+<script src="./script/yltcrypt.js"></script>
+<script>
+    var user;
+    var toast = new auiToast();
+    var smsCode;
+    $(".phone-login").click(function () {
+        console.log(90)
+        $("#first").hide()
+        $(".container").css({
+            "top": 0,
+        })
+    })
+
+    //获取验证码
+    function getScode() {
+        var username = $('#user-mobile').val();
+
+        if ($.trim(username) == '') {
+            alert("fail")
+            // toast.fail({
+            //     title: "提交失败",
+            //     duration: 600000
+            // });
+            return false;
+        }
+
+        $.ajax({
+            type: "POST",
+            url: PHP_SERVE_URL + "/customer/smsCode",
+            data: {
+                tel: username,
+                token: yltcrypt.cpt(username),
+            },
+            success: function (ret) {
+                console.log(JSON.stringify(ret))
+                if (ret.code == 0) {
+                    alert("发送成功")
+                }
+            }
+        });
+    }
+    //手机号登录
+    function goLogin() {
+        var sCode = $('#input-code').val();
+        var username = $('#user-mobile').val();
+        if ($.trim(username) == '') {
+            alert("用户名不能为空");
+            return false;
+        }
+        if ($.trim(sCode) == '') {
+            alert("验证码不可为空");
+            $("#password").focus();
+            return false;
+        }
+        $.ajax({
+            type: "POST",
+            url: PHP_SERVE_URL + "/customer/login",
+            data: {
+                tel: username,
+                smsCode: sCode,
+                token: yltcrypt.cpt(username),
+            },
+            success: function (json) {
+                if (json.code == 0) {
+                    console.log(JSON.stringify(json))
+                    setStorage('user',json.data);
+                    setTimeout(function () {
+                        window.location.href = "./index.html";
+                    }, 1000);
+                } else {
+                    alert(json.msg)
+                }
+            }
+        });
+
+    }
+
+    //微信登录
+    function wxLogin(){
+        window.location.href="https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxb505f72cb328cacc&redirect_uri=http%3A%2F%2Fdevmall.0571sd.com%2Fweixin%2FgetUserInfo&response_type=code&scope=snsapi_userinfo&state=STATE&connect_redirect=1#wechat_redirect"
+    }
+    //本地存储用户信息
+    // function setStorage(json) {
+    //     var user = localStorage.getItem("user") || {}
+    //     user.uid = json.id;
+    //     user.openId = json.open_id;
+    //     user.nickName = json.nick_name;
+    //     user.tel = json.tel;
+    //     // user.sex = json.sex;
+    //     user.leader = json.leader;
+    //     user.avatar = json.avatar;
+    //     user.connected = false;
+    //     setStorage("user",json) // 存储json对象
+    // }
+</script>
+
+
+
+
+</html>

@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+    <script>
+        ! function (t) {
+            (t._plt = t._plt || []).push(["tm", "ps", +new Date])
+        }(window);
+    </script>
+
+    <link rel="dns-prefetch" href="//cdn.yangkeduo.com">
+    <link rel="dns-prefetch" href="//apiv4.yangkeduo.com">
+    <link rel="dns-prefetch" href="//api.pinduoduo.com">
+    <link rel="dns-prefetch" href="//pinduoduoimg.yangkeduo.com">
+    <link rel="dns-prefetch" href="//omsproduction.yangkeduo.com">
+    <link rel="dns-prefetch" href="//avatar.yangkeduo.com">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+    <meta name="format-detection" content="telephone=no">
+    <meta http-equiv="Cache-Control" content="no-cache,no-store,must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <meta property="og:title" content="拼多多商城">
+    <meta property="og:description" content="风靡全国的拼团商城，优质商品新鲜直供，快来一起拼多多吧">
+    <meta property="og:image" content="https://pinduoduoimg.yangkeduo.com/base/logo.jpg">
+    <title>店铺收藏</title>
+
+    <script>
+        ! function () {
+            "use strict";
+            var p = Object.assign || function (e) {
+                    for (var t = 1; t < arguments.length; t++) {
+                        var r = arguments[t];
+                        for (var n in r) Object.prototype.hasOwnProperty.call(r, n) && (e[n] = r[n])
+                    }
+                    return e
+                },
+                l = window;
+            l._htmllog = function (e, t) {
+                var r = 2 < arguments.length && void 0 !== arguments[2] ? arguments[2] : {};
+                if (l.XMLHttpRequest) {
+                    var n = "unknow",
+                        o = (document.cookie || "").split("; ").reduce(function (e, t) {
+                            var r = t.split("=");
+                            return e[r[0]] = r[1], e
+                        }, {}),
+                        i = l.navigator;
+                    i && i.connection && (n = i.connection.effectiveType || i.connection.type || "unknown");
+                    var a = /(w+).html/.exec(document.referrer),
+                        c = p({
+                            log_version: "1.0.0",
+                            error_msg: e,
+                            page: t,
+                            page_url: location.href,
+                            refer_page_name: a && a[1],
+                            network: {
+                                unknow: 0,
+                                wifi: 1,
+                                "2g": 2,
+                                "3g": 3,
+                                "4g": 4
+                            } [n] || 0,
+                            user_id: o.pdd_user_id || "",
+                            time: +new Date
+                        }, r),
+                        s = new XMLHttpRequest;
+                    s.open("POST", "//tne.yangkeduo.com/tne.gif", !0), s.setRequestHeader("Content-Type",
+                        "text/plain;charset=UTF-8"), s.withCredentials = !0, s.send(JSON.stringify(c))
+                }
+            }, l._peh = function (e, t, r, n, o) {
+                if (l.XMLHttpRequest && (!e || e.target !== l)) {
+                    var i = e + ", " + t + ", " + r + ", " + n + ", " + o,
+                        a = "html_error";
+                    if (o && o.stack) a += "_js", i = e + ";" + o.stack.replace(/\n/gi, "").split(/at/).slice(0,
+                        5).join("@");
+                    else if ("[object Event]" === Object.prototype.toString.call(e)) {
+                        var c = e.srcElement;
+                        i = c ? (a += "_" + String.prototype.toLowerCase.call(c.nodeName), "Error: " + c.outerHTML) :
+                            "Error: " + JSON.stringify(e)
+                    }
+                    l._htmllog(a, i)
+                }
+            }, l._peh._raw = !0, l.addEventListener("error", _peh, !0), l.onerror = _peh, l.addEventListener("load",
+                function () {
+                    l.removeEventListener("error", l._peh, !0)
+                })
+        }();
+    </script>
+
+    <script>
+        ! function (t) {
+            var n = t._plt = t._plt || [];
+            n.push(["tm", "fp", +new Date]), t.addEventListener("load", function () {
+                n.push(["tm", "ld", +new Date])
+            })
+        }(window);
+    </script>
+
+</head>
+
+<head>
+    <link href="https://cdn.yangkeduo.com/assets/css/react_pdd_5e2d15f27ff49c770c80.css" rel="stylesheet">
+    <link href="https://cdn.yangkeduo.com/assets/css/react_boot_05a40bc37a8d4bb56931.css" rel="stylesheet">
+    <link href="https://cdn.yangkeduo.com/assets/css/react_common_26044cf3d7bea818d629.css" rel="stylesheet">
+    <link href="https://cdn.yangkeduo.com/assets/css/react_psnl_mall_collection_d68e204452c93da97aae.css" rel="stylesheet">
+</head>
+
+<body id="psnl_mall_collection">
+
+    <div id="main">
+        <div class="personal-mall-collection" data-reactroot="">
+            <div></div>
+            <div class="mall-collection-list">
+                <div class="head">店铺收藏</div>
+                <div class="mall-collection mall-collection-list observer-list">
+                    <div class="mall-collection-wrapper" id="435420920">
+                        <div class="mall-info"><img class="logo" data-param="80_!_f_!_!_!_!_t_!" src="//t16img.yangkeduo.com/img_check/2018-11-08/5ebd3a608495a87c63e0d0b81a452cda.jpg?imageMogr2/strip%7CimageView2/2/w/1300/q/80" />
+                            <div class="mall-name">
+                                <div class="name-wrapper">
+                                    <div class="name">云猫猫</div>
+                                </div>
+                                <div class="sales"><span>已拼: 3130件</span>
+                                    <div class="line"></div><span>商品:8</span>
+                                </div>
+                            </div>
+                            <div class="buttons">
+                                <div class="more"></div>
+                                <div class="goto-mall" data-active="red">进店逛逛</div>
+                            </div>
+                        </div>
+                        <div id="goods-wrapper-435420920" class="new-goods-list-wrapper">
+                            <ul id="goods-scroller" class="new-goods-list">
+                                <li class="new-goods"><img class="logo" data-param="80_!_f_!_!_!_!_t_!" src="//t00img.yangkeduo.com/goods/images/2018-12-27/501ecc3032bf5523253f5fd0ad3ded6c.jpeg?imageMogr2/strip%7CimageView2/2/w/1300/q/80" />
+                                    <div class="goods-info">
+                                        <div class="price">3.99</div>
+                                    </div>
+                                </li>
+                                <li class="new-goods"><img class="logo" data-param="80_!_f_!_!_!_!_t_!" src="//t00img.yangkeduo.com/goods/images/2018-12-28/6db8f52879447a4ac787fa4c487fb5cb.jpeg?imageMogr2/strip%7CimageView2/2/w/1300/q/80" />
+                                    <div class="goods-info">
+                                        <div class="price">19.8</div>
+                                    </div>
+                                </li>
+                                <li class="new-goods"><img class="logo" data-param="80_!_f_!_!_!_!_t_!" src="//t00img.yangkeduo.com/goods/images/2019-01-15/34e45498b57da8da3b69622b1d6ca29a.jpeg?imageMogr2/strip%7CimageView2/2/w/1300/q/80" />
+                                    <div class="goods-info">
+                                        <div class="price">4.05</div>
+                                    </div>
+                                </li>
+                                <li class="new-goods"><img class="logo" data-param="80_!_f_!_!_!_!_t_!" src="//t00img.yangkeduo.com/goods/images/2018-12-24/250eec34f054d109b1bc3240bd709594.jpeg?imageMogr2/strip%7CimageView2/2/w/1300/q/80" />
+                                    <div class="goods-info">
+                                        <div class="price">9.9</div>
+                                    </div>
+                                </li>
+                                <li class="new-goods"><img class="logo" data-param="80_!_f_!_!_!_!_t_!" src="//t00img.yangkeduo.com/goods/images/2019-01-19/c9f8fe18c4e6b32077bb23e060fad3b0.jpeg?imageMogr2/strip%7CimageView2/2/w/1300/q/80" />
+                                    <div class="goods-info">
+                                        <div class="price">4.5</div>
+                                    </div>
+                                </li>
+                                <li class="new-goods"><img class="logo" data-param="80_!_f_!_!_!_!_t_!" src="//t00img.yangkeduo.com/goods/images/2018-12-28/f3d6512553315d0adb2edfc6c8e732f6.jpeg?imageMogr2/strip%7CimageView2/2/w/1300/q/80" />
+                                    <div class="goods-info">
+                                        <div class="price">13.8</div>
+                                    </div>
+                                </li>
+                                <li class="new-goods"><img class="logo" data-param="80_!_f_!_!_!_!_t_!" src="//t00img.yangkeduo.com/goods/images/2019-01-16/ca2beeb67280b7931a56028ee6cd7ae8.jpeg?imageMogr2/strip%7CimageView2/2/w/1300/q/80" />
+                                    <div class="goods-info">
+                                        <div class="price">15.9</div>
+                                    </div>
+                                </li>
+                                <li class="new-goods"><img class="logo" data-param="80_!_f_!_!_!_!_t_!" src="//t00img.yangkeduo.com/goods/images/2018-12-25/b73d8a853b0add69f2fd86e7607e1236.jpeg?imageMogr2/strip%7CimageView2/2/w/1300/q/80" />
+                                    <div class="goods-info">
+                                        <div class="price">17.99</div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="cutting-line"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="bottom-tips">
+                <div class="text">暂无更多收藏店铺</div>
+            </div>
+            <div class="gotop-container go-top-hide"><span class="go-top-text">顶部</span></div>
+        </div>
+    </div>
+
+
+
+    <script>
+        window.__THIRD_AREA = false
+    </script>
+
+    <script src="https://cdn.yangkeduo.com/assets/js/react_vendor_2718f0ce651bb51d78ed.js" crossorigin></script>
+
+
+    <script>
+        window.isUseHttps = true;
+    </script>
+    <script>
+        window.rawData = {
+            "store": {
+                "$http": "cjse3pxvs275r1wpw4x0o4e9m",
+                "getMallCollectionServices": {
+                    "http": "cjse3pxvs275r1wpw4x0o4e9m"
+                },
+                "isServerRendered": true,
+                "isFinishInitLoading": true,
+                "accessToken": "KWNAO6KJ2L5MLDO5HFAWRT7T76SJTYYPSLMSQEIQOIQAN4QF4PDQ102a60b",
+                "errorRedirectUrl": "\u002F",
+                "serverTime": 1550721798,
+                "page": 1,
+                "list": [{
+                    "viewElementType": 1,
+                    "mallId": 435420920,
+                    "logo": "http:\u002F\u002Ft16img.yangkeduo.com\u002Fimg_check\u002F2018-11-08\u002F5ebd3a608495a87c63e0d0b81a452cda.jpg",
+                    "mallName": "云猫猫",
+                    "mallSales": "3197",
+                    "mallUrl": "http:\u002F\u002Fyangkeduo.com\u002Fmall_page.html?mall_id=435420920",
+                    "isOpen": 1,
+                    "goodsList": [{
+                        "viewElementType": 2,
+                        "goodsId": 5270062528,
+                        "goodsName": "晨光按动中性笔0.5mm学生用考试碳素笔蓝黑色水笔红笔办公签字笔",
+                        "goodsUrl": "http:\u002F\u002Fyangkeduo.com\u002Fgoods.html?goods_id=5270062528",
+                        "thumbUrl": "http:\u002F\u002Ft00img.yangkeduo.com\u002Fgoods\u002Fimages\u002F2018-12-27\u002F501ecc3032bf5523253f5fd0ad3ded6c.jpeg",
+                        "hdUrl": "http:\u002F\u002Ft00img.yangkeduo.com\u002Fgoods\u002Fimages\u002F2018-12-27\u002F13d04dcd1c18915258748b1747eb9614.jpg",
+                        "price": 399,
+                        "priceSuffix": "起"
+                    }, {
+                        "viewElementType": 2,
+                        "goodsId": 5301463046,
+                        "goodsName": "小学生文房四宝毛笔字帖水写布套装初学者书法笔墨纸砚儿童礼盒装",
+                        "goodsUrl": "http:\u002F\u002Fyangkeduo.com\u002Fgoods.html?goods_id=5301463046",
+                        "thumbUrl": "http:\u002F\u002Ft00img.yangkeduo.com\u002Fgoods\u002Fimages\u002F2018-12-28\u002F6db8f52879447a4ac787fa4c487fb5cb.jpeg",
+                        "hdUrl": "http:\u002F\u002Ft00img.yangkeduo.com\u002Fgoods\u002Fimages\u002F2018-12-28\u002Fa2dac3693d99448dadc94649a33ba5c1.jpg",
+                        "price": 1980
+                    }, {
+                        "viewElementType": 2,
+                        "goodsId": 5675014259,
+                        "goodsName": "英雄永生按动中性笔0.5mm学生用考试碳素笔蓝黑色水笔办公签字笔",
+                        "goodsUrl": "http:\u002F\u002Fyangkeduo.com\u002Fgoods.html?goods_id=5675014259",
+                        "thumbUrl": "http:\u002F\u002Ft00img.yangkeduo.com\u002Fgoods\u002Fimages\u002F2019-01-15\u002F34e45498b57da8da3b69622b1d6ca29a.jpeg",
+                        "hdUrl": "https:\u002F\u002Ft00img.yangkeduo.com\u002Fgoods\u002Fimages\u002F2019-01-15\u002F39f90715-40e7-428a-9ed8-1cac8ae5b7a5.jpg",
+                        "price": 405,
+                        "priceSuffix": "起"
+                    }, {
+                        "viewElementType": 2,
+                        "goodsId": 5198439286,
+                        "goodsName": "1.4米大号加厚水写布成人练毛笔字书法入门字帖套装初学者学生用",
+                        "goodsUrl": "http:\u002F\u002Fyangkeduo.com\u002Fgoods.html?goods_id=5198439286",
+                        "thumbUrl": "http:\u002F\u002Ft00img.yangkeduo.com\u002Fgoods\u002Fimages\u002F2018-12-24\u002F250eec34f054d109b1bc3240bd709594.jpeg",
+                        "hdUrl": "http:\u002F\u002Ft00img.yangkeduo.com\u002Fgoods\u002Fimages\u002F2018-12-24\u002F44fed52b824931f40cbd70fb218e49b2.jpg",
+                        "price": 990,
+                        "priceSuffix": "起"
+                    }, {
+                        "viewElementType": 2,
+                        "goodsId": 5740641645,
+                        "goodsName": "湖洲毛笔字帖水写布套装仿宣纸加厚无纸无墨清水显墨万次水写布",
+                        "goodsUrl": "http:\u002F\u002Fyangkeduo.com\u002Fgoods.html?goods_id=5740641645",
+                        "thumbUrl": "http:\u002F\u002Ft00img.yangkeduo.com\u002Fgoods\u002Fimages\u002F2019-01-19\u002Fc9f8fe18c4e6b32077bb23e060fad3b0.jpeg",
+                        "hdUrl": "https:\u002F\u002Ft00img.yangkeduo.com\u002Fgoods\u002Fimages\u002F2019-01-19\u002F0b01ee89-1621-4265-bddc-8ba19eb66c29.jpg",
+                        "price": 450,
+                        "priceSuffix": "起"
+                    }, {
+                        "viewElementType": 2,
+                        "goodsId": 5302578365,
+                        "goodsName": "锦缎锦布水写布套装加厚仿宣纸临摹练毛笔字帖文房四宝初学者成人",
+                        "goodsUrl": "http:\u002F\u002Fyangkeduo.com\u002Fgoods.html?goods_id=5302578365",
+                        "thumbUrl": "http:\u002F\u002Ft00img.yangkeduo.com\u002Fgoods\u002Fimages\u002F2018-12-28\u002Ff3d6512553315d0adb2edfc6c8e732f6.jpeg",
+                        "hdUrl": "http:\u002F\u002Ft00img.yangkeduo.com\u002Fgoods\u002Fimages\u002F2018-12-28\u002F2fc19d2b4bcdf764f7523232497ed4b3.jpg",
+                        "price": 1380,
+                        "priceSuffix": "起"
+                    }, {
+                        "viewElementType": 2,
+                        "goodsId": 5690742080,
+                        "goodsName": "永生优品按动中性笔芯珍品弹簧替芯黑红蓝色批发本味针管0.50包邮",
+                        "goodsUrl": "http:\u002F\u002Fyangkeduo.com\u002Fgoods.html?goods_id=5690742080",
+                        "thumbUrl": "http:\u002F\u002Ft00img.yangkeduo.com\u002Fgoods\u002Fimages\u002F2019-01-16\u002Fca2beeb67280b7931a56028ee6cd7ae8.jpeg",
+                        "hdUrl": "https:\u002F\u002Ft00img.yangkeduo.com\u002Fgoods\u002Fimages\u002F2019-01-16\u002Ffa71898d-78f0-45c9-a508-81e354b3a71a.jpg",
+                        "price": 1590
+                    }, {
+                        "viewElementType": 2,
+                        "goodsId": 5226527573,
+                        "goodsName": "晨光优品按动中性笔芯珍品弹簧替芯黑红蓝色批发本味针管0.50包邮",
+                        "goodsUrl": "http:\u002F\u002Fyangkeduo.com\u002Fgoods.html?goods_id=5226527573",
+                        "thumbUrl": "http:\u002F\u002Ft00img.yangkeduo.com\u002Fgoods\u002Fimages\u002F2018-12-25\u002Fb73d8a853b0add69f2fd86e7607e1236.jpeg",
+                        "hdUrl": "http:\u002F\u002Ft00img.yangkeduo.com\u002Fgoods\u002Fimages\u002F2018-12-25\u002Fcaa1976c02edf5bb0f07f650ea1c2688.jpg",
+                        "price": 1799
+                    }],
+                    "salesTip": "已拼: 3130件",
+                    "goodsNum": 8,
+                    "goodsNumTip": "商品:8",
+                    "pddRoute": "mall_page.html?mall_id=435420920",
+                    "pddRouteName": "进店逛逛",
+                    "mallShowType": 0,
+                    "fakeCache": false
+                }],
+                "newList": [{
+                    "viewElementType": 1,
+                    "mallId": 435420920,
+                    "logo": "http:\u002F\u002Ft16img.yangkeduo.com\u002Fimg_check\u002F2018-11-08\u002F5ebd3a608495a87c63e0d0b81a452cda.jpg",
+                    "mallName": "云猫猫",
+                    "mallSales": "3197",
+                    "mallUrl": "http:\u002F\u002Fyangkeduo.com\u002Fmall_page.html?mall_id=435420920",
+                    "isOpen": 1,
+                    "goodsList": [{
+                        "viewElementType": 2,
+                        "goodsId": 5270062528,
+                        "goodsName": "晨光按动中性笔0.5mm学生用考试碳素笔蓝黑色水笔红笔办公签字笔",
+                        "goodsUrl": "http:\u002F\u002Fyangkeduo.com\u002Fgoods.html?goods_id=5270062528",
+                        "thumbUrl": "http:\u002F\u002Ft00img.yangkeduo.com\u002Fgoods\u002Fimages\u002F2018-12-27\u002F501ecc3032bf5523253f5fd0ad3ded6c.jpeg",
+                        "hdUrl": "http:\u002F\u002Ft00img.yangkeduo.com\u002Fgoods\u002Fimages\u002F2018-12-27\u002F13d04dcd1c18915258748b1747eb9614.jpg",
+                        "price": 399,
+                        "priceSuffix": "起"
+                    }, {
+                        "viewElementType": 2,
+                        "goodsId": 5301463046,
+                        "goodsName": "小学生文房四宝毛笔字帖水写布套装初学者书法笔墨纸砚儿童礼盒装",
+                        "goodsUrl": "http:\u002F\u002Fyangkeduo.com\u002Fgoods.html?goods_id=5301463046",
+                        "thumbUrl": "http:\u002F\u002Ft00img.yangkeduo.com\u002Fgoods\u002Fimages\u002F2018-12-28\u002F6db8f52879447a4ac787fa4c487fb5cb.jpeg",
+                        "hdUrl": "http:\u002F\u002Ft00img.yangkeduo.com\u002Fgoods\u002Fimages\u002F2018-12-28\u002Fa2dac3693d99448dadc94649a33ba5c1.jpg",
+                        "price": 1980
+                    }, {
+                        "viewElementType": 2,
+                        "goodsId": 5675014259,
+                        "goodsName": "英雄永生按动中性笔0.5mm学生用考试碳素笔蓝黑色水笔办公签字笔",
+                        "goodsUrl": "http:\u002F\u002Fyangkeduo.com\u002Fgoods.html?goods_id=5675014259",
+                        "thumbUrl": "http:\u002F\u002Ft00img.yangkeduo.com\u002Fgoods\u002Fimages\u002F2019-01-15\u002F34e45498b57da8da3b69622b1d6ca29a.jpeg",
+                        "hdUrl": "https:\u002F\u002Ft00img.yangkeduo.com\u002Fgoods\u002Fimages\u002F2019-01-15\u002F39f90715-40e7-428a-9ed8-1cac8ae5b7a5.jpg",
+                        "price": 405,
+                        "priceSuffix": "起"
+                    }, {
+                        "viewElementType": 2,
+                        "goodsId": 5198439286,
+                        "goodsName": "1.4米大号加厚水写布成人练毛笔字书法入门字帖套装初学者学生用",
+                        "goodsUrl": "http:\u002F\u002Fyangkeduo.com\u002Fgoods.html?goods_id=5198439286",
+                        "thumbUrl": "http:\u002F\u002Ft00img.yangkeduo.com\u002Fgoods\u002Fimages\u002F2018-12-24\u002F250eec34f054d109b1bc3240bd709594.jpeg",
+                        "hdUrl": "http:\u002F\u002Ft00img.yangkeduo.com\u002Fgoods\u002Fimages\u002F2018-12-24\u002F44fed52b824931f40cbd70fb218e49b2.jpg",
+                        "price": 990,
+                        "priceSuffix": "起"
+                    }, {
+                        "viewElementType": 2,
+                        "goodsId": 5740641645,
+                        "goodsName": "湖洲毛笔字帖水写布套装仿宣纸加厚无纸无墨清水显墨万次水写布",
+                        "goodsUrl": "http:\u002F\u002Fyangkeduo.com\u002Fgoods.html?goods_id=5740641645",
+                        "thumbUrl": "http:\u002F\u002Ft00img.yangkeduo.com\u002Fgoods\u002Fimages\u002F2019-01-19\u002Fc9f8fe18c4e6b32077bb23e060fad3b0.jpeg",
+                        "hdUrl": "https:\u002F\u002Ft00img.yangkeduo.com\u002Fgoods\u002Fimages\u002F2019-01-19\u002F0b01ee89-1621-4265-bddc-8ba19eb66c29.jpg",
+                        "price": 450,
+                        "priceSuffix": "起"
+                    }, {
+                        "viewElementType": 2,
+                        "goodsId": 5302578365,
+                        "goodsName": "锦缎锦布水写布套装加厚仿宣纸临摹练毛笔字帖文房四宝初学者成人",
+                        "goodsUrl": "http:\u002F\u002Fyangkeduo.com\u002Fgoods.html?goods_id=5302578365",
+                        "thumbUrl": "http:\u002F\u002Ft00img.yangkeduo.com\u002Fgoods\u002Fimages\u002F2018-12-28\u002Ff3d6512553315d0adb2edfc6c8e732f6.jpeg",
+                        "hdUrl": "http:\u002F\u002Ft00img.yangkeduo.com\u002Fgoods\u002Fimages\u002F2018-12-28\u002F2fc19d2b4bcdf764f7523232497ed4b3.jpg",
+                        "price": 1380,
+                        "priceSuffix": "起"
+                    }, {
+                        "viewElementType": 2,
+                        "goodsId": 5690742080,
+                        "goodsName": "永生优品按动中性笔芯珍品弹簧替芯黑红蓝色批发本味针管0.50包邮",
+                        "goodsUrl": "http:\u002F\u002Fyangkeduo.com\u002Fgoods.html?goods_id=5690742080",
+                        "thumbUrl": "http:\u002F\u002Ft00img.yangkeduo.com\u002Fgoods\u002Fimages\u002F2019-01-16\u002Fca2beeb67280b7931a56028ee6cd7ae8.jpeg",
+                        "hdUrl": "https:\u002F\u002Ft00img.yangkeduo.com\u002Fgoods\u002Fimages\u002F2019-01-16\u002Ffa71898d-78f0-45c9-a508-81e354b3a71a.jpg",
+                        "price": 1590
+                    }, {
+                        "viewElementType": 2,
+                        "goodsId": 5226527573,
+                        "goodsName": "晨光优品按动中性笔芯珍品弹簧替芯黑红蓝色批发本味针管0.50包邮",
+                        "goodsUrl": "http:\u002F\u002Fyangkeduo.com\u002Fgoods.html?goods_id=5226527573",
+                        "thumbUrl": "http:\u002F\u002Ft00img.yangkeduo.com\u002Fgoods\u002Fimages\u002F2018-12-25\u002Fb73d8a853b0add69f2fd86e7607e1236.jpeg",
+                        "hdUrl": "http:\u002F\u002Ft00img.yangkeduo.com\u002Fgoods\u002Fimages\u002F2018-12-25\u002Fcaa1976c02edf5bb0f07f650ea1c2688.jpg",
+                        "price": 1799
+                    }],
+                    "salesTip": "已拼: 3130件",
+                    "goodsNum": 8,
+                    "goodsNumTip": "商品:8",
+                    "pddRoute": "mall_page.html?mall_id=435420920",
+                    "pddRouteName": "进店逛逛",
+                    "mallShowType": 0,
+                    "fakeCache": false
+                }],
+                "isDataLoaded": true,
+                "isLoadedAll": true,
+                "hasMore": false,
+                "newGoods": [],
+                "title": "店铺收藏",
+                "newOnStoreTitle": "收藏上新"
+            }
+        };
+    </script>
+    <script>
+        ! function (e) {
+            function t(t) {
+                for (var n, o, c = t[0], i = t[1], f = t[2], s = 0, d = []; s < c.length; s++) o = c[s], a[o] && d.push(
+                    a[o][0]), a[o] = 0;
+                for (n in i) Object.prototype.hasOwnProperty.call(i, n) && (e[n] = i[n]);
+                for (l && l(t); d.length;) d.shift()();
+                return u.push.apply(u, f || []), r()
+            }
+
+            function r() {
+                for (var e, t = 0; t < u.length; t++) {
+                    for (var r = u[t], n = !0, o = 1; o < r.length; o++) {
+                        var i = r[o];
+                        0 !== a[i] && (n = !1)
+                    }
+                    n && (u.splice(t--, 1), e = c(c.s = r[0]))
+                }
+                return e
+            }
+            var n = {},
+                o = {
+                    2: 0
+                },
+                a = {
+                    2: 0
+                },
+                u = [];
+
+            function c(t) {
+                if (n[t]) return n[t].exports;
+                var r = n[t] = {
+                    i: t,
+                    l: !1,
+                    exports: {}
+                };
+                return e[t].call(r.exports, r, r.exports, c), r.l = !0, r.exports
+            }
+            c.e = function (e) {
+                var t = [];
+                o[e] ? t.push(o[e]) : 0 !== o[e] && {
+                    3: 1,
+                    40: 1
+                } [e] && t.push(o[e] = new Promise(function (t, r) {
+                    for (var n = "assets/css/" + ({
+                                3: "react_common"
+                            } [e] || e) + "_" + {
+                                3: "26044cf3d7bea818d629",
+                                4: "31d6cfe0d16ae931b73c",
+                                40: "e176f391e9fd60065202"
+                            } [e] + ".css", o = c.p + n, a = document.getElementsByTagName("link"), u =
+                            0; u < a.length; u++) {
+                        var i = (s = a[u]).getAttribute("data-href") || s.getAttribute("href");
+                        if ("stylesheet" === s.rel && (i === n || i === o)) return t()
+                    }
+                    var f = document.getElementsByTagName("style");
+                    for (u = 0; u < f.length; u++) {
+                        var s;
+                        if ((i = (s = f[u]).getAttribute("data-href")) === n || i === o) return t()
+                    }
+                    var l = document.createElement("link");
+                    l.rel = "stylesheet", l.type = "text/css", l.onload = t, l.onerror = function (t) {
+                        var n = t && t.target && t.target.src || o,
+                            a = new Error("Loading CSS chunk " + e + " failed.\n(" + n + ")");
+                        a.request = n, r(a)
+                    }, l.href = o, document.getElementsByTagName("head")[0].appendChild(l)
+                }).then(function () {
+                    o[e] = 0
+                }));
+                var r = a[e];
+                if (0 !== r)
+                    if (r) t.push(r[2]);
+                    else {
+                        var n = new Promise(function (t, n) {
+                            r = a[e] = [t, n]
+                        });
+                        t.push(r[2] = n);
+                        var u, i = document.getElementsByTagName("head")[0],
+                            f = document.createElement("script");
+                        f.charset = "utf-8", f.timeout = 120, c.nc && f.setAttribute("nonce", c.nc), f.src =
+                            function (e) {
+                                return c.p + "assets/js/" + ({
+                                    3: "react_common"
+                                } [e] || e) + "_" + {
+                                    3: "1cf2c3f07c67e8129d36",
+                                    4: "c784d287c5529fd20ead",
+                                    40: "3243c3b77eebda4e33ee"
+                                } [e] + ".js"
+                            }(e), u = function (t) {
+                                f.onerror = f.onload = null, clearTimeout(s);
+                                var r = a[e];
+                                if (0 !== r) {
+                                    if (r) {
+                                        var n = t && ("load" === t.type ? "missing" : t.type),
+                                            o = t && t.target && t.target.src,
+                                            u = new Error("Loading chunk " + e + " failed.\n(" + n + ": " + o + ")");
+                                        u.type = n, u.request = o, r[1](u)
+                                    }
+                                    a[e] = void 0
+                                }
+                            };
+                        var s = setTimeout(function () {
+                            u({
+                                type: "timeout",
+                                target: f
+                            })
+                        }, 12e4);
+                        f.onerror = f.onload = u, i.appendChild(f)
+                    } return Promise.all(t)
+            }, c.m = e, c.c = n, c.d = function (e, t, r) {
+                c.o(e, t) || Object.defineProperty(e, t, {
+                    enumerable: !0,
+                    get: r
+                })
+            }, c.r = function (e) {
+                "undefined" != typeof Symbol && Symbol.toStringTag && Object.defineProperty(e, Symbol.toStringTag, {
+                    value: "Module"
+                }), Object.defineProperty(e, "__esModule", {
+                    value: !0
+                })
+            }, c.t = function (e, t) {
+                if (1 & t && (e = c(e)), 8 & t) return e;
+                if (4 & t && "object" == typeof e && e && e.__esModule) return e;
+                var r = Object.create(null);
+                if (c.r(r), Object.defineProperty(r, "default", {
+                        enumerable: !0,
+                        value: e
+                    }), 2 & t && "string" != typeof e)
+                    for (var n in e) c.d(r, n, function (t) {
+                        return e[t]
+                    }.bind(null, n));
+                return r
+            }, c.n = function (e) {
+                var t = e && e.__esModule ? function () {
+                    return e.default
+                } : function () {
+                    return e
+                };
+                return c.d(t, "a", t), t
+            }, c.o = function (e, t) {
+                return Object.prototype.hasOwnProperty.call(e, t)
+            }, c.p = "https://cdn.yangkeduo.com/", c.oe = function (e) {
+                throw console.error(e), e
+            };
+            var i = window.webpackJsonpForReact = window.webpackJsonpForReact || [],
+                f = i.push.bind(i);
+            i.push = t, i = i.slice();
+            for (var s = 0; s < i.length; s++) t(i[s]);
+            var l = f;
+            r()
+        }([]);
+    </script>
+    <!-- <script type="text/javascript" src="https://cdn.yangkeduo.com/assets/js/vendor_e8a693cf4211cfd3aaa6.js" crossorigin="anonymous"></script> -->
+    <script type="text/javascript" src="https://cdn.yangkeduo.com/assets/js/react_pdd_12fefa06b7bd0b97d538.js"
+        crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://cdn.yangkeduo.com/assets/js/react_boot_4c997fe714141b295433.js"
+        crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://cdn.yangkeduo.com/assets/js/react_common_1cf2c3f07c67e8129d36.js"
+        crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://cdn.yangkeduo.com/assets/js/react_psnl_mall_collection_67c712374c0925013e2e.js"
+        crossorigin="anonymous"></script>
+</body>
+
+
+
+
+
+<script>
+    ! function (t) {
+        (t._plt = t._plt || []).push(["tm", "dr", +new Date])
+    }(window);
+</script>
+
+
+
+
+</html>

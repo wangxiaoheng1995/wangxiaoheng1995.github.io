@@ -1,0 +1,113 @@
+/* Required Stylesheets */
+.wheel-button {
+  position: relative;
+}
+
+.wheel {
+  margin:
+;
+  padding: 0;
+  list-style: none;
+  width: 200px; /* this will determine the diameter of the circle  */
+  height: 200px; /* this will determine the diameter of the circle  */
+  visibility: hidden;
+  position: relative;
+  display: none;
+}
+
+.wheel li {
+  overflow: hidden;
+  float:left;
+}
+
+.wheel li a {
+  display: block;
+}
+
+.wheel-button:hover{
+  color: white;
+}
+
+.wheel-button.ne {
+  border-color: white;
+  background: #1ABC9C;
+  color: #34FFFF;
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+}
+
+.wheel-button.nw {
+  border-color: white;
+  background-color: #E67E22;
+  color: #FFFC44;
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+}
+
+.wheel-button span, .wheel span{
+  position: relative;
+  -moz-transition: all 1s ease;
+  -webkit-transition: all 1s ease;
+  -o-transition: all 1s ease;
+  transition: all 1s ease;
+  display: block;
+}
+
+.wheel-button.active span{
+  transform: rotate(135deg);
+  -ms-transform: rotate(135deg); /* IE 9 */
+  -webkit-transform: rotate(135deg); /* Safari and Chrome */
+}
+
+.wheel li a, .wheel li a:visited{
+  border-radius: 50px;
+  text-align: center;
+  width: 2.7rem;
+  height: 2.7rem;
+  -moz-transition: all 0.25s ease;
+  -webkit-transition: all 0.25s ease;
+  -o-transition: all 0.25s ease;
+  transition: all 0.25s ease;
+}
+.wheel li a img{
+  position: absolute;
+  margin: auto;
+  top:0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 2.7rem;
+}
+
+.wheel-button{
+
+  width: 2.5rem;
+  height: 2.5rem;
+  display: inline-block;
+  vertical-align: middle;
+}
+.wheel-button {
+  position: relative;
+}
+
+.wheel-button img{
+  width: 2.5rem;
+  height: 2.5rem;
+  position: absolute;
+  margin: auto;
+  top:0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  transition: transform 0.5s;
+  -webkit-transition: transform 0.5s;
+  transform-origin:50% 50%;
+  -webkit-transform-origin:50% 50%;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+.wheel-button{
+  background:#fff;
+}

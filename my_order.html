@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+    <script>
+        ! function (t) {
+            (t._plt = t._plt || []).push(["tm", "ps", +new Date])
+        }(window);
+    </script>
+
+    <link rel="dns-prefetch" href="//cdn.yangkeduo.com">
+    <link rel="dns-prefetch" href="//apiv4.yangkeduo.com">
+    <link rel="dns-prefetch" href="//api.pinduoduo.com">
+    <link rel="dns-prefetch" href="//pinduoduoimg.yangkeduo.com">
+    <link rel="dns-prefetch" href="//omsproduction.yangkeduo.com">
+    <link rel="dns-prefetch" href="//avatar.yangkeduo.com">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+    <meta name="format-detection" content="telephone=no">
+    <meta http-equiv="Cache-Control" content="no-cache,no-store,must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <meta property="og:title" content="拼多多商城">
+    <meta property="og:description" content="风靡全国的拼团商城，优质商品新鲜直供，快来一起拼多多吧">
+    <meta property="og:image" content="https://pinduoduoimg.yangkeduo.com/base/logo.jpg">
+    <title>我的订单</title>
+
+</head>
+
+<head>
+    <link href="https://cdn.yangkeduo.com/assets/css/react_pdd_6fb15092c0312a697dfb.css" rel="stylesheet">
+    <link href="https://cdn.yangkeduo.com/assets/css/react_boot_b75c36a0efec6307f981.css" rel="stylesheet">
+    <link href="https://cdn.yangkeduo.com/assets/css/react_common_5757ad19c083dcf89e96.css" rel="stylesheet">
+    <link href="https://cdn.yangkeduo.com/assets/css/react_orders_6ff72757e755bdfc5315.css" rel="stylesheet">
+    <link href="https://cdn.yangkeduo.com/assets/css/payment-popup_7fc46fcbfa42ccdeae58.css" rel="stylesheet">
+    <style>
+      .resultTips{
+        position:fixed;
+        top:0;
+        bottom:0;
+        left:0;
+        right:0;
+        margin:auto;
+        width:0.65rem;
+        height:0.65rem;
+        background:rgba(0, 0, 0, .7);
+        text-align: center;
+        line-height: 0.65rem;
+        border-radius:0.15rem;
+        font-size:0.1rem;
+        color:#fff;
+        z-index:9999999;
+    } 
+    </style>
+</head>
+<body id="orders">
+
+    <div id="main">
+        <div class="orders-content">
+            <div class="search-bar-container">
+                <div id="search-bar" class="search-bar">
+                    <div class="search-container">
+                        <div class="search-icon-container">
+                            <div class="search-icon"></div><span class="search-box">搜索订单</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="nav-fixed-container" style="width:100%;">
+                <div class="nav-fixed">
+                    <div class="fixed-nav-item-orders" @click="getOrderList(0)"><span :class="{'nav-cur':orderType== 0}">全部</span></div>
+                    <div class="fixed-nav-item-orders" @click="getOrderList(1)"><span :class="{'nav-cur':orderType== 1}">待付款</span></div>
+                    <div class="fixed-nav-item-orders" @click="getOrderList(2)"><span :class="{'nav-cur':orderType== 2}">待发货</span></div>
+                    <div class="fixed-nav-item-orders" @click="getOrderList(3)"><span :class="{'nav-cur':orderType== 3}">待收货</span></div>
+                    <div class="fixed-nav-item-orders" @click="getOrderList(4)"><span :class="{'nav-cur':orderType== 4}">待评价</span></div>
+                </div>
+            </div>
+            <div class="place-holder"></div>
+            <div id="cancel-pop">
+                <div class="fill-bg" style="display:none;">
+                    <div class="other-bg"></div>
+                    <div class="reason-box reason-box-show">
+                        <div class="cancel-title">
+                            <div class="title-tips">请选择原因<span class="popup-close"></span></div>
+                            <div class="tips">订单一旦取消，无法恢复，优惠券将原路返还</div>
+                        </div>
+                        <ul class="cancel-reason">
+                            <li class="reason-list"><input type="radio" name="reason" class="reason-list-input" id="reason0"
+                                    value="收货地址填错了"><label for="reason0">收货地址填错了</label></li>
+                            <li class="reason-list"><input type="radio" name="reason" class="reason-list-input" id="reason1"
+                                    value="忘记支付密码 / 余额不足"><label for="reason1">忘记支付密码 / 余额不足</label></li>
+                            <li class="reason-list"><input type="radio" name="reason" class="reason-list-input" id="reason2"
+                                    value="无法正常支付"><label for="reason2">无法正常支付</label></li>
+                            <li class="reason-list"><input type="radio" name="reason" class="reason-list-input" id="reason3"
+                                    value="不想买了"><label for="reason3">不想买了</label></li>
+                            <li class="reason-list"><input type="radio" name="reason" class="reason-list-input" id="reason4"
+                                    value="其他原因"><label for="reason4">其他原因</label></li>
+                        </ul>
+                        <div class="cancel-confirm" data-active="red">提交</div>
+                    </div>
+                </div>
+            </div>
+            <div id="payment-selector" style="display:none;">
+                <div class="payment-pop-win-mask">
+                    <section class="payment-pop-win-main">
+                        <p>选择支付方式</p>
+                        <div id="pay-method-wrap">
+                            <div class="oc-payment">
+                                <div class="oc-payment-item-padding" data-active="cell-white">
+                                    <div class="oc-payment-item oc-payment-selected"><span class="oc-payment-method oc-p-2">微信支付</span></div>
+                                </div>
+                                <div class="oc-payment-item-padding" data-active="cell-white">
+                                    <div class="oc-payment-item"><span class="oc-payment-method oc-p-1">支付宝</span></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="insurance-container">
+                            <div class="payment-insurance">平台用户信息泄露风险由<img src="//pinduoduoimg.yangkeduo.com/order_checkout/picc_v2.png">承保</div>
+                        </div>
+                        <div class="pay-confirm-btn" data-active="before-red">立即支付</div>
+                        <div class="icon pay-method-close"></div>
+                    </section>
+                </div>
+            </div>
+            <div class="deal-list-status-new">
+                <div style="display:none"></div>
+                <div style="display:none">
+                    <div id="base-list1" class="react-base-list-wrapper ">
+                        <div class="react-base-list"></div>
+                        <div class="rbl-load-more rbl-pull-up-hide">
+                            <div class="rbl-list-center" style="display:none"><span class="rbl-img-rotate-bg"></span><span
+                                    class="rbl-loading-text">没有更多了...</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div style="display:block;">
+                    <div id="base-list1" class="react-base-list-wrapper ">
+                        <div class="react-base-list">
+                            <div class="orders-item" data="0" v-for="item in orderList" @click="goOrderDetail(item)">
+                                <div class="item-top-block">
+                                    <div class="mall-name"><img class="mall-icon" :src="item.shopRes.shop_logo"><span
+                                            class="mall-name-text">{{item.shopRes.shop_name}}</span></div>
+                                    <p class="order-status" v-if="item.status == 1"> 待付款 </p>
+                                    <p class="order-status" v-if="item.status == 2"> 已付款待发货 </p>
+                                    <p class="order-status" v-if="item.status == 3"> 已发货 </p>
+                                    <p class="order-status" v-if="item.status == 4"> 交易成功 </p>
+                                    <p class="order-status" v-if="item.status == 5"> 交易关闭 </p>
+                                    <p class="order-status" v-if="item.comment == 1"> 未评论 </p>
+                                    <p class="order-status" v-if="item.comment == 2"> 已评论 </p>
+                                </div>
+                                <div class="item-goods">
+                                    <div class="img-wrapper"><img class="goods-img" :src="item.pic"></div>
+                                    <div class="goods-desc">
+                                        <p>{{item.sku_goods_json.gname}}</p>
+                                        <p class="spec">{{item.sku_goods_json.spec_key_name}}</p>
+                                    </div>
+                                    <div class="price-and-num">
+                                        <div class="goods-price"><span>￥</span>{{item.sku_goods_json.price}}</div>
+                                        <!-- <div class="goods-number">x1</div> -->
+                                    </div>
+                                </div>
+                                <div class="currency-block">
+                                    <p class="currency-free">(免运费)</p>
+                                    <p class="currency-amount">￥{{item.sku_goods_json.price}}</p>
+                                    <p class="currency-head">实付:</p>
+                                </div>
+                                <div class="button-block">
+                                    <div class="orders-button">
+                                        <a class=" button-red" data-active="red" v-if="item.status == 1"><span>去支付</span></a>
+                                        <a class="" data-active="ghost-gray" v-if="item.status == 1" @click="cancleOrder(item.oid)"><span>取消订单</span></a>
+                                        <a class="" data-active="ghost-gray" v-if="item.status == 2" @click="tipsShipment()"><span>催发货</span></a>
+                                        <a class="" data-active="ghost-gray" v-if="item.status == 3 || item.status == 4" @click="goLogistics(item.express_no,item.express_type)"><span>查看物流</span></a>
+                                        <a class="" data-active="ghost-gray" v-if="item.status == 3" @click="sureRec(item.oid)"><span>确认收货</span></a>
+                                        <a class="" data-active="ghost-gray" v-if="item.status == 5" @click="deleteOrder(item.oid)"><span>删除订单</span></a>
+                                        <a class="" data-active="ghost-gray" v-if="item.status == 4 && item.comment == 1" @click="goWrite(item.oid)"><span>去评论</span></a>                              
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </div>
+                        <div class="rbl-load-more rbl-pull-up-hide">
+                            <div class="rbl-list-center" style="display: none;"><span class="rbl-img-rotate-bg"></span><span
+                                    class="rbl-loading-text">没有更多了...</span></div>
+                        </div>
+                    </div>
+                    <!-- <div class="loading-text">没找到订单？试试<span class="go-all-order">查看全部</span></div> -->
+                </div>
+                <div style="display:none"></div>
+                <div style="display:none"></div>
+                <div style="display:none"></div>
+                <div style="display:none"></div>
+            </div>
+            <div class="head-block" v-show="show" @click="getOrderList(0)">
+                <p class="hint">您还没有相关的订单</p>
+                <p class="recommend-hint">没找到订单？试试<span class="go-all-order">查看全部</span></p>
+            </div>
+            <div class="recommend-head">精选推荐</div>
+            <div id="recommend-wrapper"></div>
+        </div>
+        <div class="resultTips" v-show="tipsShow">
+            操作成功
+        </div>
+    </div>
+</body>
+<script src="./script/jquery-3.2.1.min.js"></script>
+<script src="./script/config.js"></script>
+<script src="./script/common.js"></script>
+<script src="./script/yltcrypt.js"></script>
+
+<script src="./script/aui-toast.js"></script>
+<script src="./script/vue.js"></script>
+<script>
+var user = getStorage("user");
+var param = pageParam();
+console.log(param.orType)
+new Vue({
+    el:"#main",
+    data:{
+        orderList:"",
+        orderType:0,
+        loading:true,
+        pages:1,
+        show:false,
+        tipsShow:false,
+    },
+    methods:{
+        getOrderList: function (oType) {
+            var self = this;
+            if(!self.loading){
+                return;
+            }
+            self.loading = false;
+            self.pages++;
+            if(oType == "undefined"){
+                self.orderType = 0;
+            }else{
+                self.orderType = oType
+            }
+            $.ajax({
+                type: 'POST',
+                url: PHP_SERVE_URL + '/shop/myOrder',
+                data: {
+                    openId: user.open_id,
+                    page:self.pages,
+                    type:self.orderType,
+                },
+                success: function (ret, res) {
+                    self.loading = true;                    
+                    if (ret.code == 0) {
+                        console.log(ret.data.length)
+                        if(ret.data.length==0){
+                            self.show = true;
+                        }else{
+                            self.show = false;
+                        }
+                        self.orderList = ret.data;
+                    }
+                }
+            })
+        },
+        goOrderDetail:function(info){
+             var self = this 
+             
+        },
+        goLogistics:function(postId,postName){
+             var self = this
+             window.location.href="order_logistics.html?postid="+ postId + "&postname=" + postName
+        },
+        cancleOrder:function(oid){
+            var self = this
+            $.ajax({
+                type: 'POST',
+                url: PHP_SERVE_URL + '/shop/cancleOrder',
+                data: {
+                    openId: user.open_id,
+                    oid:oid,
+                    token:yltcrypt.cpt(user.open_id),
+                },
+                success: function (ret, res) {
+                    console.log(JSON.stringify(ret))
+                    if (ret.code == 0) {
+                        self.tipsShow = true;
+                        setTimeout(function () {
+                            self.tipsShow = false;
+                        }, 500)
+                       console.log(JSON.stringify(ret))
+                    }
+                }
+            })
+        },
+        deleteOrder:function(oid){
+            var self = this
+            $.ajax({
+                type: 'POST',
+                url: PHP_SERVE_URL + '/shop/delOrder',
+                data: {
+                    openId: user.open_id,
+                    oid:oid,
+                    token:yltcrypt.cpt(user.open_id),
+                },
+                success: function (ret, res) {
+                    if (ret.code == 0) {
+                        self.tipsShow = true;
+                        setTimeout(function () {
+                            self.tipsShow = false;
+                        }, 500)
+                       console.log(JSON.stringify(ret))
+                    }
+                }
+            })
+        },
+        sureRec:function(){
+            var self = this
+            $.ajax({
+                type: 'POST',
+                url: PHP_SERVE_URL + '/shop/doneOrder',
+                data: {
+                    openId: user.open_id,
+                    oid:oid,
+                    token:yltcrypt.cpt(user.open_id),
+                },
+                success: function (ret, res) {
+                    if (ret.code == 0) {
+                        self.tipsShow = true;
+                        setTimeout(function () {
+                            self.tipsShow = false;
+                        }, 500)
+                       console.log(JSON.stringify(ret))
+                    }
+                }
+            })
+        },
+        tipsShipment:function(){
+            var self = this
+            self.tipsShow = true;
+            setTimeout(function () {
+                self.tipsShow = false;
+            }, 500)
+        },
+        goWrite:function(oid){
+            var self = this
+            window.location.href = "goWrite.html?orderId="+oid;
+        }
+
+    },
+    mounted:function(){
+       var self = this
+       self.getOrderList(0)
+       $(window).scroll(function () {
+             if($(document).height() - $(document).scrollTop() - window.innerHeight <200) 
+            {
+                self.getOrderList(self.orderType);
+            }
+        });
+        self.orderType = param.orType;
+    }
+})
+
+</script>
+
+
+</html>
