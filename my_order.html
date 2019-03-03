@@ -223,6 +223,7 @@ new Vue({
         pages:1,
         show:false,
         tipsShow:false,
+        totalPages:1,
     },
     methods:{
         getOrderList: function (oType) {
@@ -231,7 +232,6 @@ new Vue({
                 return;
             }
             self.loading = false;
-            self.pages++;
             if(oType == "undefined"){
                 self.orderType = 0;
             }else{
@@ -248,7 +248,10 @@ new Vue({
                 success: function (ret, res) {
                     self.loading = true;                    
                     if (ret.code == 0) {
-                        console.log(ret.data.length)
+                        if(self.pages < ret.totalPages){
+                            self.pages++;                             
+                        }
+                        
                         if(ret.data.length==0){
                             self.show = true;
                         }else{
@@ -284,7 +287,7 @@ new Vue({
                         setTimeout(function () {
                             self.tipsShow = false;
                         }, 500)
-                       console.log(JSON.stringify(ret))
+                        self.getOrderList(self.orderType)
                     }
                 }
             })
@@ -306,6 +309,8 @@ new Vue({
                             self.tipsShow = false;
                         }, 500)
                        console.log(JSON.stringify(ret))
+                       self.getOrderList(self.orderType)
+                       
                     }
                 }
             })
@@ -326,6 +331,8 @@ new Vue({
                         setTimeout(function () {
                             self.tipsShow = false;
                         }, 500)
+                        self.getOrderList(self.orderType)
+                        
                        console.log(JSON.stringify(ret))
                     }
                 }
@@ -347,12 +354,12 @@ new Vue({
     mounted:function(){
        var self = this
        self.getOrderList(0)
-       $(window).scroll(function () {
-             if($(document).height() - $(document).scrollTop() - window.innerHeight <200) 
-            {
-                self.getOrderList(self.orderType);
-            }
-        });
+    //    $(window).scroll(function () {
+    //          if($(document).height() - $(document).scrollTop() - window.innerHeight <200) 
+    //         {
+    //             self.getOrderList(self.orderType);
+    //         }
+    //     });
         self.orderType = param.orType;
     }
 })
