@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+        <meta name="format-detection" content="telephone=no">
+        <meta http-equiv="Cache-Control" content="no-cache,no-store,must-revalidate">
+        <meta http-equiv="Pragma" content="no-cache">
+        <meta http-equiv="Expires" content="0">
+        <title>商品收藏</title>
+        <link href="https://cdn.yangkeduo.com/assets/css/react_pdd_9634d528883e21d22cfa.css" rel="stylesheet">
+        <link href="https://cdn.yangkeduo.com/assets/css/react_boot_6fa52c7361d45549b142.css" rel="stylesheet">
+        <link href="https://cdn.yangkeduo.com/assets/css/react_common_3f59cdadec51dcc689ab.css" rel="stylesheet">
+        <style type="text/css">
+            .psnl-search-goods .old-content {
+                -webkit-transform: translateX(0);
+                transform: translateX(0);
+            }
+        </style>
+    </head>
+    
+    <body id="likes">
+        <div id="main">
+            <div class="page-goods-collection" data-reactroot="">
+                <div class="likes-search-bar-wrapper">
+                    <div class="likes-search-bar" onclick="window.location.href='search.html'">
+                        <div class="search-button">
+                            <div class="text">搜索商品</div>
+                        </div>
+                        <div class="cutting-line"></div>
+                    </div>
+                </div>
+                <div class="collection-goods-list-wrapper">
+                    <div class="goods-collection goods-collection-list observer-list">
+                        <div class="no-like-wrapper" v-show="!cgoodsList.length"><div class="no-like-text">您还没有收藏过商品</div></div>
+                        <div class="psnl-search-goods goods-collection-item" v-for="(item,index) in cgoodsList">
+                            <div class="old-content">
+                                <div class="img old-img-area">
+                                    <img class="img" style="" :src="item.pic">
+                                </div>
+                                <div class="old-info-area">
+                                    <div class="info">
+                                        <div class="goods-name" v-text="item.gname"></div>
+                                        <div class="extra" v-text="'已售'+item.sell_num+'件'"></div>
+                                    </div>
+                                    <div class="functional-area">
+                                        <div class="price-and-label">
+                                            <div class="price" v-text="item.group_price"></div>
+                                        </div>
+                                        <div class="buttons">
+                                            <div class="more" @click="moreShow(index)">更多</div>
+                                            <div class="group" @click="toDetail(item.gid)">查看商品</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div v-show="item.moreShow">
+                                <div class="mask" @click="moreShow(index)"></div>
+                                <div class="old-bubble">
+                                    <div class="button" @click="collectGoods(item.gid)">取消收藏</div>
+                                    <!-- <div class="button">进入店铺</div> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div></div>
+                <div class="gotop-container go-top-hide"><span class="go-top-text">顶部</span>
+                </div>
+            </div>
+            <div>
+            <div id="pin-spinner" class="pin-spinner-2" v-show="loadingShow">
+                <div id="ps-background" class="ps-background"></div>
+                <div class="ps-inner-box">
+                    <img id="imgInit" class="ps-rotate-img" src="data:image/png;base64,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">
+                </div>
+                <div id="msgInit" class="ps-rotate-msg"></div>
+            </div>
+        </div>
+        <div id="global-disable-click">
+            <div class="scroll-container-hidden"></div>
+        </div>
+        </div>
+        </div>
+    </body>
+    <script src="./script/jquery-3.2.1.min.js"></script>
+    <script src="./script/common.js"></script>
+    <script src="./script/aui-toast.js"></script>
+    <script src="./script/config.js"></script>
+    <script src="./script/yltcrypt.js"></script>
+    <script src="./script/vue.js"></script>
+    <script type="text/javascript">
+        var user=getStorage("user");
+        vm=new Vue({
+            el:"#main",
+            data:{
+                loadingShow:true,
+                cgoodsList:[]
+            },
+            methods:{
+                loadCgoodsList:function(){
+                    var self=this;
+                    $.ajax({
+                        url:PHP_SERVE_URL+"/shop/cgoodsList",
+                        type:"post",
+                        data:{openId:user.open_id},
+                        success:function(res){
+                            if(res.code==0){
+                                self.loadingShow=false;
+                                for(var i in res.data){
+                                    res.data[i].moreShow=false;
+                                }
+                                self.cgoodsList=res.data;
+                            }else{
+                                alert(res.data);
+                            }
+                        }
+                    });
+                },
+                moreShow:function(index){
+                    var self=this;
+                    self.$set(self.cgoodsList[index],"moreShow",!self.cgoodsList[index].moreShow);
+                },
+                collectGoods:function(gid){
+                    var self=this;
+                    $.ajax({
+                        url:PHP_SERVE_URL+"/shop/collectGoods",
+                        type:"post",
+                        data:{goodsId:gid,openId:user.open_id},
+                        success:function(res){
+                            if(res.code==0){
+                                self.loadCgoodsList();
+                            }else{
+                                alert(res.data);
+                            }
+                        }
+                    }); 
+                },
+                toDetail:function (goodsId) {
+                    window.location.href="./product_detail.html?goodsId="+goodsId;
+                }
+            },
+            mounted:function () {
+                var self=this;
+                self.loadCgoodsList();
+            }
+        });
+    </script>
+</html>
