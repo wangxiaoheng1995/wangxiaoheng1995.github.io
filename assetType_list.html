@@ -7,14 +7,14 @@
     <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
     <link rel="stylesheet" type="text/css" href="./css/aui/aui.css">
     <link rel="stylesheet" href="./css/common.css">
-    <title>奖金明细</title>
+    <title>资产明细</title>
     <style>
         html {
             width: 100%;
         }
 
         body {
-            background: #f6f6f6;
+            background: #ffffff;
             width: 100%;
         }
 
@@ -26,7 +26,7 @@
         }
 
         #header {
-            background: #f6f6f6;
+            background: #ffffff;
             position: fixed;
             color: #000;
         }
@@ -34,7 +34,7 @@
         #drawList li {
             overflow-x: hidden;
             /*overflow-y: auto;*/
-            background: #f6f6f6;
+            background: #ffffff;
             padding: .5rem .7rem;
             border-bottom: 1px solid #ccc;
         }
@@ -89,25 +89,19 @@
 
 </html>
 <script src="./script/jquery-3.2.1.min.js"></script>
-
 <script src="./script/common.js"></script>
 <script src="./script/config.js"></script>
 <script src="./script/iscroll.js"></script>
 <script src="./script/vue.js"></script>
 <script src="./script/aui-toast.js"></script>
-<!-- <script type="text/javascript" src="./script/link.js"></script> -->
+<script src="./script/aui-scroll.js"></script>
 <script>
-    var user, pageParam, leftScroll;
-    var toast = new auiToast();
-
-    user = getStorage('user');
-    pageParam = pageParam();
-    if (pageParam.atype == 1) {
-        $('.aui-title').text('FGC明细');
-    } else if (pageParam.atype == 2) {
+    checkLogin();
+    var pageParam = pageParam();
+    if (pageParam.atype == 2) {
         $('.aui-title').text('积分明细');
     } else if (pageParam.atype == 3) {
-        $('.aui-title').text('商家贷款明细');
+        $('.aui-title').text('货款明细');
     } else if (pageParam.atype == 4) {
         $('.aui-title').text('红包明细');
     }
@@ -121,52 +115,40 @@
         },
         methods: {
             getList: function () {
-                var self = this
-                if (!self.isScroll) {
-                    return;
-                }
+                var self = this;
+                if(!self.isScroll){return;}
                 self.isScroll = false;
                 $.ajax({
                     url: PHP_SERVE_URL + "/customer/assetsList",
                     type: 'post',
                     data: {
-                        openId: user.open_id,
+                        openId: userInfo.open_id,
                         pageIndex: self.pageIndex,
                         assetsType: pageParam.atype
                     },
                     success: function (ret, err) {
                         if (ret.code == 0) {
                             self.isScroll = true;
-                            self.bonusList = self.bonusList.concat(ret.data)
-                            self.totalpages = ret.totalPages
-                            // setTimeout(function () {
-                            //     leftScroll.refresh();
-                            // }, 50)
-                        } else {
-                            toast.fail({
-                                title: ret.msg,
-                                duration: 2000
-                            });
+                            self.bonusList = self.bonusList.concat(ret.data);
+                            if(ret.data.length>0){
+                                self.pageIndex++;
+                            }
                         }
                     }
                 })
             },
         },
         mounted: function () {
-            var self = this
+            var self = this;
             self.getList();
-
-            // leftScroll = new IScroll("#drawList");
-            // leftScroll.on('scrollEnd', function () {
-            //     if (this.absStartY >= this.maxScrollY + 50) {
-            //         if (self.pageIndex < self.totalPages) {
-            //             self.pageIndex++;
-            //             self.getList()
-            //         } else {}
-            //     }
-            // })
-
-        },
-        updated: function () {},
+            new auiScroll({
+                listen:true, //是否监听滚动高度，开启后将实时返回滚动高度
+                distance:200 //判断到达底部的距离，isToBottom为true
+            },function(ret){
+                if(ret.isToBottom){
+                    self.getList();
+                }
+            });
+        }
     })
 </script>

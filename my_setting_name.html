@@ -45,7 +45,7 @@
                     昵称
                 </div>
                 <div class="aui-list-item-input">
-                    <input type="text" placeholder="昵称,最多八字" id="nickname" maxlength="8">
+                    <input type="text" placeholder="请输入您的昵称" id="nickname">
                 </div>
             </div>
         </li>
@@ -58,25 +58,18 @@
 <script type="text/javascript" src="./script/config.js"></script>
 <script src="./script/aui-toast.js"></script>
 <script src="./script/yltcrypt.js"></script>
+<script src="./script/mlayer/layer.js"></script>
 <script type="text/javascript">
-    var user;
-    window.onload = function () {
-        user = getStorage('user');
-        // user = localStorage.getItem('user')
-        if (user.nick_name != '' || typeof user.nick_name != 'undefined') {
-            $('#nickname').val(user.nick_name);
-        }
-    }
-
+    checkLogin();
     function confirm() {
         // 判断输入的值是否合法
         var nickName = $.trim($("#nickname").val());
         if (nickName == '') {
-            toast.fail({
-                title: "昵称不能为空",
-                duration: 2000
-            })
-            // $a.toast("昵称不能为空");
+            layer.open({
+                content: '请输入您的昵称'
+                ,skin: 'msg'
+                ,time: 2 //2秒后自动关闭
+            });
             return false;
         }
         // 获取用户相关信息
@@ -84,39 +77,26 @@
             url: PHP_SERVE_URL + '/customer/setNickName',
             method: 'post',
             data: {
-                // values: {
-                openId: user.open_id,
+                openId: userInfo.open_id,
                 nickName: nickName,
-                token: yltcrypt.cpt(user.open_id)
-                // }
+                token: yltcrypt.cpt(userInfo.open_id)
             },
             success: function (json, err) {
-                console.log(JSON.stringify(json))
                 if (json.code == 0) {
-                    user.nick_name = nickName;
-                    setStorage('user', user);
-                    // api.sendEvent({
-                    //     name: 'refresh_user_nickname',
-                    //     extra: {
-                    //         nickName: nickName
-                    //     }
-                    // });
+                    userInfo.nick_name = nickName;
+                    setStorage('userInfo', userInfo);
                     // 页面跳转
-                    var toast = new auiToast();
-                    toast.success({
-                        title: json.msg,
-                        duration: 2000
+                    layer.open({
+                        content: '昵称设置成功'
+                        ,skin: 'msg'
+                        ,time: 2
                     });
-                    // api.sendEvent({
-                    //     name: 'refresh_user_info',
-                    //     extra: {}
-                    // });
                     setTimeout("window.location.href='my_setting.html'", 2000);
                 } else {
-                    var toast = new auiToast();
-                    toast.fail({
-                        title: json.msg,
-                        duration: 2000
+                    layer.open({
+                        content: json.msg
+                        ,skin: 'msg'
+                        ,time: 2
                     });
                 }
             }

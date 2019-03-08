@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <title>设置</title>
+    <link rel="stylesheet" href="./css/aui/aui.css">
+    <style>
+        .tit-bar-black{
+            background:#fff;
+            color:#000;
+        }
+        .saveBtn{
+            position: relative;
+            left:0;
+            right:0;
+            top:2rem;
+            margin:0 auto;
+            width:50%;
+            height:2.2rem;
+            font-size:0.7rem;
+            background:red;
+            border-radius:5px;
+            line-height:2.2rem;
+            text-align: center;
+            margin-top:2rem;
+            color:#fff;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="aui-bar aui-bar-nav tit-bar-black">
+        <a class="aui-pull-left aui-btn" onclick="window.history.back()">
+            <span class="aui-iconfont aui-icon-left" style='color:gray;'></span>
+        </a>
+        <div class="aui-title">设置</div>
+    </header>
+    <ul class="aui-list aui-form-list aui-margin-t-15">
+        <li class="aui-list-item cart-bg-fff">
+            <div class="aui-list-item-inner">
+                <div class="aui-list-item-label">
+                    密码
+                </div>
+                <div class="aui-list-item-input">
+                    <input type="text" placeholder="请输入您的登录密码" id="nickname">
+                </div>
+            </div>
+        </li>
+    </ul>
+    <div class="saveBtn" onclick="confirm();" style="background:red;">保存
+    </div>
+</body>
+<script type="text/javascript" src="./script/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="./script/common.js"></script>
+<script type="text/javascript" src="./script/config.js"></script>
+<script src="./script/aui-toast.js"></script>
+<script src="./script/yltcrypt.js"></script>
+<script src="./script/mlayer/layer.js"></script>
+<script type="text/javascript">
+    checkLogin();
+    function confirm() {
+        // 判断输入的值是否合法
+        var nickName = $.trim($("#nickname").val());
+        if (nickName == '') {
+            layer.open({
+                content: '请输入您的登录密码'
+                ,skin: 'msg'
+                ,time: 2 //2秒后自动关闭
+            });
+            return false;
+        }
+        // 获取用户相关信息
+        $.ajax({
+            url: PHP_SERVE_URL + '/customer/setPwd',
+            method: 'post',
+            data: {
+                openId: userInfo.open_id,
+                passwd: nickName,
+                token: yltcrypt.cpt(userInfo.open_id)
+            },
+            success: function (json, err) {
+                if (json.code == 0) {
+                    // 页面跳转
+                    layer.open({
+                        content: '密码设置成功'
+                        ,skin: 'msg'
+                        ,time: 2
+                    });
+                    setTimeout("window.location.href='my_setting.html'", 2000);
+                } else {
+                    layer.open({
+                        content: json.msg
+                        ,skin: 'msg'
+                        ,time: 2
+                    });
+                }
+            }
+        });
+    }
+</script>
+
+</html>

@@ -3,28 +3,21 @@
 
 <head>
     <meta charset="utf-8">
-    <link rel="dns-prefetch" href="//cdn.yangkeduo.com">
-    <link rel="dns-prefetch" href="//apiv4.yangkeduo.com">
-    <link rel="dns-prefetch" href="//api.pinduoduo.com">
-    <link rel="dns-prefetch" href="//pinduoduoimg.yangkeduo.com">
-    <link rel="dns-prefetch" href="//omsproduction.yangkeduo.com">
-    <link rel="dns-prefetch" href="//avatar.yangkeduo.com">
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
     <meta name="format-detection" content="telephone=no">
     <meta http-equiv="Cache-Control" content="no-cache,no-store,must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
-    <meta http-equiv="Expires" content="0">
-    <meta property="og:title" content="拼多多商城">
-    <meta property="og:description" content="风靡全国的拼团商城，优质商品新鲜直供，快来一起拼多多吧">
-    <meta property="og:image" content="https://pinduoduoimg.yangkeduo.com/base/logo.jpg">
-    <title>拼多多</title>
+
+    <meta property="og:title" content="F购商城">
+    <meta property="og:description" content="风靡全国的拼团商城，优质商品新鲜直供，快来一起F购吧">
+    <title>F购商城</title>
 </head>
 
 <head>
-    <link href="https://cdn.yangkeduo.com/assets/css/react_pdd_5e2d15f27ff49c770c80.css" rel="stylesheet">
-    <link href="https://cdn.yangkeduo.com/assets/css/react_boot_05a40bc37a8d4bb56931.css" rel="stylesheet">
-    <link href="https://cdn.yangkeduo.com/assets/css/react_common_26044cf3d7bea818d629.css" rel="stylesheet">
-    <link href="https://cdn.yangkeduo.com/assets/css/react_login_876aab633e67811f5ab6.css" rel="stylesheet">
+    <link href="./css/pdd/react_pdd_5e2d15f27ff49c770c80.css" rel="stylesheet">
+    <link href="./css/pdd/react_boot_05a40bc37a8d4bb56931.css" rel="stylesheet">
+    <link href="./css/pdd/react_common_26044cf3d7bea818d629.css" rel="stylesheet">
+    <link href="./css/pdd/react_login_876aab633e67811f5ab6.css" rel="stylesheet">
     <style>
     #code-button{
         text-align: center;
@@ -51,14 +44,13 @@
     </style>
 </head>
 
-<body id="login">
-
+<body>
     <div id="main">
         <div id="login">
             <div id="first" class="main">
                 <div class="login-box">
                     <div class="login-title">选择登录方式</div>
-                    <div class="phone-login" data-active="yellow"><span>手机登录</span></div>
+                    <!--<div class="phone-login" data-active="yellow"><span>手机登录</span></div>-->
                     <div class="wx_login" onclick="wxLogin()"><img src="./image/timg.png" style="width:35px;height:30px;"><span>微信登录</span></div>
                 </div>
                 <div class="login-footer">
@@ -86,8 +78,6 @@
             </div>
         </div>
     </div>
-
-
 </body>
 <script type="text/javascript" src="./script/api.js"></script>
 <script src="./script/jquery-3.2.1.min.js"></script>
@@ -99,8 +89,9 @@
     var user;
     var toast = new auiToast();
     var smsCode;
+    var leaderOpenId = getStorage('leaderOpenId');
+    leaderOpenId = leaderOpenId ? leaderOpenId : 'STATE';
     $(".phone-login").click(function () {
-        console.log(90)
         $("#first").hide()
         $(".container").css({
             "top": 0,
@@ -170,27 +161,9 @@
         });
 
     }
-
     //微信登录
     function wxLogin(){
-        window.location.href="https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxb505f72cb328cacc&redirect_uri=http%3A%2F%2Fdevmall.0571sd.com%2Fweixin%2FgetUserInfo&response_type=code&scope=snsapi_userinfo&state=STATE&connect_redirect=1#wechat_redirect"
+        window.location.href="https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxb505f72cb328cacc&redirect_uri=http%3A%2F%2Fmall.0571sd.com%2Fweixin%2FgetUserInfo&response_type=code&scope=snsapi_userinfo&state="+leaderOpenId+"&connect_redirect=1#wechat_redirect"
     }
-    //本地存储用户信息
-    // function setStorage(json) {
-    //     var user = localStorage.getItem("user") || {}
-    //     user.uid = json.id;
-    //     user.openId = json.open_id;
-    //     user.nickName = json.nick_name;
-    //     user.tel = json.tel;
-    //     // user.sex = json.sex;
-    //     user.leader = json.leader;
-    //     user.avatar = json.avatar;
-    //     user.connected = false;
-    //     setStorage("user",json) // 存储json对象
-    // }
 </script>
-
-
-
-
 </html>

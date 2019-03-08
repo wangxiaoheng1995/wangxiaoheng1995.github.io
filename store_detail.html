@@ -7,7 +7,6 @@
     <meta name="format-detection" content="telephone=no">
     <meta http-equiv="Cache-Control" content="no-cache,no-store,must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
-    <meta http-equiv="Expires" content="0">
     <title>店铺主页</title>
     <link href="https://cdn.yangkeduo.com/assets/css/react_pdd_a097c652b862d01f0d82.css" rel="stylesheet">
     <link href="https://cdn.yangkeduo.com/assets/css/react_boot_7bed6699c3a1b0255010.css" rel="stylesheet">
@@ -15,19 +14,10 @@
     <link href="https://cdn.yangkeduo.com/assets/css/react_mall_page_94b23bcfe3de7fe41f39.css" rel="stylesheet">
 </head>
 
-<body id="mall-page">
+<body>
 
     <div id="main" class="container no-footer">
         <div id="mall-page">
-            <div>
-                <div class="mall-search-bar">
-                    <div class="mall-search-container">
-                        <div class="mall-search-icon-container">
-                            <div class="mall-search-icon-class"></div><span class="mall-search-box">搜索店内商品</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
             <div class="mall-main-block">
                 <div id="mp-mi" class="mp-mall-info"><img :src="shopInfo.shop_logo"
                         class="mall-title-logo" alt="logo">
@@ -56,48 +46,11 @@
                         </div>
                     </div>
                 </div>
-     <!--            <div id="mp-mgs" class="mall-group-scroll">
-                    <div class="mgs-title">
-                        <div class="mgs-title-text">大家正在拼</div>
-                    </div>
-                    <div id="mp-mgs-scroll" class="mgs-groups-container" style="touch-action: pan-y pinch-zoom;">
-                        <ul class="mgs-groups" style="transition-timing-function: cubic-bezier(0.1, 0.57, 0.1, 1); transition-duration: 0ms; transform: translate(0px, 0px);">
-                            <li class="mgs-group">
-                                <div class="mgs-content">
-                                    <div class="mgs-img"><img data-param="70_!_t_!_!_50_!_!_!" src="//t00img.yangkeduo.com/goods/images/2019-02-20/a4539291c46e630e846440120050c05e.jpeg?imageMogr2/sharpen/1%7CimageView2/2/w/1300/q/70/format/webp"></div>
-                                    <div class="goods-name">春季新款打底裤女弹力加厚高腰紧身长裤子胖mm大码妈妈小脚铅笔裤</div>
-                                    <div class="mgs-user-info">
-                                        <div class="mgs-price"><i>￥</i><span>15.8</span></div>
-                                        <div class="avatar-wrap"><img class="mgs-avatar" data-param="70_!_t_!_!_50_!_!_!"
-                                                src="//t20img.yangkeduo.com/a/02036ce088650dcd96dff6acb823b930562e3c63-1527683526?imageMogr2/sharpen/1%7CimageView2/2/w/1300/q/70/format/webp"></div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="mgs-group">
-                                <div class="mgs-content">
-                                    <div class="mgs-img"><img data-param="70_!_t_!_!_50_!_!_!" src="//t00img.yangkeduo.com/goods/images/2019-02-19/f1b22a9715a2aadf81dcc6d3eab5a800.jpeg?imageMogr2/sharpen/1%7CimageView2/2/w/1300/q/70/format/webp"></div>
-                                    <div class="goods-name">运动裤女哈伦学生韩版宽松小脚裤春秋哈伦裤黑色大码休闲薄款长裤</div>
-                                    <div class="mgs-user-info">
-                                        <div class="mgs-price"><i>￥</i><span>28</span></div>
-                                        <div class="avatar-wrap"><img class="mgs-avatar" data-param="70_!_t_!_!_50_!_!_!"
-                                                src="//t21img.yangkeduo.com/a/389b2fa8da5e2c80f76f6b6298fa07a4f1d428d9-1515994691?imageMogr2/sharpen/1%7CimageView2/2/w/1300/q/70/format/webp"></div>
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </div> -->
             </div>
             <div>
                 <div class="mgm-title-block" id="mgm-title" style="float: none;">
                     <div class="mgm-title mgm-no-arrow"> 全部商品</div>
                 </div>
-               <!--  <ul class="rc-opt-list" id="rc-opt-list">
-                    <li class="opt-item current">默认</li>
-                    <li class="opt-item">新品</li>
-                    <li class="opt-item">销量</li>
-                    <li class="opt-item"><span>价格</span></li>
-                </ul> -->
                 <div id="mall-main-list-view">
                     <div>
                         <div class="infinite-list-wrapper" role="list" id="mall-main-list-view-0-0">
@@ -113,10 +66,6 @@
                                                 <p class="sale-price"><i>￥</i><span v-text="item.group_price"></span></p>
                                                 <p class="sold-quantity" v-text="'已售'+item.sell_num+'件'">已售0件</p>
                                             </div>
-                                            <!-- <div class="local-groups">
-                                                <div class="avatar"><img src="http://t20img.yangkeduo.com/a/ea41c244f0bb9e2c6337b4f638b3b896c9fe44af-1546930530?imageMogr2/thumbnail/100x"></div>
-                                                <div class="avatar"><img src="http://t21img.yangkeduo.com/a/389b2fa8da5e2c80f76f6b6298fa07a4f1d428d9-1515994691?imageMogr2/thumbnail/100x"></div>
-                                            </div> -->
                                         </div>
                                     </div>
                                 </div>
@@ -131,28 +80,6 @@
                     <div class="mall-bottom-hint no-more-goods" v-show="shopAllGoods.length">本店暂无更多商品</div>
                 </div>
             </div>
-      <!--       <div id="recommend-list-wrapper">
-                <div id="order-recommend-list">
-                    <div id="recommend-head" class="recommend-head">
-                        <div class="head-content">其他店铺的相似商品</div>
-                    </div>
-                    <div id="recommend-wrapper">
-                        <div id="orderRecommend" class="react-base-list-wrapper ">
-                            <div id="group-rec-goods-2374937289" class="double-grid-one double-grid-one-0">
-                                <div class="double-grid-item gap-right">
-                                    <div class="std-goods-image-square goods-image"><img data-url="//t00img.yangkeduo.com/goods/images/2018-08-24/02a21ba55967f17702ada7e6dac92b70.jpeg?imageMogr2/format/webp/quality/50"
-                                            data-index="0" src="//t00img.yangkeduo.com/goods/images/2018-08-24/02a21ba55967f17702ada7e6dac92b70.jpeg?imageMogr2/format/webp/quality/50"></div>
-                                    <div class="goods-name"><span class="activity-flag activity-flag-gap activity-flag-undefined"></span>纯棉不起球运动裤女休闲裤女裤子女学生韩版宽松哈伦裤百搭春秋款</div>
-                                    <div class="detail"><b class="price-icon">￥</b><b class="price">36.9</b>
-                                        <div class="info"><span>已拼2万件</span></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="bgt-go-top bgt-top-button-hide"><span>顶部</span></div>
-                        </div>
-                    </div>
-                </div>
-            </div> -->
             <div></div>
         </div>
     </div>
@@ -165,90 +92,85 @@
 <script src="./script/vue.js"></script>
 <script>
     var pageParam=pageParam();
-    var user=getStorage("user");
+    var userInfo = JSON.parse(getStorage("userInfo"));
     var vm=new Vue({
-    el:"#main",
-    data:{
-      shopInfo:{},
-      isCollect:false,
-      shopAllGoods:[]
-    },
-    methods:{
-       loadShopInfo:function(){
-            // 加载商铺信息
-            var self=this;
-            $.ajax({
-                url:PHP_SERVE_URL+"/shop/shopInfo",
-                type:"post",
-                data:{shopId:pageParam.shopId},
-                success:function (res) {
-                    if(res.code==0){
-                        self.shopInfo=res.data;
-                    }else{
-                        alert(res.msg);
-                    }
-                }
-            });
+        el:"#main",
+        data:{
+          shopInfo:{},
+          isCollect:false,
+          shopAllGoods:[]
         },
-        getCollectBool:function(){
-            var self=this;
-            $.ajax({
-                url:PHP_SERVE_URL+"/shop/getCollectBool",
-                type:"post",
-                data:{type:2,cid:pageParam.shopId,openId:user.open_id},
-                success:function(res){
-                    if(res.code==0){
-                        self.isCollect=Boolean(res.isCollect);
-                    }else{
-                        alert(res.msg);
+        methods:{
+            loadShopInfo:function(){
+                // 加载商铺信息
+                var self=this;
+                $.ajax({
+                    url:PHP_SERVE_URL+"/shop/shopInfo",
+                    type:"post",
+                    data:{shopId:pageParam.shopId},
+                    success:function (res) {
+                        if(res.code==0){
+                            self.shopInfo=res.data;
+                        }else{
+                            alert(res.msg);
+                        }
                     }
-                }
-            });
-        },
-        collectShop:function(){
-            var self=this;
-            $.ajax({
-                url:PHP_SERVE_URL+"/shop/collectShop",
-                type:"post",
-                data:{shopId:pageParam.shopId,openId:user.open_id},
-                success:function(res){
-                    if(res.code==0){
-                        self.isCollect=!self.isCollect;
-                        self.loadShopInfo();
-                    }else{
-                        alert(res.msg);
+                });
+            },
+            getCollectBool:function(){
+                var self=this;
+                $.ajax({
+                    url:PHP_SERVE_URL+"/shop/getCollectBool",
+                    type:"post",
+                    data:{type:2,cid:pageParam.shopId,openId:userInfo.open_id},
+                    success:function(res){
+                        if(res.code==0){
+                            self.isCollect=Boolean(res.isCollect);
+                        }else{
+                            alert(res.msg);
+                        }
                     }
-                }
-            });
-        },
-        shopGoods:function(){
-            var self=this;
-            $.ajax({
-                url:PHP_SERVE_URL+"/shop/shopGoods",
-                type:"post",
-                data:{
-                    shopId:pageParam.shopId
-                },
-                success:function(res){
-                    if(res.code==0){
-                        console.log(res);
-                        self.shopAllGoods=res.data;
-                    }else{
-                        alert(res.msg);
+                });
+            },
+            collectShop:function(){
+                var self=this;
+                $.ajax({
+                    url:PHP_SERVE_URL+"/shop/collectShop",
+                    type:"post",
+                    data:{shopId:pageParam.shopId,openId:userInfo.open_id},
+                    success:function(res){
+                        if(res.code==0){
+                            self.isCollect=!self.isCollect;
+                            self.loadShopInfo();
+                        }
                     }
-                }
-            });
+                });
+            },
+            shopGoods:function(){
+                var self=this;
+                $.ajax({
+                    url:PHP_SERVE_URL+"/shop/shopGoods",
+                    type:"post",
+                    data:{
+                        shopId:pageParam.shopId
+                    },
+                    success:function(res){
+                        if(res.code==0){
+                            self.shopAllGoods=res.data;
+                        }
+                    }
+                });
+            },
+            goDetail:function(goodsId){
+                window.location.href="product_detail.html?goodsId="+goodsId;
+            }
         },
-        goDetail:function(goodsId){
-            window.location.href="product_detail.html?goodsId="+goodsId;
+        mounted:function () {
+            var self=this;
+            self.loadShopInfo();
+            self.getCollectBool();
+            self.shopGoods();
         }
-    },
-    mounted:function () {
-        var self=this;
-        self.loadShopInfo();
-        self.getCollectBool();
-        self.shopGoods();
-    }
   });
 </script>
 

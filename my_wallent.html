@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0">
     <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
-    <title>综合页面</title>
+    <title>资产明细</title>
     <link rel="stylesheet" type="text/css" href="./css/aui/aui.css">
     <link rel="stylesheet" type="text/css" href="./css/main_menu.css">
     <link rel="stylesheet" href="./css/wheelmenu.css" />
@@ -67,10 +67,10 @@
             <a class="aui-pull-left aui-btn" onclick="history.back();">
                 <span class="aui-iconfont aui-icon-left"></span>
             </a>
-            <div class="aui-title">我的资产</div>
+            <div class="aui-title">{{balanceName}}</div>
         </header>
         <section class="aui-grid  bg-green index_bg " id="item">
-            <div class="zdList" style="text-align: right;" @click="goUserMoneyList()">账单</div>
+            <div class="zdList" style="text-align: right;" @click="goUserMoneyList()">明细</div>
             <div class="mine_money_c " id="availableFund">
                 {{userAssets.balance}}
             </div>
@@ -78,32 +78,23 @@
                 <span class="aui-col-xs-6">收入：+<span id="income">{{userAssets.inMoney}}</span></span>
                 <span class="aui-col-xs-6">支出：<span id="expenditure">{{userAssets.outMoney}}</span></span>
             </div>
-            <!-- <div class="aui-font-size-14 mine_money_top">
-            <span class=" aui-col-xs-6" @click="openWin('assets_record',{atype: 1})">钻石账单</span>
-            <span class=" aui-col-xs-6" @click="openWin('assets_record',{atype: 2})">金币账单</span>
-        </div> -->
         </section>
 
-        <div style="overflow: hidden;">
-            <div class="mine_money_cz aui-col-xs-6" onclick="openWin('exchange')">
-                <span class=" money_cz">买入FGC</span>
-            </div>
-            <div class="mine_money_cz aui-col-xs-6" onclick="openWin('trading_deal_recharge')">
-                <span class=" money_cz">交易市场</span>
+
+        <div style="overflow: hidden;" v-if="moneyType == 3 || moneyType== 4">
+            <div class="mine_money_cz aui-col-xs-12" onclick="openWin('trading_deal_recharge')">
+                <span class=" money_cz">提取</span>
             </div>
         </div>
-        <!---->
+
         <div class="index_money">
             <div class="aui-content ">
                 <div class="aui-user-view aui-in">
-                    <img class="aui-img-object aui-pull-left" style="width: 2.3rem;margin-right: 0.5rem; " src="../image/fx_tycb_icon.png" />
-                    <div class="aui-img-body aui-ellipsis-1 pull-left_c" onclick="changeBottom()">
-                        <span>进阶吧竞赛...</span>
-                        <p>进阶吧竞赛好玩更好赚</p>
+                    <img class="aui-img-object aui-pull-left" style="width: 2.3rem;margin-right: 0.5rem; " src="http://media1.0571sd.com/tmp/fgouhead.jpg" />
+                    <div class="aui-img-body aui-ellipsis-1 pull-left_c" onclick="location.href='index.html'">
+                        <span>F购商城...</span>
+                        <p>买的越多赚得越多！！</p>
                     </div>
-                    <!--<div class="aui-img-body pull-left_r">-->
-                    <!--<p>立即体验</p>-->
-                    <!--</div>-->
                 </div>
             </div>
         </div>
@@ -115,16 +106,14 @@
     <script src="./script/yltcrypt.js"></script>
     <script src="./script/vue.js"></script>
     <script>
-        var user;
-        var param;
-        var toast = new auiToast();
-
-        user = getStorage('user');
-        param = pageParam().moneyType;
+        checkLogin();
+        var moneyType = pageParam().moneyType;
         vm = new Vue({
             el: '#main',
             data: {
-                userAssets: ''
+                userAssets: '',
+                moneyType: moneyType,
+                balanceName: '我的资产',
             },
             methods: {
                 openWin: function (target, param) {
@@ -140,54 +129,32 @@
                         type: 'POST',
                         url: PHP_SERVE_URL + '/customer/assetsBudget',
                         data: {
-                            openId: user.open_id,
-                            assetsType: param,
+                            openId: userInfo.open_id,
+                            assetsType: moneyType,
                         },
                         success: function (res, err) {
-                            console.log(JSON.stringify(res))
                             if (res.code == 0) {
                                 self.userAssets = res.data
-                            } else {
-                                toast.fail(res, msg);
                             }
                         }
                     })
                 },
                 goUserMoneyList: function () {
-                    var self = this
-                    window.location.href = "assetType_list.html?atype=" + param;
+                    window.location.href = "assetType_list.html?atype=" + moneyType;
                 }
             },
-            created: function () {
-                var self = this;
-                self.getMyAssets();
-                // api.addEventListener({
-                //     name: 'changeAssest'
-                // }, function () {
-                //     self.getMyAssets();
-                // });
-                // api.addEventListener({
-                //     name: 'recharge'
-                // }, function () {
-                //     self.getMyAssets();
-                // });
-            },
             mounted: function () {
-                var self = this
+                var self = this;
+                if(moneyType == 2){
+                    self.balanceName = '我的积分';
+                }else if(moneyType == 3){
+                    self.balanceName = '商家货款';
+                }else if(moneyType == 4){
+                    self.balanceName = '我的红包';
+                }
                 self.getMyAssets();
             }
         });
-
-        function changeBottom() {
-            // api.sendEvent({
-            //     name: 'changeBottom',
-            //     extra: {
-            //         index: 2
-            //     }
-            // });
-            // api.closeWin();
-        }
     </script>
 </body>
-
 </html>

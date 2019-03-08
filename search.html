@@ -2,57 +2,70 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <meta name="viewport"
-          content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover">
     <meta name="format-detection" content="telephone=no">
     <meta http-equiv="Cache-Control" content="no-cache,no-store,must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
-    <meta http-equiv="Expires" content="0">
     <meta charset="utf-8" class="next-head">
     <title class="next-head">搜索</title>
-    <meta property="og:title" content="拼多多商城" class="next-head">
-    <meta property="og:description" content="风靡全国的拼团商城，优质商品新鲜直供，快来一起拼多多吧" class="next-head">
-    <meta property="og:image" content="https://pingduoduoimg.yangkeduo.com/base/logo.jpg" class="next-head">
-    <style id="__jsx-585793875">.top-bar.jsx-585793875 {
-        width: 100%;
-        max-width: 640px;
-        overflow: hidden;
-        position: relative;
-        padding: 0.06rem 0.14rem;
-        border-bottom: 1px solid #ededed;
-    }
+    <meta property="og:title" content="F购商城" class="next-head">
+    <meta property="og:description" content="风靡全国的拼团商城，优质商品新鲜直供，快来一起F购吧" class="next-head">
+    <style id="__jsx-585793875">
+        .n87ELQcr {
+            color: #e02e24;
+            line-height: 1;
+            margin-bottom: .07rem;
+            margin-left: .07rem
+        }
 
-    .input-wraper.jsx-585793875 {
-        text-align: center;
-        border-radius: 0.08rem;
-        background-color: #ededed;
-        height: .38rem;
-        color: #9c9c9c;
-        font-size: .16rem;
-    }
+        ._2L-PesKE {
+            font-size: .12rem;
+            margin-right: .02rem
+        }
 
-    .content.jsx-585793875 {
-        height: .38rem;
-    }
+        .M2T_GgSX {
+            padding-top: .04rem;
+            font-size: .18rem;
+            display: inline-block;
+            margin-right: .03rem;
+            -webkit-transform: translateY(.5px);
+            transform: translateY(.5px)
+        }
 
-    .search-icon.jsx-585793875 {
-        margin-right: 0.07rem;
-        -webkit-transform: translateY(-1px);
-        -ms-transform: translateY(-1px);
-        transform: translateY(-1px);
-    }
+        ._1J5wbWMz {
+            color: #9c9c9c;
+            font-size: .11rem
+        }
 
-    .search-icon.jsx-585793875::before {
-        content: '\e618';
-        font-size: .14rem;
-        width: .14rem;
-        height: .14rem;
-        font-family: 'icomoon';
-    }
+        .list-loading {
+            width: 2rem;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+            padding-left: .15rem
+        }
 
-    .with-decoration.jsx-585793875:before {
-        background-color: transparent;
-    }
+        .list-loading .loading-icon {
+            background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADMAAAAzCAMAAAANf8AYAAABvFBMVEUAAACioqJ8fHx8fHx8fHx8fHyOjo6QkJB8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHza2tp8fHzIyMh8fHx8fHx8fHx8fHx8fHx8fHx8fHyAgIB8fHysrKx8fHzc3NyEhITk5OR8fHzk5OSfn598fHyfn5/k5OR8fHzT09N8fHx8fHyfn598fHzk5OR8fHx8fHywsLDT09N8fHyCgoLY2NiZmZnf39+rq6ve3t7CwsKwsLB8fHyfn5/T09OwsLDCwsJ8fHyOjo6fn598fHzk5OSwsLDCwsKOjo7T09PCwsLT09N8fHywsLCfn598fHywsLDk5OTk5OR8fHx8fHywsLDT09Ofn5+Ojo7b29vCwsKXl5ewsLB8fHzCwsJ8fHynp6fT09PT09PT09OOjo6fn5/k5OSwsLCOjo7T09Pk5OSwsLCfn5/k5OTT09OwsLCfn5+wsLDk5OTT09Ofn5+fn5/T09OwsLDCwsLT09PCwsKfn5/T09PCwsKwsLB8fHx8fHzk5OSwsLCwsLCOjo7k5OTk5OSfn5/T09Ofn5+Ojo7T09OwsLB8fHzCwsKwsLCOjo7T09Ofn5/k5OR8G97RAAAAjXRSTlMAA/3u4hXuBfoKv6Y9D+e3VSscBvLb1MKaaVFFKSYYCAj8+O3gzsq9qZKSi4J9cWBaQz0tJiUgFBAP/fn29fTv6+vm5d/b19bQz83Bsaamn5eUkoN4bWViYUtGNzY2MiIa/vrq6unn4eHez8K8t7e3t6+toJGHhYSBgH97eHRzc29nV1ZTUUw/NS4cGhc3HnOAAAACxUlEQVRIx8WTZ1fiUBCGJzEuSBFEAUGx997b2nsvu669bO+99953A0L+sPcNFw2Se4588vmSOTPznJs7k5CITEcmpYm7Xy1rSdNRVFXNptNQ5CSOCoiT5REaWfOy9bOJE8xT/aLLrbI2uT3FycxgYb7AyUefLcXhaXMKVBA84bTLCAMkwIXqeEmy40fks4icQivqq0mOW48KSEgd6nlFBqdEQTBPYpwj6Fhi0TjfaSMSZR2pe6mx+oKkE0CLvE/kLlOtblbKQ6KedHb9si2xp4vIuwoRSpWIHUffqEfFeU5CaMcA7dyxqcBahyYHK3gxOUOtGe/S2K8CxXAOGAlY2JLs9XB19N4afN4t+igM51jqrDzjayczPDZel+3O48W4eNIr3DWodJCRoDeezjJzsvVSdrNEyVg+Yax+MmMJI6p3mv1w+YrLY75qu1KzT2dAQEkM0ucgEQXTB5zRDTZmWT1CkQSK5frBMR38/+AUCZy/Bwa+U4fxHBIgjRqcLqJmbwancpdEbE+f49zeoDMgt6n6Qq/52BruN/SQCT8mNE17auq8iMViN9ZTFpFTrYHSYjNnLAaqfpGR7pVSTecmmVEVi7PYdZz7Uq7FKd80df5UcGmgwcJTTdwoxQg636wZ30/69mqHqOTdALee83x1XHmQg3sNRqNzhtsuRCKRVva8vBh3Knh+BcbETwJzUUabPnpCa4QxqYfb+q0eJyZwVytv0vO0GQXswL2p8NQeUc95SB8JSOtjsYoQJejkVyi+A+Uhi2bD4fAsey7DGfrPd9slUQrvoVztZFEfc/qIHTQEaZmE/BuEU4swDBBcioAdofMMyrXeJEeahHNPpPy+AmeNkhxqjYCvAqcWyox0wqEncB4JnJd8NyecEOa9IHC6ZzCAZIeP4VaIBEhtOWTiUKg1l07BMFOGKT3eMuc1pcnWhy0ScAhT81WseKxt7AAAAABJRU5ErkJggg==");
+            background-repeat: no-repeat;
+            background-size: contain;
+            position: absolute;
+            top: .1rem;
+            left: .33rem;
+            width: .25rem;
+            height: .25rem;
+            -webkit-animation: loading 1s linear 0s infinite;
+            animation: loading 1s linear 0s infinite;
+            margin-top: 0 !important
+        }
+
+        .list-loading .loading-text {
+            line-height: .45rem;
+            font-weight: 400;
+            font-size: .15rem;
+            margin-left: .3rem;
+            color: #666
+        }
 
     .with-decoration.jsx-585793875 .input-wraper.jsx-585793875 {
         background-color: rgba(0, 0, 0, 0.15);
@@ -62,7 +75,8 @@
     .with-decoration.jsx-585793875 .search-icon.jsx-585793875 {
         color: white;
     }</style>
-    <style id="__jsx-1204402381">.wraper.jsx-1204402381 {
+    <style id="__jsx-1204402381">
+        .wraper.jsx-1204402381 {
         width: 100%;
         max-width: 640px;
         padding: 0.07rem 0 0.07rem 0.14rem;
@@ -119,42 +133,6 @@
         line-height: .36rem;
     }
 
-    .search-btn.jsx-1204402381 {
-        color: #151516;
-    }
-
-    .content-clear.jsx-1204402381 {
-        position: absolute;
-        height: 0.18rem;
-        width: 0.18rem;
-        top: 50%;
-        -webkit-transform: translateY(-50%);
-        -ms-transform: translateY(-50%);
-        transform: translateY(-50%);
-        right: 0.1rem;
-        background-color: #9c9c9c;
-        background-size: contain;
-        border-radius: 50%;
-        color: #fff;
-    }
-
-    .content-clear.jsx-1204402381::before {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        -webkit-transform: translate(-50%, -50%);
-        -ms-transform: translate(-50%, -50%);
-        transform: translate(-50%, -50%);
-        content: '\e61d';
-        font-size: .08rem;
-        line-height: 1;
-        font-family: icomoon;
-    }
-
-    .with-decoration.jsx-1204402381 {
-        color: #fff !important;
-    }
-
     .with-decoration.jsx-1204402381 .container-box.jsx-1204402381 {
         color: #fff;
         background-color: rgba(0, 0, 0, 0.15) !important;
@@ -175,18 +153,8 @@
     .with-decoration.jsx-1204402381 .cancel-btn.jsx-1204402381, .with-decoration.jsx-1204402381 .search-btn.jsx-1204402381 {
         color: #fff;
     }</style>
-    <style id="__jsx-2265687815">.view-wraper.jsx-2265687815 {
-        position: fixed;
-        top: 0;
-        bottom: 0;
-        width: 100%;
-        max-width: 640px;
-        height: 100%;
-        background-color: #fff;
-        overflow: auto;
-        z-index: 999999998;
-    }</style>
-    <style rel="stylesheet" type="text/css">@font-face {
+    <style rel="stylesheet" type="text/css">
+        @font-face {
         font-family: icomoon-subjects;
         src: url(https://pinduoduoimg.yangkeduo.com/mobile-subjects/fonts/iconfont_190212.ttf);
         font-weight: 400;
@@ -675,7 +643,7 @@
     }
 
     .double-grid-one {
-        width: 50%;
+        width: 49.5%;
         position: relative;
         display: inline-block;
         margin-bottom: .03rem
@@ -3113,7 +3081,8 @@
             opacity: 0
         }
     }</style>
-    <style rel="stylesheet" type="text/css">.xIBCfKPv {
+    <style rel="stylesheet" type="text/css">
+        .xIBCfKPv {
         display: inline-block;
         overflow: hidden;
         min-width: .51rem;
@@ -3681,69 +3650,52 @@
             }
         }
     }</style>
-    <style type="text/css" data-styled-jsx=""></style>
 </head>
-<body style="overflow: hidden;">
+<body>
 <div id="__next">
     <div id="main">
         <div id="classification-container">
             <div style="display: block;" class="jsx-2265687815 view-wraper">
                 <div class="jsx-1204402381 wraper ">
                     <div class="jsx-1204402381 container-box">
-                        <form id="submit" action="" class="jsx-1204402381"><input type="search" placeholder="项链女"
-                                                                                  value=""
-                                                                                  class="jsx-1204402381 search-input">
+                        <form  action="" class="jsx-1204402381">
+                            <input type="search" id="keyword" placeholder="输入商品名称" value="" class="jsx-1204402381 search-input">
                         </form>
                     </div>
-                    <div class="jsx-1204402381 cancel-btn">取消</div>
+                    <div class="jsx-1204402381 cancel-btn" @click="searchGoods()">搜索</div>
                 </div>
-                <div class="y_y6FRWZ">
+                <div class="y_y6FRWZ" id="hotkeyword">
                     <div class="qk3jQIt2">热门搜索</div>
-                    <div class="_2wHDLuKB"><span class="xIBCfKPv">项链女</span><span class="xIBCfKPv">内裤女纯棉</span><span
-                            class="xIBCfKPv">衬衫男</span><span class="xIBCfKPv">老爹鞋</span><span
-                            class="xIBCfKPv">斜挎包女</span><span class="xIBCfKPv">床上四件套</span><span
-                            class="xIBCfKPv">男士加绒卫衣</span><span class="xIBCfKPv">长袖t恤男潮流</span></div>
-                </div>
-            </div>
-            <div class="common-footer-module" style="background-color:#ffffff;color:#e0e0e0">
-                <div class="footer-items">
-                    <div class="footer-item">
-                        <div class="footer-item-icon-wrap" style="height:0.23rem"><img class="footer-item-icon"
-                                                                                       data-param="70_!_t_!_!_50_!_!_!"
-                                                                                       src="//t13img.yangkeduo.com/cart/2018-09-02/f4f7bb8e393e08f1bd7a813d27e91c66.png?imageMogr2/sharpen/1%7CimageView2/2/w/1300/q/70/format/webp">
-                        </div>
-                        <div class="footer-item-text" style="color:#777">首页</div>
-                    </div>
-                    <div class="footer-item">
-                        <div class="footer-item-icon-wrap" style="height:0.23rem"><img class="footer-item-icon"
-                                                                                       data-param="70_!_t_!_!_50_!_!_!"
-                                                                                       src="//t13img.yangkeduo.com/cart/2018-09-02/2d711f06701926c7cab62b7d0a3fe116.png?imageMogr2/sharpen/1%7CimageView2/2/w/1300/q/70/format/webp">
-                        </div>
-                        <div class="footer-item-text" style="color:#777">推荐</div>
-                    </div>
-                    <div class="footer-item active-footer-item">
-                        <div class="footer-item-icon-wrap" style="height:0.23rem"><img class="footer-item-icon"
-                                                                                       data-param="70_!_t_!_!_50_!_!_!"
-                                                                                       src="//t13img.yangkeduo.com/cart/2018-09-02/8189bb727c0d7de12476d8485b4b47c3.png?imageMogr2/sharpen/1%7CimageView2/2/w/1300/q/70/format/webp">
-                        </div>
-                        <div class="footer-item-text" style="color:#df2127">搜索</div>
-                    </div>
-                    <div class="footer-item">
-                        <div class="footer-item-icon-wrap" style="height:0.23rem"><img class="footer-item-icon"
-                                                                                       data-param="70_!_t_!_!_50_!_!_!"
-                                                                                       src="//t13img.yangkeduo.com/cart/2018-09-02/40e2c153f09720b43044dfa82f771714.png?imageMogr2/sharpen/1%7CimageView2/2/w/1300/q/70/format/webp">
-                        </div>
-                        <div class="footer-item-text" style="color:#777">聊天</div>
-                    </div>
-                    <div class="footer-item">
-                        <div class="footer-item-icon-wrap" style="height:0.23rem"><img class="footer-item-icon"
-                                                                                       data-param="70_!_t_!_!_50_!_!_!"
-                                                                                       src="//t13img.yangkeduo.com/cart/2018-09-02/8d22d9ba476f49fbebb66c8cf0d0aaab.png?imageMogr2/sharpen/1%7CimageView2/2/w/1300/q/70/format/webp">
-                        </div>
-                        <div class="footer-item-text" style="color:#777">个人中心</div>
+                    <div class="_2wHDLuKB"><span class="xIBCfKPv" @click="hotKeyWord('衣服')">衣服</span>
+                        <span class="xIBCfKPv" @click="hotKeyWord('衬衫')">衬衫</span><span class="xIBCfKPv" @click="hotKeyWord('老爹鞋')">老爹鞋</span><span
+                            class="xIBCfKPv" @click="hotKeyWord('斜挎包')">斜挎包</span><span class="xIBCfKPv" @click="hotKeyWord('床上四件套')">床上四件套</span><span
+                            class="xIBCfKPv"@click="hotKeyWord('卫衣')">卫衣</span><span class="xIBCfKPv" @click="hotKeyWord('t恤')">t恤</span>
                     </div>
                 </div>
-                <div class="iphonex-extra-height"></div>
+
+                <div id="productList" style="display: none">
+                    <div id="undefined-pcl" class="react-base-list-wrapper" >
+                        <div class="double-grid-one double-grid-one-0" v-for="(item,index) in productList[0]">
+                            <div class="double-grid-item gap-right"  @click="toDetail(item.gid)">
+                                <div class="std-goods-image-square goods-image">
+                                    <img :src="item.pic" style="">
+                                </div>
+                                <div class="goods-name _3b8vjlxY" v-text="item.gname"></div>
+                                <div class="n87ELQcr"><b class="_2L-PesKE">￥</b><b class="M2T_GgSX" v-text="item.group_price"></b><span
+                                        class="_1J5wbWMz"><span v-text="'已售'+item.sell_num+'件'"></span></span></div>
+                            </div>
+                        </div>
+                        <div class="list-loading"><span class="loading-icon"></span><span class="loading-text">我是有底线的...</span></div>
+                    </div>
+
+                    <div class="search-result-correct" v-if="productList[0].length==0">
+                        <div class="correct-item correct-lines">
+                        <span class="correct-item-normal correct-noresult-icon">
+                            <span class="correct-noresult-margin">没有找到相关商品</span>
+                        </span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -3753,4 +3705,109 @@
 </div>
 <div id="global-disable-click"></div>
 </body>
+<script src="./script/jquery-3.2.1.min.js"></script>
+<script src="./script/common.js"></script>
+<script src="./script/aui-toast.js"></script>
+<script src="./script/config.js"></script>
+<script src="./script/yltcrypt.js"></script>
+<script src="./script/vue.js"></script>
+<script src="./script/swiper.min.js"></script>
+<script src="./script/aui-scroll.js"></script>
+<script>
+    new Vue({
+        el:"#main",
+        data:{
+            keyword:'',
+            loadingEnd:true,
+            page:1,
+            productList:[{}]
+        },
+        methods:{
+            searchGoods:function () {
+                // 顶部切换分类
+                var self = this;
+                self.keyword = $('#keyword').val();
+                self.page = 1;
+                if(self.keyword){
+                    $('#hotkeyword').hide();
+                    $('#productList').show();
+                    self.loadGoods();
+                }
+            },
+            hotKeyWord:function (kw) {
+                // 顶部切换分类
+                var self = this;
+                self.keyword = kw;
+                self.page = 1;
+                if(self.keyword){
+                    $('#hotkeyword').hide();
+                    $('#productList').show();
+                    self.loadGoods();
+                }
+            },
+            loadGoods:function () {
+                // 加载分类商品
+                var self=this;
+                if(!self.loadingEnd){
+                    return false;
+                }
+                self.loadingEnd=false;
+                self.page = 1;
+                $.ajax({
+                    url:PHP_SERVE_URL+"/shop/searchGoods",
+                    type:"post",
+                    data:{keyword:self.keyword,page:self.page},
+                    success:function (res) {
+                        self.loadingEnd = true;
+                        if(res.code==0){
+                            self.$set(self.productList,0,res.data);
+
+                            new auiScroll({
+                                listen:true, //是否监听滚动高度，开启后将实时返回滚动高度
+                                distance:200 //判断到达底部的距离，isToBottom为true
+                            },function(ret){
+                                if(ret.isToBottom){
+                                    if(self.loadingEnd){
+                                        self.loadingEnd = false;
+                                        self.addGoods();
+                                    }
+                                }
+                            });
+
+                        }
+                    }
+                });
+            },
+            addGoods:function () {
+                // 分类翻页
+                var self=this;
+                self.page++;
+                $.ajax({
+                    url:PHP_SERVE_URL+"/shop/searchGoods",
+                    type:"post",
+                    data:{keyword:self.keyword,page:self.page},
+                    success:function (res) {
+                        self.loadingEnd=true;
+                        if(res.code==0){
+                            if(res.data.length==0){
+                                self.page--;
+                            }
+                            for(var i in res.data){
+                                self.productList[0].push(res.data[i]);
+                            }
+                        }else{
+                            self.page--;
+                        }
+                    }
+                });
+            },
+            toDetail:function (goodsId) {
+                window.location.href="./product_detail.html?goodsId="+goodsId;
+            }
+        },
+        mounted:function () {
+            var self=this;
+        }
+    });
+</script>
 </html>

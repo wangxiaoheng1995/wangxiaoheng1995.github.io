@@ -69,20 +69,14 @@
 </head>
 <body>
     <div id="main">
-
         <div class="logistics-header">
             <div class="logistics-company-logo">
                   <img src="../image/fx_tycb_icon.png" alt="" style="width:78px;height:78px;border-radius:5px;">
             </div>
             <div class="logistics-company-info">
-                <p>物流公司：<span>{{companyName}}</span></p>
-                <p>物流单号：<span>{{companyOrder}}</span></p>
-                <p>物流电话：<span>11223344551</span></p>    
+                <p>物流公司：<span>{{expressName}}</span></p>
+                <p>物流单号：<span>{{expressNo}}</span></p>
             </div>
-        </div>
-        <div class="isReceiving">
-            <p>北大院</p>
-            <span style="color:gray;" v-text="orderStauts == 0?'查询失败':orderStauts == 1?'正常':orderStauts == 2?'派件中':orderStauts == 3?'已签收':orderStauts == 4?'退回':'其他问题'">待领取</span>
         </div>
         <div class="logistics-detail">
             <div class="logistics-status">物流状态</div>
@@ -103,46 +97,58 @@
 <script src="./script/aui-toast.js"></script>
 <script src="./script/vue.js"></script>
 <script>
-var user = getStorage("user");
-var param = pageParam()
-
+var param = pageParam();
+console.log(param);
 new Vue({
     el:"#main",
     data:{
+        expressName:'',
+        expressNo:'',
         logisArr:"",
+        express:{
+            'shentong':'申通快递',
+            'yunda':'韵达快递',
+            'yuantong':'圆通快递',
+            'shunfeng':'顺丰快递',
+            'huitongkuaidi':'百世快递',
+            'zhongtong':'中通快递',
+            'youzhengguonei':'邮政快递',
+            'debangwuliu':'德邦物流',
+            'ems':'ems快递',
+            'tiantian':'天天快递',
+            'quanfengkuaidi':'全峰快递',
+            'zhaijisong':'宅急送',
+            'youshuwuliu':'优速快递',
+            'kuaijiesudi':'快捷快递',
+            'guotongkuaidi':'国通快递',
+            'annengwuliu':'安能物流',
+            'jd':'京东物流'
+        },
+        show:false,
+
         postId:'',
         postName:'',
-        show:false,
         companyName:'',
         companyOrder:'',
-        orderStauts:"",
+        orderStauts:""
     },
     methods:{
         checkInfo:function(){
-            var self = this
-
-            $.ajax({
-                type: 'POST',
-                url: "http://www.kuaidi100.com/query",
-                data: {
-                    type: postName,
-                    postid:postId,
-                },
-                success: function (ret, res) {
-                    self.loading = true;                    
-                    if (ret.code == 0) {
-                        console.log(ret.data.length)
-                        if(ret.data.length == 0){
-                             self.show = true;
-                        }
-                        self.companyName = ret.com
-                        self.companyOrder = ret.nu
-                        self.orderStauts = ret.status
-                        self.logisArr = ret.data;
-                    }
+            var self = this;
+            var kdapi = 'http://www.kuaidi100.com/query?type='+param.postname+'&postid='+param.postid;
+            $.get(kdapi,{}, function(result){
+                self.logisArr = result.data;
+                if(result.status != 200){
+                    self.show = true;
                 }
-            })
+            });
         }
+    },
+    mounted:function(){
+        var self = this;
+        self.expressNo = param.postid;
+        self.expressName = self.express[param.postname];
+        self.checkInfo();
     }
 })
 </script>

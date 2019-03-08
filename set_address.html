@@ -9,21 +9,14 @@
             (t._plt = t._plt || []).push(["tm", "ps", +new Date])
         }(window);
     </script>
-
-    <link rel="dns-prefetch" href="//cdn.yangkeduo.com">
-    <link rel="dns-prefetch" href="//apiv4.yangkeduo.com">
-    <link rel="dns-prefetch" href="//api.pinduoduo.com">
-    <link rel="dns-prefetch" href="//pinduoduoimg.yangkeduo.com">
-    <link rel="dns-prefetch" href="//omsproduction.yangkeduo.com">
-    <link rel="dns-prefetch" href="//avatar.yangkeduo.com">
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
     <meta name="format-detection" content="telephone=no">
     <meta http-equiv="Cache-Control" content="no-cache,no-store,must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
-    <meta http-equiv="Expires" content="0">
-    <meta property="og:title" content="拼多多商城">
-    <meta property="og:description" content="风靡全国的拼团商城，优质商品新鲜直供，快来一起拼多多吧">
-    <meta property="og:image" content="https://pinduoduoimg.yangkeduo.com/base/logo.jpg">
+
+    <meta property="og:title" content="F购商城">
+    <meta property="og:description" content="风靡全国的拼团商城，优质商品新鲜直供，快来一起F购吧">
+
     <title>收货地址</title>
     <style>
         .resultTips{
@@ -65,7 +58,6 @@
 </head>
 
 <body id="addresses" style="">
-
     <div id="main">
         <div class="addresses-main" data-reactroot="">
             <ul class="addresses-list">
@@ -77,7 +69,7 @@
                                 <div class="contact-name">{{item.uname}}<span>{{item.tel}}</span></div>
                                 <div class="contact-address">{{item.pname}}&nbsp;{{item.cname}}&nbsp;{{item.aname}}&nbsp;{{item.info}}</div>
                             </div>
-                            <div class="userAD" @click="useAddress(item)">使用</div>
+                            <div class="userAD" @click="useAddress(item)" v-if="isuse == 1">使用</div>
                         </div>
                     </div>
                     <div class="border-line"></div>
@@ -86,7 +78,6 @@
 
                     <div class="address-item-ops-right">
                         <div class="address-item-edit" @click="editAddress(item.id)"><span>编辑</span></div>
-                        <!-- <div class="address-item-stick"><span>取消置顶</span></div> -->
                     </div>
                 </li>
                 <li class="address-item-tab"></li>
@@ -105,8 +96,6 @@
                     <div class="m-addr-region" data-active="cell-white" @click="addressCheck()"><span id="addressDetail">{{addressDetail}}</span></div>
                     <div class="m-addr-address"><textarea id="address" placeholder="详细地址（如街道、小区、乡镇、村）" class=" "
                             v-model="info">嘤嘤嘤</textarea>
-                        <!-- <div class="m-addr-address-clear"></div>
-                        <div class="position-icon inactive"></div> -->
                     </div>
                     <div class="m-addr-save active" @click="sureSaveAddre()"><span>保存</span></div>
                     <div class="m-addr-close" @click="cancleAddress()"></div>
@@ -172,12 +161,9 @@
 <script src="./script/yltcrypt.js"></script>
 <script src="./script/vue.js"></script>
 <script>
-    var user = getStorage("user");
+    var user = JSON.parse(getStorage("userInfo"));
     var toast = new auiToast();
     var param = pageParam();
-    console.log(decodeURI(param.goodsInfo))
-    console.log(JSON.stringify(user))
-
     new Vue({
         el: "#main",
         data: {
@@ -204,6 +190,7 @@
             isDefault: 1,
             tipsShow: false,
             editStatus: 0,
+            isuse: false,
         },
         methods: {
             //用户地址
@@ -335,28 +322,6 @@
                 self.hide = true;
                 self.addressId = aid
                 self.editStatus = 1
-
-                // $.ajax({
-                //     type: 'POST',
-                //     url: PHP_SERVE_URL + "/customer/setAddress",
-                //     data: {
-                //         openId: user.open_id,
-                //         aid: aid,
-                //         uname: self.name,
-                //         tel: self.tel,
-                //         pname: self.province,
-                //         cname: self.city,
-                //         aname: self.district,
-                //         info: self.info,
-                //         token: yltcrypt.cpt(user.open_id),
-                //     },
-                //     success: function (ret, err) {
-                //         if (ret.code == 0) {
-                //             self.hide = false;
-                //             self.getUserAddress()
-                //         } else {}
-                //     }
-                // })
             },
             sureDelete: function () {
                 var self = this
@@ -418,7 +383,6 @@
             },
             defaultAddress: function (aid) {
                 var self = this
-                
                 $.ajax({
                     type: 'POST',
                     url: PHP_SERVE_URL + "/customer/defaultAddress",
@@ -436,17 +400,17 @@
                 })
             },
             useAddress:function(item){
-                var self = this
-                window.location.href = "order_pay.html?itemData=" + JSON.stringify(item) + "&goodsInfo=" + param.goodsInfo
-
+                window.location.href = "order_pay.html?itemData=" + JSON.stringify(item);
             }
 
         },
         mounted: function () {
-            var self = this
-            self.getUserAddress()
-            self.getaddressData()
-
+            var self = this;
+            self.getUserAddress();
+            self.getaddressData();
+            if(param.back){
+                self.isuse = true;
+            }
         }
     })
 </script>

@@ -7,12 +7,12 @@
     <meta name="format-detection" content="telephone=no">
     <meta http-equiv="Cache-Control" content="no-cache,no-store,must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
-    <meta http-equiv="Expires" content="0">
-    <title>拼多多</title>
-    <link href="https://cdn.yangkeduo.com/assets/css/react_pdd_a097c652b862d01f0d82.css" rel="stylesheet">
-    <link href="https://cdn.yangkeduo.com/assets/css/react_boot_7bed6699c3a1b0255010.css" rel="stylesheet">
-    <link href="https://cdn.yangkeduo.com/assets/css/react_common_741fe798d308d87a9aa6.css" rel="stylesheet">
-    <link href="https://cdn.yangkeduo.com/assets/css/react_goods_b57bbb61f81496814b1f.css" rel="stylesheet">
+
+    <title>F购商城</title>
+    <link href="./css/pdd/react_pdd_a097c652b862d01f0d82.css" rel="stylesheet">
+    <link href="./css/pdd/react_boot_7bed6699c3a1b0255010.css" rel="stylesheet">
+    <link href="./css/pdd/react_common_741fe798d308d87a9aa6.css" rel="stylesheet">
+    <link href="./css/pdd/react_goods_b57bbb61f81496814b1f.css" rel="stylesheet">
     <link href="./css/swiper.min.css" rel="stylesheet">
     <style type="text/css">
         .pin-spinner-2 {
@@ -137,7 +137,6 @@
     </style>
 </head>
 
-
 <body id="goods" style="left: calc(50vw - 1.875rem);">
 <div id="app" v-cloak>
     <div id="main" class="container no-footer">
@@ -149,16 +148,14 @@
                         <img style="height: 3.75rem;" :src="item">
                     </div>
                 </div>
-                <!-- Add Pagination -->
                 <div class="swiper-pagination" style=""></div>
             </div>
         </div>
         <div class="goods-header-top-container">
             <section id="g-base" class="false">
-                <div class="g-price-group"><span class="g-group-price" v-html="'<i>￥</i>'+detailInfo.goodRes.price"></span><!-- <span class="g-market-price regular-text"><del>￥298</del></span> --><span class="g-sales regular-text" v-text="'已售'+detailInfo.goodRes.sellnum+'件'"></span>
-
+                <div class="g-price-group"><span class="g-group-price" v-html="'<i>￥</i>'+detailInfo.goodRes.groupprice"></span><span class="g-sales regular-text" v-text="'已售'+detailInfo.goodRes.sellnum+'件'"></span>
                 </div>
-                <div class="g-name-new"><span class="goods-name-content"><span><span class="g-n-goods-title"><span class="enable-select" v-text="detailInfo.goodRes.gname"></span></span><span></span><span class="g-icon g-service-tag">退货包运费</span></span>
+                <div class="g-name-new"><span class="goods-name-content"><span><span class="g-n-goods-title"><span class="enable-select" v-text="detailInfo.goodRes.gname"></span></span><span></span></span>
                     </span>
                 </div>
             </section>
@@ -234,7 +231,7 @@
             <div class="local-group-container">
                 <div>
                     <div>
-                        <div class="local-group-item" v-for="(item,index) in vuData">
+                        <div class="local-group-item" v-for="(item,index) in vuData" >
                             <img class="local-group-img" :src="item.avatar">
                             <div class="new-local-group-detail ">
                                 <div class="local-group-name" v-text="item.uname"></div>
@@ -243,7 +240,7 @@
                                     <span class="local-group-timer" v-text="formatTime(item.leftTime)"></span>
                                 </div>
                             </div>
-                            <div class="local-group-btn-border special-btn" @click="openPin(index)">去拼单</div>
+                            <div class="local-group-btn-border special-btn" @click="showSku(2)">去拼单</div>
                         </div>
                     </div>
                 </div>
@@ -252,32 +249,9 @@
         <div id="goods-reviews-module " class="goods-reviews-container" @click="goComments">
             <div class="goods-reviews-header " data-active="before-white ">
                 <div class="goods-reviews-title ">
-                    <div class="goods-reviews-num " v-text="'商品评价('+detailInfo.goodRes.judge+')'"></div> <span class="goods-reviews-more ">查看全部</span>
-
+                    <div class="goods-reviews-num " v-text="'商品评价'"></div> <span class="goods-reviews-more ">查看全部</span>
                 </div>
             </div>
-           <!--  <div class="goods-reviews-tags ">
-                <ul id="grt-container " class="grt-container ">
-                    <li data-tag="d325c2eb5d68232bfff36e65f2ffc61c " style="display:inherit "><span>眼镜很好看(253)</span>
-
-                    </li>
-                    <li data-tag="50ca93f3dec56565c46c03149fd1eaf9 " style="display:inherit "><span>度数高(198)</span>
-
-                    </li>
-                    <li data-tag="ef7bc5da221112376d9961c198834f9f " style="display:inherit "><span>质量很好(157)</span>
-
-                    </li>
-                    <li data-tag="0ad8c17dc30f2e42283d0fa81163d64c " style="display:inherit "><span>物流很快(144)</span>
-
-                    </li>
-                    <li data-tag="fdf56c6da5046de3a1d0f9d284aaf02b " style="display:inherit "><span>服务态度很好(88)</span>
-
-                    </li>
-                    <li data-tag="aee6107d635b40fef6d896cd8d311cf8 " class="grt-tag-inactive " style="display:none "><span>镜片太厚了(188)</span>
-
-                    </li>
-                </ul>
-            </div> -->
             <div class="goods-reviews-list">
                 <div :class="index>0?'reviews-item-bt':'reviews-item'" v-for="(item,index) in judge">
                     <div class="reviews-item-title ">
@@ -302,554 +276,15 @@
                         </div>
                     </div>
                     <div class="goods-mall-btn" @click="goShop"><span>进店逛逛</span>
-
                     </div>
                 </div>
-             <!--    <div class="goods-mall-dsr-a goods-mall-dsr-a-new-ui">
-                    <div class="dsr-item text-left ">
-                        <div class="dsr-name ">
-                            <div class="dsr-center ">描述相符</div>
-                        </div>
-                        <div class="dsr-score up " style="background-color:#DAF8CD ">
-                            <div class="dsr-center " style="color:#20B00E;font-size:0.11rem ">低</div>
-                        </div>
-                    </div>
-                    <div class="dsr-item text-center ">
-                        <div class="dsr-name ">
-                            <div class="dsr-center ">服务态度</div>
-                        </div>
-                        <div class="dsr-score up " style="background-color:#FCE5E5 ">
-                            <div class="dsr-center " style="color:#E02E24;font-size:0.11rem ">高</div>
-                        </div>
-                    </div>
-                    <div class="dsr-item text-right ">
-                        <div class="dsr-name ">
-                            <div class="dsr-center ">物流服务</div>
-                        </div>
-                        <div class="dsr-score up " style="background-color:#DAF8CD ">
-                            <div class="dsr-center " style="color:#20B00E;font-size:0.11rem ">低</div>
-                        </div>
-                    </div>
-                </div> -->
             </div>
         </div>
         <div>
             <div class="goods-details ">
                 <p>商品详情</p>
-                <!-- <div class="goods-details-desc ">
-                    <div class="goods-details-desc-content ">近视眼镜女韩版潮有度数多边形网红款眼睛平光防蓝光辐射眼镜框女</div>
-                </div> -->
                 <div class="gd-item " v-for="(item,index) in detailInfo.gpicInfo">
                     <img class="gd-img" style="width: 100%;" :src="item">
-                </div>
-            </div>
-         <!--    <div class="g-price-desc-title "><span>点击查看商品价格说明</span>
-
-            </div> -->
-        </div>
-        <!-- 商品推荐 -->
-        <div id="goods-recommend-container ">
-            <div id="goods-rec-list-title " class="goods-recommend-title "><span class="mark-bag-icon "></span><span>相似商品</span>
-
-            </div>
-            <div class="base-list-wrapper double-list-v2 ">
-                <div class="double-grid-one-v2 double-grid-one-v2-0 ">
-                    <div class="double-grid-item-v2 noHasTag ">
-                        <div class="std-goods-image-square ">
-                            <img data-url="//t00img.yangkeduo.com/goods/images/2018-11-06/0619b9748b9e26272d2562bd3979f155.jpeg " data-index="0 ">
-                        </div>
-                        <div class="detail show-tags noHasTag ">
-                            <div class="name-block show-tags ">
-                                <p class="goods-name ">韩版超轻多边形近视眼镜框女复古圆脸学生男有度数防辐射平光镜潮</p>
-                            </div> <span class="re-goods-tags "></span>
-
-                            <div class="core ">
-                                <div class="info ">
-                                    <p class="sale-price "><i>￥</i>8.9</p>
-                                    <p class="sold-quantity ">已拼3437件</p>
-                                </div>
-                                <div class="local-groups " style="display: none; "><span></span>
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="double-grid-one-v2 double-grid-one-v2-1 ">
-                    <div class="double-grid-item-v2 noHasTag ">
-                        <div class="std-goods-image-square ">
-                            <img data-url="//t00img.yangkeduo.com/goods/images/2018-12-15/05ef56d087e7ddcbc6f8048c0b808c04.jpeg " data-index="1 ">
-                        </div>
-                        <div class="detail show-tags noHasTag ">
-                            <div class="name-block show-tags ">
-                                <p class="goods-name ">
-                                    <img class="goods-promotion-flag activity-tag-gap " src="//t13img.yangkeduo.com/cart/2019-02-13/195cdd208c50d181b18959a34a830cb2.png ">抖音同款眼镜女韩版学生猫耳朵平光镜无度数防蓝光防辐射近视眼镜</p>
-                            </div> <span class="re-goods-tags "></span>
-
-                            <div class="core ">
-                                <div class="info ">
-                                    <p class="sale-price "><i>￥</i>9.5</p>
-                                    <p class="sold-quantity ">已拼7.3万件</p>
-                                </div>
-                                <div class="local-groups " style=" "><span></span>
-
-                                    <div class="avatar single-avatar ">
-                                        <img src="//t20img.yangkeduo.com/a/97a68e9fa17a9b3e23d78b4bc3d7db70a63ef809-1534495893?imageMogr2/thumbnail/100x ">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="double-grid-one-v2 double-grid-one-v2-2 ">
-                    <div class="double-grid-item-v2 false ">
-                        <div class="std-goods-image-square ">
-                            <img data-url="//t00img.yangkeduo.com/goods/images/2018-08-01/1c8ea915fde1138b1d28fdb8a377a03e.jpeg " data-index="2 ">
-                        </div>
-                        <div class="detail show-tags false ">
-                            <div class="name-block show-tags ">
-                                <p class="goods-name ">防蓝光多边形眼镜女韩版学生配近视超轻眼镜框网红抖音同款平光镜</p>
-                            </div> <span class="re-goods-tags "><span><span class="re-goods-tag "
-                                                                    style="color: rgb(255, 87, 6); background-color: rgba(255, 87, 6, 0.05); ">极速退款</span></span>
-                            </span>
-                            <div class="core ">
-                                <div class="info ">
-                                    <p class="sale-price "><i>￥</i>12.8</p>
-                                    <p class="sold-quantity ">已拼2.4万件</p>
-                                </div>
-                                <div class="local-groups " style="display: none; "><span></span>
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="double-grid-one-v2 double-grid-one-v2-3 ">
-                    <div class="double-grid-item-v2 false ">
-                        <div class="std-goods-image-square ">
-                            <img data-url="//t00img.yangkeduo.com/goods/images/2018-11-24/b4899758e862fe8c60e22d039958ca85.jpeg " data-index="3 ">
-                        </div>
-                        <div class="detail show-tags false ">
-                            <div class="name-block show-tags ">
-                                <p class="goods-name ">
-                                    <img class="goods-promotion-flag activity-tag-gap " src="//t13img.yangkeduo.com/cart/2019-02-13/195cdd208c50d181b18959a34a830cb2.png ">学生成品近视眼镜女防蓝光平光镜复古多边形眼镜框文艺近视镜男潮</p>
-                            </div> <span class="re-goods-tags "></span>
-
-                            <div class="core ">
-                                <div class="info ">
-                                    <p class="sale-price "><i>￥</i>8.9</p>
-                                    <p class="sold-quantity ">已拼1.5万件</p>
-                                </div>
-                                <div class="local-groups " style=" "><span></span>
-
-                                    <div class="avatar ">
-                                        <img src="//t20img.yangkeduo.com/a/524881944631f01a99a335321d2c2d55e133a91f-1537062563?imageMogr2/thumbnail/100x ">
-                                    </div>
-                                    <div class="avatar ">
-                                        <img src="//t20img.yangkeduo.com/a/d523570625344342894fabac0f2fb115b7e967e0-1549629848?imageMogr2/thumbnail/100x ">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="double-grid-one-v2 double-grid-one-v2-4 ">
-                    <div class="double-grid-item-v2 noHasTag ">
-                        <div class="std-goods-image-square ">
-                            <img data-url="//t00img.yangkeduo.com/goods/images/2018-08-12/99c4668ef81ea555cf296b4e403ef9c7.jpeg " data-index="4 ">
-                        </div>
-                        <div class="detail show-tags noHasTag ">
-                            <div class="name-block show-tags ">
-                                <p class="goods-name ">
-                                    <img class="goods-promotion-flag activity-tag-gap " src="//t13img.yangkeduo.com/cart/2019-02-13/195cdd208c50d181b18959a34a830cb2.png ">眼镜女男韩版潮复古原宿风多边形素颜圆脸眼睛框镜架配近视眼镜女</p>
-                            </div> <span class="re-goods-tags "></span>
-
-                            <div class="core ">
-                                <div class="info ">
-                                    <p class="sale-price "><i>￥</i>12.5</p>
-                                    <p class="sold-quantity ">已拼5.4万件</p>
-                                </div>
-                                <div class="local-groups " style="display: none; "><span></span>
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="double-grid-one-v2 double-grid-one-v2-5 ">
-                    <div class="double-grid-item-v2 noHasTag ">
-                        <div class="std-goods-image-square ">
-                            <img data-url="//t00img.yangkeduo.com/goods/images/2018-10-15/aa659c34e74a6e2021cbf04d8887c719.jpeg " data-index="5 ">
-                        </div>
-                        <div class="detail show-tags noHasTag ">
-                            <div class="name-block show-tags ">
-                                <p class="goods-name ">
-                                    <img class="goods-promotion-flag activity-tag-gap " src="//t13img.yangkeduo.com/cart/2019-02-13/195cdd208c50d181b18959a34a830cb2.png ">近视眼镜女韩版复古带链条ins原宿眼镜金丝边防辐射学生平光镜潮</p>
-                            </div> <span class="re-goods-tags "></span>
-
-                            <div class="core ">
-                                <div class="info ">
-                                    <p class="sale-price "><i>￥</i>4.72</p>
-                                    <p class="sold-quantity ">已拼9.4万件</p>
-                                </div>
-                                <div class="local-groups " style=" "><span></span>
-
-                                    <div class="avatar ">
-                                        <img src="//t20img.yangkeduo.com/a/b4383784dbdd33b8285f9590780fa8275db468b5-1550292809?imageMogr2/thumbnail/100x ">
-                                    </div>
-                                    <div class="avatar ">
-                                        <img src="//t20img.yangkeduo.com/a/9f8c9bbc999737b4b6fee8bdce1971606c0730c9-1550664203?imageMogr2/thumbnail/100x ">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="double-grid-one-v2 double-grid-one-v2-6 ">
-                    <div class="double-grid-item-v2 false ">
-                        <div class="std-goods-image-square ">
-                            <img data-url="//t00img.yangkeduo.com/goods/images/2018-11-20/2da45d142f4206fcdf8988e45019cb00.jpeg " data-index="6 ">
-                        </div>
-                        <div class="detail show-tags false ">
-                            <div class="name-block show-tags ">
-                                <p class="goods-name ">韩版潮小清新眼镜女小框文艺学生近视眼镜框椭圆可爱平光眼镜架男</p>
-                            </div> <span class="re-goods-tags "></span>
-
-                            <div class="core ">
-                                <div class="info ">
-                                    <p class="sale-price "><i>￥</i>4.9</p>
-                                    <p class="sold-quantity ">已拼3.3万件</p>
-                                </div>
-                                <div class="local-groups " style=" "><span></span>
-
-                                    <div class="avatar ">
-                                        <img src="//t20img.yangkeduo.com/a/53ce3d282bcfd285c1d77afac3acc478d62843f9-1550496006?imageMogr2/thumbnail/100x ">
-                                    </div>
-                                    <div class="avatar ">
-                                        <img src="//t20img.yangkeduo.com/a/8efbd133b252e596c8c5d9f4f97683e8771bfdf8-1549788566?imageMogr2/thumbnail/100x ">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="double-grid-one-v2 double-grid-one-v2-7 ">
-                    <div class="double-grid-item-v2 false ">
-                        <div class="std-goods-image-square ">
-                            <img data-url="//t00img.yangkeduo.com/goods/images/2018-12-10/7a989b5e02b033a83bb2242771d0ce76.jpeg " data-index="7 ">
-                        </div>
-                        <div class="detail show-tags false ">
-                            <div class="name-block show-tags ">
-                                <p class="goods-name ">
-                                    <img class="goods-promotion-flag activity-tag-gap " src="//t13img.yangkeduo.com/cart/2019-02-13/195cdd208c50d181b18959a34a830cb2.png ">防辐射蓝光近视镜平光镜无度数圆框眼镜男韩版素颜眼镜女潮眼镜框</p>
-                            </div> <span class="re-goods-tags "><span><span class="re-goods-tag "
-                                                                    style="color: rgb(255, 87, 6); background-color: rgba(255, 87, 6, 0.05); ">第2件减2元</span></span>
-                            </span>
-                            <div class="core ">
-                                <div class="info ">
-                                    <p class="sale-price "><i>￥</i>9.4</p>
-                                    <p class="sold-quantity ">已拼7.2万件</p>
-                                </div>
-                                <div class="local-groups " style=" "><span></span>
-
-                                    <div class="avatar ">
-                                        <img src="//t20img.yangkeduo.com/a/69ef2bc34d014d144288fe39317ff61948922e69-1527264381?imageMogr2/thumbnail/100x ">
-                                    </div>
-                                    <div class="avatar ">
-                                        <img src="//t20img.yangkeduo.com/a/7c926559aae201794c850311f5220408c0278c60-1546423605?imageMogr2/thumbnail/100x ">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="double-grid-one-v2 double-grid-one-v2-8 ">
-                    <div class="double-grid-item-v2 false ">
-                        <div class="std-goods-image-square ">
-                            <img data-url="//t00img.yangkeduo.com/goods/images/2018-12-03/4c1807a62e59138652aa298a27c32222.jpeg " data-index="8 ">
-                        </div>
-                        <div class="detail show-tags false ">
-                            <div class="name-block show-tags ">
-                                <p class="goods-name ">防辐射防蓝光抗疲劳眼镜男女网红韩版百搭</p>
-                            </div> <span class="re-goods-tags "><span><span class="re-goods-tag "
-                                                                    style="color: rgb(255, 87, 6); background-color: rgba(255, 87, 6, 0.05); ">退货包运费</span></span>
-                            </span>
-                            <div class="core ">
-                                <div class="info ">
-                                    <p class="sale-price "><i>￥</i>39</p>
-                                    <p class="sold-quantity ">已拼1.9万件</p>
-                                </div>
-                                <div class="local-groups " style=" "><span></span>
-
-                                    <div class="avatar ">
-                                        <img src="//t20img.yangkeduo.com/a/1b6edd6a844ac76191b59801acf849653d37a767-1539159718?imageMogr2/thumbnail/100x ">
-                                    </div>
-                                    <div class="avatar ">
-                                        <img src="//t20img.yangkeduo.com/a/af9896c0a184de6a459910248903617c05f94311-1528596172?imageMogr2/thumbnail/100x ">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="double-grid-one-v2 double-grid-one-v2-9 ">
-                    <div class="double-grid-item-v2 false ">
-                        <div class="std-goods-image-square ">
-                            <img data-url="//t00img.yangkeduo.com/goods/images/2018-10-24/d7a821d980ea3e97b79e582a2fb1ff1a.jpeg " data-index="9 ">
-                        </div>
-                        <div class="detail show-tags false ">
-                            <div class="name-block show-tags ">
-                                <p class="goods-name ">
-                                    <img class="goods-promotion-flag activity-tag-gap " src="//t13img.yangkeduo.com/cart/2019-02-13/195cdd208c50d181b18959a34a830cb2.png ">近视眼镜女有度数多边形网红款眼镜框不规则眼镜架男近视镜女学生</p>
-                            </div> <span class="re-goods-tags "></span>
-
-                            <div class="core ">
-                                <div class="info ">
-                                    <p class="sale-price "><i>￥</i>11</p>
-                                    <p class="sold-quantity ">已拼2.3万件</p>
-                                </div>
-                                <div class="local-groups " style=" "><span></span>
-
-                                    <div class="avatar single-avatar ">
-                                        <img src="//t20img.yangkeduo.com/a/ae81c941557153bbf75e125d78cd1bc1e6126375-1544688785?imageMogr2/thumbnail/100x ">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="double-grid-one-v2 double-grid-one-v2-10 ">
-                    <div class="double-grid-item-v2 noHasTag ">
-                        <div class="std-goods-image-square ">
-                            <img data-url="//t00img.yangkeduo.com/goods/images/2018-11-07/1047de5958dd6527d6da53f12dde70b7.jpeg " data-index="10 ">
-                        </div>
-                        <div class="detail show-tags noHasTag ">
-                            <div class="name-block show-tags ">
-                                <p class="goods-name ">网红同款防辐射近视眼镜框架女多边形韩版潮复古平面平光镜男学生</p>
-                            </div> <span class="re-goods-tags "></span>
-
-                            <div class="core ">
-                                <div class="info ">
-                                    <p class="sale-price "><i>￥</i>8.9</p>
-                                    <p class="sold-quantity ">已拼2000件</p>
-                                </div>
-                                <div class="local-groups " style=" "><span></span>
-
-                                    <div class="avatar single-avatar ">
-                                        <img src="//pinduoduoimg.yangkeduo.com/avatar/default/10.png ">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="double-grid-one-v2 double-grid-one-v2-11 ">
-                    <div class="double-grid-item-v2 noHasTag ">
-                        <div class="std-goods-image-square ">
-                            <img data-url="//t00img.yangkeduo.com/goods/images/2018-11-28/45e06f16f78bebabfd9f100e8c516b2c.jpeg " data-index="11 ">
-                        </div>
-                        <div class="detail show-tags noHasTag ">
-                            <div class="name-block show-tags ">
-                                <p class="goods-name ">
-                                    <img class="goods-promotion-flag activity-tag-gap " src="//t13img.yangkeduo.com/cart/2019-02-13/195cdd208c50d181b18959a34a830cb2.png ">韩版多边形眼镜女有度数近视眼镜男网红款眼镜框架女学生配近视镜</p>
-                            </div> <span class="re-goods-tags "></span>
-
-                            <div class="core ">
-                                <div class="info ">
-                                    <p class="sale-price "><i>￥</i>12.25</p>
-                                    <p class="sold-quantity ">已拼1.7万件</p>
-                                </div>
-                                <div class="local-groups " style="display: none; "><span></span>
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="double-grid-one-v2 double-grid-one-v2-12 ">
-                    <div class="double-grid-item-v2 noHasTag ">
-                        <div class="std-goods-image-square ">
-                            <img data-url="//t00img.yangkeduo.com/goods/images/2018-10-26/b81dea22e80e0f8b4c690b93a6a0eb1c.jpeg " data-index="12 ">
-                        </div>
-                        <div class="detail show-tags noHasTag ">
-                            <div class="name-block show-tags ">
-                                <p class="goods-name ">
-                                    <img class="goods-promotion-flag activity-tag-gap " src="//t13img.yangkeduo.com/cart/2019-02-13/195cdd208c50d181b18959a34a830cb2.png ">近视眼镜女韩版潮有度数多边形框网红款防蓝光复古眼镜框架男学生</p>
-                            </div> <span class="re-goods-tags "></span>
-
-                            <div class="core ">
-                                <div class="info ">
-                                    <p class="sale-price "><i>￥</i>21.66</p>
-                                    <p class="sold-quantity ">已拼2.7万件</p>
-                                </div>
-                                <div class="local-groups " style="display: none; "><span></span>
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="double-grid-one-v2 double-grid-one-v2-13 ">
-                    <div class="double-grid-item-v2 noHasTag ">
-                        <div class="std-goods-image-square ">
-                            <img data-url="//t00img.yangkeduo.com/goods/images/2018-10-08/55a4ec8746d10de9816f8c3d0f8b94d5.jpeg " data-index="13 ">
-                        </div>
-                        <div class="detail show-tags noHasTag ">
-                            <div class="name-block show-tags ">
-                                <p class="goods-name ">防蓝光眼镜防辐射面平光镜男女圆框手机护目镜长圆脸抗疲劳无度数</p>
-                            </div> <span class="re-goods-tags "></span>
-
-                            <div class="core ">
-                                <div class="info ">
-                                    <p class="sale-price "><i>￥</i>5.9</p>
-                                    <p class="sold-quantity ">已拼1.6万件</p>
-                                </div>
-                                <div class="local-groups " style="display: none; "><span></span>
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="double-grid-one-v2 double-grid-one-v2-14 ">
-                    <div class="double-grid-item-v2 noHasTag ">
-                        <div class="std-goods-image-square ">
-                            <img data-url="//t00img.yangkeduo.com/goods/images/2018-08-02/3cce6ec0532181d488406189d951793d.jpeg " data-index="14 ">
-                        </div>
-                        <div class="detail show-tags noHasTag ">
-                            <div class="name-block show-tags ">
-                                <p class="goods-name ">【月光石】防蓝光辐射电脑护目镜无度数圆框平光镜近视眼镜男女款</p>
-                            </div> <span class="re-goods-tags "></span>
-
-                            <div class="core ">
-                                <div class="info ">
-                                    <p class="sale-price "><i>￥</i>14.8</p>
-                                    <p class="sold-quantity ">已拼1.6万件</p>
-                                </div>
-                                <div class="local-groups " style="display: none; "><span></span>
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="double-grid-one-v2 double-grid-one-v2-15 ">
-                    <div class="double-grid-item-v2 noHasTag ">
-                        <div class="std-goods-image-square ">
-                            <img data-url="//t00img.yangkeduo.com/goods/images/2018-11-14/a46be834b348579bcc85365365aadb22.jpeg " data-index="15 ">
-                        </div>
-                        <div class="detail show-tags noHasTag ">
-                            <div class="name-block show-tags ">
-                                <p class="goods-name ">金边多边形复古原宿风近视眼镜框ins抖音同款带链条韩版平光镜女</p>
-                            </div> <span class="re-goods-tags "></span>
-
-                            <div class="core ">
-                                <div class="info ">
-                                    <p class="sale-price "><i>￥</i>5.9</p>
-                                    <p class="sold-quantity ">已拼1.1万件</p>
-                                </div>
-                                <div class="local-groups " style="display: none; "><span></span>
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="double-grid-one-v2 double-grid-one-v2-16 ">
-                    <div class="double-grid-item-v2 noHasTag ">
-                        <div class="std-goods-image-square ">
-                            <img data-url="//t00img.yangkeduo.com/goods/images/2018-09-22/02f4eacefd4781e66a3b8cde330f0851.jpeg " data-index="16 ">
-                        </div>
-                        <div class="detail show-tags noHasTag ">
-                            <div class="name-block show-tags ">
-                                <p class="goods-name ">鹿晗同款圆框眼镜复古圆脸圆形金属近视眼镜男女百搭款平面平光镜</p>
-                            </div> <span class="re-goods-tags "></span>
-
-                            <div class="core ">
-                                <div class="info ">
-                                    <p class="sale-price "><i>￥</i>4.9</p>
-                                    <p class="sold-quantity ">已拼4.2万件</p>
-                                </div>
-                                <div class="local-groups " style="display: none; "><span></span>
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="double-grid-one-v2 double-grid-one-v2-17 ">
-                    <div class="double-grid-item-v2 noHasTag ">
-                        <div class="std-goods-image-square ">
-                            <img data-url="//t00img.yangkeduo.com/goods/images/2018-11-04/5e1fcddee30fee7ed8135ca3659e4353.jpeg " data-index="17 ">
-                        </div>
-                        <div class="detail show-tags noHasTag ">
-                            <div class="name-block show-tags ">
-                                <p class="goods-name ">近视眼镜女韩版潮有度数复古金丝多边形素颜圆脸眼睛框架网红款男</p>
-                            </div> <span class="re-goods-tags "></span>
-
-                            <div class="core ">
-                                <div class="info ">
-                                    <p class="sale-price "><i>￥</i>9.9</p>
-                                    <p class="sold-quantity ">已拼1.7万件</p>
-                                </div>
-                                <div class="local-groups " style="display: none; "><span></span>
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="double-grid-one-v2 double-grid-one-v2-18 ">
-                    <div class="double-grid-item-v2 noHasTag ">
-                        <div class="std-goods-image-square ">
-                            <img data-url="//t00img.yangkeduo.com/goods/images/2018-10-13/7755c2ea21ca9e90c696fa47c099ccb2.jpeg " data-index="18 ">
-                        </div>
-                        <div class="detail show-tags noHasTag ">
-                            <div class="name-block show-tags ">
-                                <p class="goods-name ">复古不规则多边形眼镜框女金属网红同款素颜韩版潮有度数近视镜架</p>
-                            </div> <span class="re-goods-tags "></span>
-
-                            <div class="core ">
-                                <div class="info ">
-                                    <p class="sale-price "><i>￥</i>5.9</p>
-                                    <p class="sold-quantity ">已拼2.7万件</p>
-                                </div>
-                                <div class="local-groups " style="display: none; "><span></span>
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="double-grid-one-v2 double-grid-one-v2-19 ">
-                    <div class="double-grid-item-v2 noHasTag ">
-                        <div class="std-goods-image-square ">
-                            <img data-url="//t00img.yangkeduo.com/goods/images/2018-10-29/dd0a9188f50ac58e9e76f3e48c06d65e.jpeg " data-index="19 ">
-                        </div>
-                        <div class="detail show-tags noHasTag ">
-                            <div class="name-block show-tags ">
-                                <p class="goods-name ">多边形眼镜女韩版平光镜近视眼镜女有度数复古眼镜框架抖音网红款</p>
-                            </div> <span class="re-goods-tags "></span>
-
-                            <div class="core ">
-                                <div class="info ">
-                                    <p class="sale-price "><i>￥</i>6.9</p>
-                                    <p class="sold-quantity ">已拼7667件</p>
-                                </div>
-                                <div class="local-groups " style="display: none; "><span></span>
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="load-more pull-up-show ">
-                    <div class="list-center "><span class="img-rotate-bg "></span><span class="loading-text ">正在加载中...</span>
-
-                    </div>
-                </div>
-                <div class="go-top top-button-hide "><span>顶部</span>
-
                 </div>
             </div>
         </div>
@@ -882,7 +317,7 @@
                             <img :src="skuSelDetailInfo.pic">
                             <div class="sku-selector-head-content ">
                                 <div class="sku-selector-price">
-                                    ￥{{skuSelDetailInfo.price}}
+                                    ￥{{skuSelDetailInfo.groupprice}}
                                     <span class="sku-quantity-tip">仅剩：{{skuSelDetailInfo.stock}}</span>
                                 </div>
                                 <div class="sku-selector-desc" v-text="skuText"></div>
@@ -942,104 +377,14 @@
                     </div>
                     <div class="g-b-c-item g-b-t-home" onclick="window.location.href='index.html'"><span>回到首页</span>
                     </div>
-                    <div class="g-b-c-item g-b-t-help"><span>帮助与反馈</span>
-                    </div>
                 </div><span class="goods-bottom-tab-tri-1"></span>
             </div>
         </div>
     </div>
 </div>
-    <div id="global-disable-click">
-        <div class="scroll-container-hidden"></div>
-    </div>
-    <!--拼单列表-->
-    <div>
-        <div class="local-groups-popup-wrapper" style="display: none;">
-            <div class="lgp-position">
-                <div class="lgp-modal">
-                    <div class="lgp-title">可插队的拼单</div>
-                    <div id="local-group-popup-list" class="local-group-popup-list-container more-height" style="touch-action: none;">
-                        <div style="min-height: 101%; transition-timing-function: cubic-bezier(0.1, 0.57, 0.1, 1); transition-duration: 0ms; transform: translate(0px, 0px) translateZ(0px);">
-                            <div class="lgp-content">
-                                <div class="popup-local-group-item">
-                                    <img class="popup-local-group-img history" src="//t20img.yangkeduo.com/a/8e0c8201740aa8a2f22d58f33cdb29ca51a961cf-1548735812?imageMogr2/thumbnail/100x">
-                                    <img class="popup-local-group-img history" src="//t20img.yangkeduo.com/a/3d43449ede9fb2c2945dd31729eabef629f18805-1549956451?imageMogr2/thumbnail/100x">
-                                    <div class="popup-local-group-detail history"><span class="content"><span>@林晓...</span>、香草</span>
-                                    </div>
-                                    <div class="popup-local-group-btn-border special-btn" data-active="before-red">插队拼单</div>
-                                </div>
-                                <div class="popup-local-group-item">
-                                    <img class="popup-local-group-img history single" src="//t20img.yangkeduo.com/a/6fc502799f17cbc2b245333d760c823e250bb752-1550661095?imageMogr2/thumbnail/100x">
-                                    <div class="popup-local-group-detail history"><span class="content">葵</span>
-                                    </div>
-                                    <div class="popup-local-group-btn-border special-btn" data-active="before-red">插队拼单</div>
-                                </div>
-                                <div class="popup-local-group-item">
-                                    <img class="popup-local-group-img history" src="//t20img.yangkeduo.com/a/9f27f95d3fa52ca55dd2c6cfdd8aeca7363d74bc-1529987439?imageMogr2/thumbnail/100x">
-                                    <img class="popup-local-group-img history" src="//t20img.yangkeduo.com/a/de377bb99080adda6a349b3b7fd8c69318ce85e8-1527854989?imageMogr2/thumbnail/100x">
-                                    <div class="popup-local-group-detail history"><span class="content">桂珍、<span>小猪涵...</span></span>
-                                    </div>
-                                    <div class="popup-local-group-btn-border special-btn" data-active="before-red">插队拼单</div>
-                                </div>
-                                <div class="popup-local-group-item">
-                                    <img class="popup-local-group-img history" src="//t20img.yangkeduo.com/a/03ea8d20ad05b0d9572398080777edc50827fd13-1546263924?imageMogr2/thumbnail/100x">
-                                    <img class="popup-local-group-img history" src="//t20img.yangkeduo.com/a/190ebfb68588dbf9cf380a26a650096e86f63bb7-1550563274?imageMogr2/thumbnail/100x">
-                                    <div class="popup-local-group-detail history"><span class="content"><span>Mir...</span>、<span>藍琦雪...</span></span>
-                                    </div>
-                                    <div class="popup-local-group-btn-border special-btn" data-active="before-red">插队拼单</div>
-                                </div>
-                                <div class="popup-local-group-item">
-                                    <img class="popup-local-group-img history single" src="//t20img.yangkeduo.com/a/ad868e3095332eed09475f9c8192b64fafd72d6c-1545622564?imageMogr2/thumbnail/100x">
-                                    <div class="popup-local-group-detail history"><span class="content">亓</span>
-                                    </div>
-                                    <div class="popup-local-group-btn-border special-btn" data-active="before-red">插队拼单</div>
-                                </div>
-                                <div class="popup-local-group-item">
-                                    <img class="popup-local-group-img history" src="//t20img.yangkeduo.com/a/873fa9b7bd3665eb1bed1949ca8942e77d07dcfd-1550375011?imageMogr2/thumbnail/100x">
-                                    <img class="popup-local-group-img history" src="//t20img.yangkeduo.com/a/3368e8df10609c6b71ab329e85e92b48840c0754-1549539747?imageMogr2/thumbnail/100x">
-                                    <div class="popup-local-group-detail history"><span class="content"><span>^别在...</span>、A.</span>
-                                    </div>
-                                    <div class="popup-local-group-btn-border special-btn" data-active="before-red">插队拼单</div>
-                                </div>
-                                <div class="popup-local-group-item">
-                                    <img class="popup-local-group-img history" src="//t20img.yangkeduo.com/a/327ecfdce53f310c01898137660d075dca180914-1548120307?imageMogr2/thumbnail/100x">
-                                    <img class="popup-local-group-img history" src="//t20img.yangkeduo.com/a/0fd481bb6762c8a3e9593da05752a0c3ddc4507c-1542502648?imageMogr2/thumbnail/100x">
-                                    <div class="popup-local-group-detail history"><span class="content">LLR、<span>Reb...</span></span>
-                                    </div>
-                                    <div class="popup-local-group-btn-border special-btn" data-active="before-red">插队拼单</div>
-                                </div>
-                                <div class="popup-local-group-item">
-                                    <img class="popup-local-group-img history" src="//t20img.yangkeduo.com/a/c1647493df1f2ce6260a96136b0b813658b5c4c2-1549080754?imageMogr2/thumbnail/100x">
-                                    <img class="popup-local-group-img history" src="//t21img.yangkeduo.com/a/264ab6ce2399740cc991db3089c0bd2a441f1297-1519481921?imageMogr2/thumbnail/100x">
-                                    <div class="popup-local-group-detail history"><span class="content"><span>张思凡...</span>、<span>白菜不...</span></span>
-                                    </div>
-                                    <div class="popup-local-group-btn-border special-btn" data-active="before-red">插队拼单</div>
-                                </div>
-                                <div class="popup-local-group-item">
-                                    <img class="popup-local-group-img history" src="//t20img.yangkeduo.com/a/34394da6a7804e6c81d77b252c9f7c71c3af40a6-1550717549?imageMogr2/thumbnail/100x">
-                                    <img class="popup-local-group-img history" src="//t20img.yangkeduo.com/a/30ea6b6e43acef575bb025b6cafdc337827c5ad8-1549872291?imageMogr2/thumbnail/100x">
-                                    <div class="popup-local-group-detail history"><span class="content">幼幼.、浅兮</span>
-                                    </div>
-                                    <div class="popup-local-group-btn-border special-btn" data-active="before-red">插队拼单</div>
-                                </div>
-                                <div class="popup-local-group-item">
-                                    <img class="popup-local-group-img history" src="//t20img.yangkeduo.com/a/3b505ae5c6d1b174f5104dc8ce730db0d06f274d-1550367941?imageMogr2/thumbnail/100x">
-                                    <img class="popup-local-group-img history" src="//t20img.yangkeduo.com/a/11d3811734027458dde48859fe4befc013d45c7a-1537176006?imageMogr2/thumbnail/100x">
-                                    <div class="popup-local-group-detail history"><span class="content"><span>像向日...</span>、谢倩</span>
-                                    </div>
-                                    <div class="popup-local-group-btn-border special-btn" data-active="before-red">插队拼单</div>
-                                </div>
-                            </div>
-                            <div class="lgp-footer">仅显示10个可插队的拼单</div>
-                        </div>
-                    </div>
-                    <div class="lgp-f-layer"></div>
-                    <div class="lgp-close"></div>
-                </div>
-            </div>
-            <div class="lgp-background"></div>
-        </div>
-    </div>
+<div id="global-disable-click">
+    <div class="scroll-container-hidden"></div>
+</div>
 <script src="./script/jquery-3.2.1.min.js"></script>
 <script src="./script/common.js"></script>
 <script src="./script/aui-toast.js"></script>
@@ -1048,329 +393,374 @@
 <script src="./script/vue.js"></script>
 <script src="./script/swiper.min.js"></script>
 <script src="./script/previewImage.min.js"></script>
+<script src="http://res.wx.qq.com/open/js/jweixin-1.4.0.js"></script>
 <script type="text/javascript">
     var pageParam=pageParam();
-    var user=getStorage("user");
+    var userInfo = JSON.parse(getStorage("userInfo"));
     var vm=new Vue({
-    el:"#app",
-    data:{
-        detailInfo:{goodRes:{
-            gid: "",
-            shopid: "",
-            gname: "",
-            price: "",
-            groupprice: "",
-            groupnum: "",
-            grouphours: "",
-            stock: "",
-            sellnum: "0",
-            score: "",
-            judge: ""
-        }},
-        serviceShow:false,
-        skuShow:false,
-        skuSelected:{},
-        skuText:"",
-        skuSelDetailInfo:{},
-        selected_ids:null,
-        buyCount:1,
-        skuOk:false,
-        vuData:[],
-        showPin:false,
-        pinIndex:0,
-        judge:[],
-        shopInfo:{},
-        isCollect:false,
-        isShowMore:false,
-        buyType:0
-    },
-    methods:{
-        loadDetailInfo:function(){
-            // 加载商品详情
-            var self=this;
-            $.ajax({
-                url:PHP_SERVE_URL+"/shop/goodsInfo",
-                type:"post",
-                data:{goodsId:pageParam.goodsId},
-                success:function (res) {
-                    if(res.code==0){
-                       for(var a in res.data.goodsFormat){
-                            for(var x in res.data.goodsFormat[a].child){
-                                res.data.goodsFormat[a].child[x].selected=false;
+        el:"#app",
+        data:{
+            detailInfo:{goodRes:{
+                gid: "",
+                shopid: "",
+                gname: "",
+                price: "",
+                groupprice: "",
+                groupnum: "",
+                grouphours: "",
+                stock: "",
+                sellnum: "0",
+                score: "",
+                judge: ""
+            }},
+            serviceShow:false,
+            skuShow:false,
+            skuSelected:{},
+            skuText:"",
+            skuSelDetailInfo:{},
+            selected_ids:null,
+            buyCount:1,
+            skuOk:false,
+            vuData:[],
+            showPin:false,
+            pinIndex:0,
+            judge:[],
+            shopInfo:{},
+            isCollect:false,
+            isShowMore:false,
+            buyType:0
+        },
+        methods:{
+            loadDetailInfo:function(){
+                // 加载商品详情
+                var self=this;
+                $.ajax({
+                    url:PHP_SERVE_URL+"/shop/goodsInfo",
+                    type:"post",
+                    data:{goodsId:pageParam.goodsId},
+                    success:function (res) {
+                        if(res.code==0){
+                           for(var a in res.data.goodsFormat){
+                                for(var x in res.data.goodsFormat[a].child){
+                                    res.data.goodsFormat[a].child[x].selected=false;
+                                }
+                           }
+                           self.detailInfo=res.data;
+                           // 加载商铺信息
+                           self.loadShopInfo();
+                           self.vuData=res.data.vuData;
+                           if(self.vuData.length>0){
+                                // 拼单倒计时
+                               setInterval(function(){
+                                    self.vuDataCutDown();
+                               },1000);
+                           }
+                           if(self.vuData.length>2){
+                                // 拼单滚动
+                               setInterval(function(){
+                                    var el=$(".local-group-item")[0];
+                                    var height=$(el).innerHeight();
+                                    $(el).animate({"margin-top":-height+"px"},function(){
+                                        $(el).css({"margin-top":"0px"});
+                                        $(".local-group-container>div>div").append(el);
+                                    });
+                               },5000);
+                           }
+                            self.skuText="请选择";
+                            for(var i in res.data.goodsFormat){
+                                self.skuSelected[res.data.goodsFormat[i].gfname]={};
+                                self.skuText+=" "+res.data.goodsFormat[i].gfname;
                             }
-                       }
-                       self.detailInfo=res.data;
-                       // 加载商铺信息
-                       self.loadShopInfo();
-                       self.vuData=res.data.vuData;
-                       if(self.vuData.length>0){
-                            // 拼单倒计时
-                           setInterval(function(){
-                                self.vuDataCutDown();
-                           },1000);
-                       }
-                       if(self.vuData.length>2){
-                            // 拼单滚动
-                           setInterval(function(){
-                                var el=$(".local-group-item")[0];
-                                var height=$(el).innerHeight();
-                                $(el).animate({"margin-top":-height+"px"},function(){
-                                    $(el).css({"margin-top":"0px"});
-                                    $(".local-group-container>div>div").append(el);
+                            setTimeout(function () {
+                                var swiper = new Swiper('.swiper-container', {
+                                    pagination: {
+                                        el: '.swiper-pagination',
+                                        type: 'fraction',
+                                    },
                                 });
-                           },5000);
-                       }
-                       console.log(self.detailInfo);
-                        self.skuText="请选择";
-                        for(var i in res.data.goodsFormat){
-                            self.skuSelected[res.data.goodsFormat[i].gfname]={};
-                            self.skuText+=" "+res.data.goodsFormat[i].gfname;
-                        }
-                        setTimeout(function () {
-                            var swiper = new Swiper('.swiper-container', {
-                                pagination: {
-                                    el: '.swiper-pagination',
-                                    type: 'fraction',
-                                },
                             });
-                        });
-                        self.skuSelDetailInfo=res.data.gprice[0];
-                    }else{
-                        alert(res.msg);
-                    }
-                }
-            });
-        },
-        showService:function () {
-            // 显示服务
-            var self=this;
-            self.serviceShow=true;
-        },
-        hideService:function () {
-            // 隐藏服务
-            var self=this;
-            self.serviceShow=false;
-        },
-        showSku:function (type) {
-            // 显示sku选择界面
-            var self=this;
-            self.skuShow=true;
-            self.buyType=type;
-        },
-        hideSku:function () {
-            // 隐藏sku选择界面
-            var self=this;
-            self.skuShow=false;
-        },
-        selectSku:function (type,id,name,typeIndex,itemIndex) {
-            // sku选择
-            var self=this;
-            // 记录sku选的值
-            self.$set(self.skuSelected[type],"id",id);
-            self.$set(self.skuSelected[type],"name",name);
-            self.skuText="";
-            // 取消所有选中的状态
-            for(var x in self.detailInfo.goodsFormat[typeIndex].child){
-                self.$set(self.detailInfo.goodsFormat[typeIndex].child[x],"selected",false);
-
-            }
-            // 添加选择状态
-            self.$set(self.detailInfo.goodsFormat[typeIndex].child[itemIndex],"selected",true);
-            // 生成sku选项展示的文本
-            for(var i in self.skuSelected){
-                if(self.skuSelected[i].id){
-                    self.skuText+=" "+self.skuSelected[i].name;
-                    self.skuOk=true;
-                }else if(!self.skuSelected[i].id){
-                    self.skuText="请选择";
-                    for(var b in self.skuSelected){
-                        if(!self.skuSelected[b].id){
-                            self.skuText+=" "+b;
+                            if(res.data.gprice[0]){
+                                self.skuSelDetailInfo=res.data.gprice[0];
+                            }else{
+                                self.skuSelDetailInfo=res.data.goodRes;
+                                self.skuSelDetailInfo.pic = res.data.gpicHead[0];
+                                self.skuOk=true;
+                            }
                         }
                     }
-                    self.skuOk=false;
-                    break;
+                });
+            },
+            showService:function () {
+                // 显示服务
+                var self=this;
+                self.serviceShow=true;
+            },
+            hideService:function () {
+                var self=this;
+                self.serviceShow=false;
+            },
+            showSku:function (type) {
+                var self=this;
+                self.skuShow=true;
+                self.buyType=type;
+            },
+            hideSku:function () {
+                var self=this;
+                self.skuShow=false;
+            },
+            selectSku:function (type,id,name,typeIndex,itemIndex) {
+                var self=this;
+                // 记录sku选的值
+                self.$set(self.skuSelected[type],"id",id);
+                self.$set(self.skuSelected[type],"name",name);
+                self.skuText="";
+                // 取消所有选中的状态
+                for(var x in self.detailInfo.goodsFormat[typeIndex].child){
+                    self.$set(self.detailInfo.goodsFormat[typeIndex].child[x],"selected",false);
                 }
-            }
-            // 获取选定的参数id，生成匹配sku单个项商品所需要的id
-            var idsArr=[];
-            for(var a in self.skuSelected){
-                if(self.skuSelected[a].id){
-                    idsArr.unshift(self.skuSelected[a].id);
-                }
-            }
-            // 根据选定的参数id，匹配sku单个项商品的信息
-            self.selected_ids=idsArr.join(",");
-            for(var skuIndex in self.detailInfo.gprice){
-                if(self.detailInfo.gprice[skuIndex].format_ids==self.selected_ids){
-                    self.skuSelDetailInfo=self.detailInfo.gprice[skuIndex];
-                }
-            }
-        },
-        buyCountControl:function (type) {
-            // 购买数量控制
-            var self=this;
-            if(type==0){
-                if(self.buyCount>1){
-                    self.buyCount--;
-                }
-            }else if(type==1){
-                if(self.buyCount<self.skuSelDetailInfo.stock){
-                    self.buyCount++;
-                }
-            }
-        },
-        quickBuy:function () {
-            // 下单
-            var self=this;
-            var orderParam={};
-            orderParam.goods={gid:self.skuSelDetailInfo.gid,num:self.buyCount,shopId:self.detailInfo.goodRes.shopid,formatIds:self.skuSelDetailInfo.format_ids};
-                orderParam.btype=self.buyType;
-                orderParam.skutext=self.skuText;
-            window.location.href="order_pay.html?goodsInfo="+JSON.stringify(orderParam);
-        },
-        formatTime:function(seconds){
-            // 格式化拼团时间
-            var hour=parseInt(seconds/3600)<10?'0'+parseInt(seconds/3600):parseInt(seconds/3600);
-            var minute=parseInt(seconds%3600/60)<10?'0'+parseInt(seconds%3600/60):parseInt(seconds%3600/60);
-            var second=seconds%3600%60<10?'0'+(seconds%3600%60):seconds%3600%60;
-            return "剩余"+hour+":"+minute+":"+second;
-        },
-        vuDataCutDown:function(){
-            // 拼团时间倒数
-            var self=this;
-            vuData=self.vuData;
-            for(var i in vuData){
-                vuData[i].leftTime--;
-            }
-            self.vuData=vuData;
-        },
-        openPin:function(pinIndex){
-            // 打开拼单界面
-            alert('暂未开放');
-        },
-        loadGoodsJudge:function(){
-            // 加载商品评论
-            var self=this;
-            $.ajax({
-                url:PHP_SERVE_URL+"/shop/goodsJudge",
-                type:"post",
-                data:{goodsId:pageParam.goodsId,pageIndex:1,pageSize:2},
-                success:function (res) {
-                    if(res.code==0){
-                        self.judge=res.data;
-                    }else{
-                        alert(res.msg);
+                // 添加选择状态
+                self.$set(self.detailInfo.goodsFormat[typeIndex].child[itemIndex],"selected",true);
+                // 生成sku选项展示的文本
+                for(var i in self.skuSelected){
+                    if(self.skuSelected[i].id){
+                        self.skuText+=" "+self.skuSelected[i].name;
+                        self.skuOk=true;
+                    }else if(!self.skuSelected[i].id){
+                        self.skuText="请选择";
+                        for(var b in self.skuSelected){
+                            if(!self.skuSelected[b].id){
+                                self.skuText+=" "+b;
+                            }
+                        }
+                        self.skuOk=false;
+                        break;
                     }
                 }
-            });
-        },
-        loadShopInfo:function(){
-            // 加载商铺信息
-            var self=this;
-            $.ajax({
-                url:PHP_SERVE_URL+"/shop/shopInfo",
-                type:"post",
-                data:{shopId:self.detailInfo.goodRes.shopid},
-                success:function (res) {
-                    if(res.code==0){
-                        self.shopInfo=res.data;
-                    }else{
-                        alert(res.msg);
+                // 获取选定的参数id，生成匹配sku单个项商品所需要的id
+                var idsArr=[];
+                for(var a in self.skuSelected){
+                    if(self.skuSelected[a].id){
+                        idsArr.unshift(self.skuSelected[a].id);
                     }
                 }
-            });
-        },
-        goShop:function(){
-            // 前往商店
-            var self=this;
-            window.location.href="store_detail.html?shopId="+self.detailInfo.goodRes.shopid;
-        },
-        getCollectBool:function(){
-            // 获取收藏状态
-            var self=this;
-            $.ajax({
-                url:PHP_SERVE_URL+"/shop/getCollectBool",
-                type:"post",
-                data:{type:1,cid:pageParam.goodsId,openId:user.open_id},
-                success:function (res) {
-                    if(res.code==0){
-                        self.isCollect=Boolean(res.isCollect);
-                    }else{
-                        alert(res.msg);
+                // 根据选定的参数id，匹配sku单个项商品的信息
+                idsArr.sort(function(a,b){
+                    if(a<b){
+                        return -1;
+                    }
+                    if(a>b){
+                        return 1;
+                    }
+                    return 0;
+                });
+                self.selected_ids=idsArr.join(",");
+                for(var skuIndex in self.detailInfo.gprice){
+                    if(self.detailInfo.gprice[skuIndex].format_ids==self.selected_ids){
+                        self.skuSelDetailInfo=self.detailInfo.gprice[skuIndex];
                     }
                 }
-            });
-        },
-        collectGoods:function(){
-              // 收藏取消商品
-            var self=this;
-            $.ajax({
-                url:PHP_SERVE_URL+"/shop/collectGoods",
-                type:"post",
-                data:{goodsId:pageParam.goodsId,openId:user.open_id},
-                success:function (res) {
-                    if(res.code==0){
-                        self.isCollect=!self.isCollect;
-                    }else{
-                        alert(res.msg);
+            },
+            buyCountControl:function (type) {
+                // 购买数量控制
+                var self=this;
+                if(type==0){
+                    if(self.buyCount>1){
+                        self.buyCount--;
+                    }
+                }else if(type==1){
+                    if(self.buyCount<self.skuSelDetailInfo.stock){
+                        self.buyCount++;
                     }
                 }
-            });
-        },
-        showMore:function(){
-            var self=this;
-            self.isShowMore=!self.isShowMore;
-        },
-        bannerFullPage:function(index){
-            var self=this;
-            var obj = {
-                    urls : self.detailInfo.gpicHead,
-                    current : self.detailInfo.gpicHead[index]
+            },
+            quickBuy:function () {
+                // 下单
+                var self=this;
+                var orderParam={gid:self.skuSelDetailInfo.gid,
+                    num:self.buyCount,
+                    shopId:self.detailInfo.goodRes.shopid,
+                    formatIds:self.skuSelDetailInfo.format_ids,
+                    shopName:self.shopInfo.shop_name,
+                    shopLogo:self.shopInfo.shop_logo,
+                    gname:self.detailInfo.goodRes.gname,
+                    gpic:self.detailInfo.gpicHead[0],
+                    skutext:self.skuText,
+                    gprice:self.skuSelDetailInfo.groupprice,
+                    btype:1
                 };
-            previewImage.start(obj);
-        },
-        goComments:function(){
-            // 前往评论
-            window.location.href="goods_comments.html?goodsId="+pageParam.goodsId;
-        }
-    },
-    watch:{
-        buyCount:function (newVal,oldVal) {
-            var self=this;
-            if(parseInt(newVal)<1){
-                self.buyCount=1;
-            }else if(parseInt(newVal)>parseInt(self.skuSelDetailInfo.stock)){
-                self.buyCount=self.skuSelDetailInfo.stock;
-            }else if(isNaN(parseInt(newVal))){
-                self.buyCount=1;
-            }else{
-                self.buyCount=parseInt(newVal);
+                setStorage('orderParam',orderParam);
+                window.location.href="order_pay.html";
+            },
+            formatTime:function(seconds){
+                // 格式化拼团时间
+                var hour=parseInt(seconds/3600)<10?'0'+parseInt(seconds/3600):parseInt(seconds/3600);
+                var minute=parseInt(seconds%3600/60)<10?'0'+parseInt(seconds%3600/60):parseInt(seconds%3600/60);
+                var second=seconds%3600%60<10?'0'+(seconds%3600%60):seconds%3600%60;
+                return "剩余"+hour+":"+minute+":"+second;
+            },
+            vuDataCutDown:function(){
+                // 拼团时间倒数
+                var self=this;
+                vuData=self.vuData;
+                for(var i in vuData){
+                    vuData[i].leftTime--;
+                }
+                self.vuData=vuData;
+            },
+            loadGoodsJudge:function(){
+                // 加载商品评论
+                var self=this;
+                $.ajax({
+                    url:PHP_SERVE_URL+"/shop/goodsJudge",
+                    type:"post",
+                    data:{goodsId:pageParam.goodsId,pageIndex:1,pageSize:2},
+                    success:function (res) {
+                        if(res.code==0){
+                            self.judge=res.data;
+                        }else{
+                            alert(res.msg);
+                        }
+                    }
+                });
+            },
+            loadShopInfo:function(){
+                // 加载商铺信息
+                var self=this;
+                $.ajax({
+                    url:PHP_SERVE_URL+"/shop/shopInfo",
+                    type:"post",
+                    data:{shopId:self.detailInfo.goodRes.shopid},
+                    success:function (res) {
+                        if(res.code==0){
+                            self.shopInfo=res.data;
+                        }
+                    }
+                });
+            },
+            goShop:function(){
+                // 前往商店
+                var self=this;
+                window.location.href="store_detail.html?shopId="+self.detailInfo.goodRes.shopid;
+            },
+            getCollectBool:function(){
+                // 获取收藏状态
+                var self=this;
+                $.ajax({
+                    url:PHP_SERVE_URL+"/shop/getCollectBool",
+                    type:"post",
+                    data:{type:1,cid:pageParam.goodsId,openId:userInfo.open_id},
+                    success:function (res) {
+                        if(res.code==0){
+                            self.isCollect=Boolean(res.isCollect);
+                        }
+                    }
+                });
+            },
+            collectGoods:function(){
+                var self=this;
+                $.ajax({
+                    url:PHP_SERVE_URL+"/shop/collectGoods",
+                    type:"post",
+                    data:{goodsId:pageParam.goodsId,openId:userInfo.open_id},
+                    success:function (res) {
+                        if(res.code==0){
+                            self.isCollect=!self.isCollect;
+                        }else{
+                            alert(res.msg);
+                        }
+                    }
+                });
+            },
+            showMore:function(){
+                var self=this;
+                self.isShowMore=!self.isShowMore;
+            },
+            bannerFullPage:function(index){
+                var self=this;
+                var obj = {
+                        urls : self.detailInfo.gpicHead,
+                        current : self.detailInfo.gpicHead[index]
+                    };
+                previewImage.start(obj);
+            },
+            goComments:function(){
+                // 前往评论
+                window.location.href="goods_comments.html?goodsId="+pageParam.goodsId;
             }
         },
-        skuSelDetailInfo:function (newVal,oldVal) {
-            var self=this;
-            if(parseInt(newVal.stock)>0){
-                self.buyCount=1;
-            }else{
-                self.skuOk=false;
+        watch:{
+            buyCount:function (newVal,oldVal) {
+                var self=this;
+                if(parseInt(newVal)<1){
+                    self.buyCount=1;
+                }else if(parseInt(newVal)>parseInt(self.skuSelDetailInfo.stock)){
+                    self.buyCount=self.skuSelDetailInfo.stock;
+                }else if(isNaN(parseInt(newVal))){
+                    self.buyCount=1;
+                }else{
+                    self.buyCount=parseInt(newVal);
+                }
+            },
+            skuSelDetailInfo:function (newVal,oldVal) {
+                var self=this;
+                if(parseInt(newVal.stock)>0){
+                    self.buyCount=1;
+                }else{
+                    self.skuOk=false;
+                }
             }
+        },
+        mounted:function () {
+            var self=this;
+            this.loadDetailInfo();
+            self.loadGoodsJudge();
+            self.getCollectBool();
         }
-    },
-    mounted:function () {
-        var self=this;
-        this.loadDetailInfo();
-        self.loadGoodsJudge();
-        self.getCollectBool();
-        // $(window).scroll(function () {
-        //       self.classifyPageOffset[self.currentClassifyIndex]=$(document).scrollTop();
-        //      if($(document).height() - $(document).scrollTop() - window.innerHeight <200) 
-        //     {
-        //         self.addClassifyProductList();
-        //     }
-        // });
-    }
   });
+    getWxSign();
+    function getWxSign() {
+        var userInfoShare = JSON.parse(getStorage('userInfo'));
+        if(!userInfoShare){
+            userInfoShare.open_id = 0;
+        }
+        $.ajax({
+            type: 'POST',
+            url: PHP_SERVE_URL + '/weixin/jssdkConfig',
+            data: {
+                url: location.href.split('#')[0],
+            },
+            dataType: "json",
+            success: function (ret, res) {
+                if (ret.code == 0) {
+                    wx.config({
+                        debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+                        appId: ret.data.appId, // 必填，公众号的唯一标识
+                        timestamp: ret.data.timestamp, // 必填，生成签名的时间戳
+                        nonceStr: ret.data.nonceStr, // 必填，生成签名的随机串
+                        signature: ret.data.signature,// 必填，签名
+                        jsApiList: ['updateAppMessageShareData','updateTimelineShareData','onMenuShareTimeline','onMenuShareAppMessage'] // 必填，需要使用的JS接口列表
+                    });
+                    wx.ready(function() {
+                        wx.updateAppMessageShareData({
+                            title: 'F购商城', // 分享标题
+                            desc: 'F购商城实现商家与消费者共赢的，买的越多赚得越多！', // 分享描述
+                            link: PHP_SERVE_URL+'/sharelogin.html?lopenId='+userInfoShare.open_id, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+                            imgUrl: 'http://media1.0571sd.com/tmp/fgouhead.jpg', // 分享图标
+                            success: function (res) {
+                            }
+                        });
+                        wx.updateTimelineShareData({
+                            title: 'F购商城', // 分享标题
+                            link: PHP_SERVE_URL+'/sharelogin.html?lopenId='+userInfoShare.open_id, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+                            imgUrl: 'http://media1.0571sd.com/tmp/fgouhead.jpg', // 分享图标
+                            success: function () {
+                            }
+                        });
+                    });
+                }
+            }
+        })
+    }
 </script>
 </body>
 </html>

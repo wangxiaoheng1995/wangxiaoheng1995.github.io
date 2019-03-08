@@ -3,22 +3,13 @@
 
 <head>
     <meta charset="utf-8">
-
-    <link rel="dns-prefetch" href="//cdn.yangkeduo.com">
-    <link rel="dns-prefetch" href="//apiv4.yangkeduo.com">
-    <link rel="dns-prefetch" href="//api.pinduoduo.com">
-    <link rel="dns-prefetch" href="//pinduoduoimg.yangkeduo.com">
-    <link rel="dns-prefetch" href="//omsproduction.yangkeduo.com">
-    <link rel="dns-prefetch" href="//avatar.yangkeduo.com">
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
     <meta name="format-detection" content="telephone=no">
     <meta http-equiv="Cache-Control" content="no-cache,no-store,must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
-    <meta http-equiv="Expires" content="0">
-    <meta property="og:title" content="拼多多商城">
-    <meta property="og:description" content="风靡全国的拼团商城，优质商品新鲜直供，快来一起拼多多吧">
-    <meta property="og:image" content="https://pinduoduoimg.yangkeduo.com/base/logo.jpg">
-    <title>拼多多</title>
+    <meta property="og:title" content="F购商城">
+    <meta property="og:description" content="风靡全国的拼团商城，优质商品新鲜直供，快来一起F购吧">
+    <title>F购商城</title>
 </head>
 
 <head>
@@ -26,7 +17,7 @@
     <link href="https://cdn.yangkeduo.com/assets/css/react_boot_05a40bc37a8d4bb56931.css" rel="stylesheet">
     <link href="https://cdn.yangkeduo.com/assets/css/react_common_26044cf3d7bea818d629.css" rel="stylesheet">
     <link href="https://cdn.yangkeduo.com/assets/css/react_personal_profile_e721197dd6960904f5d3.css" rel="stylesheet">
-    <!-- <link rel="stylesheet" href="./css/aui/aui.css"> -->
+    <link rel="stylesheet" href="./script/layui/css/layui.css">
     <style>
         .aui-mask {
             position: fixed;
@@ -94,27 +85,27 @@
                     </li>
                     <li class="pm-pl-item pm-pl-item-1" onclick="location.href='my_setting_name.html'">
                         <div class="pm-pli-name"><span>昵称</span></div>
-                        <div class="pm-pli-value pm-pli-value-1"><span id="userAvatar">153****9151</span> </div>
+                        <div class="pm-pli-value pm-pli-value-1"><span id="userAvatar"></span> </div>
                     </li>
-                    <!-- <li class="pm-pl-item pm-pl-item-2">
-                        <div class="pm-pli-name"><span>性别</span></div>
-                        <div class="pm-pli-value pm-pli-value-2"><span>未知</span> </div>
+                    <li class="pm-pl-item pm-pl-item-2" onclick="location.href='my_setting_tel.html'">
+                        <div class="pm-pli-name"><span>手机</span></div>
+                        <div class="pm-pli-value pm-pli-value-3"> <span class="lead-edit" id="userTel"></span></div>
                     </li>
-                    <li class="pm-pl-item pm-pl-item-3">
-                        <div class="pm-pli-name"><span>常住地</span></div>
-                        <div class="pm-pli-value pm-pli-value-3"> <span class="lead-edit">未填写</span></div>
+                    <li class="pm-pl-item pm-pl-item-3" onclick="location.href='my_setting_pwd.html'">
+                        <div class="pm-pli-name"><span>密码</span></div>
+                        <div class="pm-pli-value pm-pli-value-3"> <span class="lead-edit">去设置</span></div>
                     </li>
-                    <li class="pm-pl-item pm-pl-item-4">
-                        <div class="pm-pli-name"><span>生日</span></div>
-                        <div class="pm-pli-value pm-pli-value-4"> <span class="birthday lead-edit">未填写，填写后会匹配星座</span></div>
-                    </li>
-                    <li class="pm-pl-item pm-pl-item-5">
-                        <div class="pm-pli-name"><span>个性签名</span></div>
-                        <div class="pm-pli-value pm-pli-value-5"> <span class="signature lead-edit">未填写</span></div>
-                    </li> -->
                 </ul>
             </div>
+            <div class="layui-container" style="margin-top: .2rem" onclick="loginout()">
+                <div class="layui-row">
+                    <div class="layui-col-xs12">
+                        <button class="layui-col-xs12 layui-btn layui-btn-lg layui-btn-normal layui-btn-radius">退出</button>
+                    </div>
+                </div>
+            </div>
         </div>
+
     </div>
     <form id="uploadForm1">
         <input type="file" accept="image/*" name='file' value="相册" style="display:none;" id="picture">
@@ -122,7 +113,6 @@
     <form id="uploadForm2">
         <input type="file" value="相机" name="file" accept="image/*" capture="camera" style="display:none;" id="camera">
     </form>
-    <!-- accept="image/*"  -->
 </body>
 <!-- <script type="text/javascript" src="./script/api.js"></script> -->
 <script src="./script/jquery-3.2.1.min.js"></script>
@@ -131,15 +121,12 @@
 <script src="./script/aui-toast.js"></script>
 <script src="./script/config.js"></script>
 <script src="./script/yltcrypt.js"></script>
+<script src="./script/mlayer/layer.js"></script>
 <script>
-    console.log(getStorage('user'))
-    var user;
-    user = getStorage("user");
-
+    checkLogin();
     function goClip() {
         window.location.href = "./clip_image.html"
     }
-
     function openActionsheet() {
         var actionsheet = new auiActionsheet();
         actionsheet.init({
@@ -156,7 +143,7 @@
                     var formData = new FormData($("#uploadForm2")[0]); //先实例化formdata
                     $.ajax({
                         type: "POST",
-                        url: "http://jjbapi.0571sd.com/upload/img",
+                        url: "http://jjbapi.0571sd.com/upload/imgCrop",
                         data: formData,
                         contentType: false,
                         processData: false,
@@ -164,8 +151,6 @@
                             if (ret.code == 0) {
                                 $(".img").attr("src", ret.data[0]);
                                 saveData(ret.data[0]);
-                            } else {
-                                console.log("失败")
                             }
                         },
                         error: function (data) {
@@ -180,17 +165,14 @@
                     var formData = new FormData($("#uploadForm1")[0]); //先实例化formdata
                     $.ajax({
                         type: "POST",
-                        url: "http://jjbapi.0571sd.com/upload/img",
+                        url: "http://jjbapi.0571sd.com/upload/imgCrop",
                         data: formData,
                         contentType: false,
                         processData: false,
                         success: function (ret) {
                             if (ret.code == 0) {
-                                console.log(JSON.stringify(ret))
                                 $(".img").attr("src", ret.data[0]);
                                 saveData(ret.data[0]);
-                            } else {
-                                console.log("失败+++")
                             }
                         },
                         error: function (data) {
@@ -203,23 +185,19 @@
     }
     //保存头像
     function saveData(data) {
-        console.log(user.openId)
         //上传成功直接保存
         $.ajax({
             type: "POST",
             url: PHP_SERVE_URL + "/customer/setAvatar",
             data: {
-                openId: user.open_id,
+                openId: userInfo.open_id,
                 avatar: data,
-                token: yltcrypt.cpt(user.open_id)
+                token: yltcrypt.cpt(userInfo.open_id)
             },
             success: function (ret) {
-                console.log(JSON.stringify(ret))
                 if (ret.code == 0) {
-                    // $(".img").attr("src", ret.data);
-                    console.log(ret.code)
-                    user.avatar = data
-                    setStorage("user",user);
+                    userInfo.avatar = data
+                    setStorage("userInfo",userInfo);
                 } else {
                     console.log("失败")
                 }
@@ -229,13 +207,21 @@
             }
         });
     }
-
-
-    $(".img").attr("src", user.avatar);
-$("#userAvatar").val(user.nick_name)
+    $(".img").attr("src", userInfo.avatar);
+    $("#userAvatar").text(userInfo.nick_name);
+    if(userInfo.tel != '0'){
+        $('#userTel').text(userInfo.tel);
+    }else{
+        $('#userTel').text('去绑定');
+    }
+    function loginout() {
+        localStorage.removeItem('userInfo');
+        layer.open({
+            content: '账号已退出'
+            ,skin: 'msg'
+            ,time: 2
+        });
+        setTimeout("window.location.href='index.html'", 2000);
+    }
 </script>
-
-
-
-
 </html>

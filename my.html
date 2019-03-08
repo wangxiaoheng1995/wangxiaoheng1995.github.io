@@ -3,38 +3,39 @@
 
 <head>
     <meta charset="utf-8">
-    <link rel="dns-prefetch" href="//cdn.yangkeduo.com">
-    <link rel="dns-prefetch" href="//apiv4.yangkeduo.com">
-    <link rel="dns-prefetch" href="//api.pinduoduo.com">
-    <link rel="dns-prefetch" href="//pinduoduoimg.yangkeduo.com">
-    <link rel="dns-prefetch" href="//omsproduction.yangkeduo.com">
-    <link rel="dns-prefetch" href="//avatar.yangkeduo.com">
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
     <meta name="format-detection" content="telephone=no">
     <meta http-equiv="Cache-Control" content="no-cache,no-store,must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
-    <meta http-equiv="Expires" content="0">
-    <meta property="og:title" content="拼多多商城">
-    <meta property="og:description" content="风靡全国的拼团商城，优质商品新鲜直供，快来一起拼多多吧">
-    <meta property="og:image" content="https://pinduoduoimg.yangkeduo.com/base/logo.jpg">
+
+    <meta property="og:title" content="F购商城">
+    <meta property="og:description" content="风靡全国的拼团商城，优质商品新鲜直供，快来一起F购吧">
     <title>个人中心</title>
-</head>
-
-<head>
-    <link href="https://cdn.yangkeduo.com/assets/css/react_pdd_5e2d15f27ff49c770c80.css" rel="stylesheet">
-    <link href="https://cdn.yangkeduo.com/assets/css/react_boot_05a40bc37a8d4bb56931.css" rel="stylesheet">
-    <link href="https://cdn.yangkeduo.com/assets/css/react_common_26044cf3d7bea818d629.css" rel="stylesheet">
-    <link href="https://cdn.yangkeduo.com/assets/css/react_personal_ab0475c609c1ba78364c.css" rel="stylesheet">
-    <!-- <link rel="stylesheet" type="text/css" href="./css/aui/aui.css"> -->
-
+    <link href="./css/pdd/react_pdd_5e2d15f27ff49c770c80.css" rel="stylesheet">
+    <link href="./css/pdd/react_boot_05a40bc37a8d4bb56931.css" rel="stylesheet">
+    <link href="./css/pdd/react_common_26044cf3d7bea818d629.css" rel="stylesheet">
+    <link href="./css/pdd/react_personal_ab0475c609c1ba78364c.css" rel="stylesheet">
     <style>
         .userGoldType {
-            margin: 0.1rem 0;
+            margin: 0.01rem 0;
             background: #fff;
         }
 
         .userGoldType li {
-            padding: 0.1rem;
+            padding: 0.05rem;
+            padding-left: 0.2rem;
+            font-size: 0.14rem;
+        }
+        .userGoldType li p {
+            color: #353333;
+        }
+        .userGoldType li span{
+            color: #a2a2a2;
+            font-size: 0.14rem;
+            margin-right: 0.1rem;
+        }
+        .userGoldType li img{
+            padding-top: 0.03rem;
         }
 
         .goldTypeNum {
@@ -44,70 +45,29 @@
         }
         .top-menu{
             display: flex;
-    justify-content: space-between;
+            justify-content: space-between;
         }
     </style>
 </head>
-
 <body id="personal">
-
     <div id="main">
         <div data-reactroot="">
-            <div class="common-footer-module" style="background-color:#ffffff;color:#e0e0e0">
-                <div class="footer-items">
-                    <div class="footer-item">
-                        <div class="footer-item-icon-wrap" style="height:0.23rem"><img class="footer-item-icon"
-                                data-param="70_!_t_!_!_50_!_!_!" src="//t13img.yangkeduo.com/cart/2018-09-02/f4f7bb8e393e08f1bd7a813d27e91c66.png?imageMogr2/sharpen/1%7CimageView2/2/w/1300/q/70/format/webp" />
-                        </div>
-                        <div class="footer-item-text" style="color:#777" onclick="location.href='index.html'">首页</div>
-                    </div>
-                    <div class="footer-item">
-                        <div class="footer-item-icon-wrap" style="height:0.23rem"><img class="footer-item-icon"
-                                data-param="70_!_t_!_!_50_!_!_!" src="//t13img.yangkeduo.com/cart/2018-09-02/2d711f06701926c7cab62b7d0a3fe116.png?imageMogr2/sharpen/1%7CimageView2/2/w/1300/q/70/format/webp" />
-                        </div>
-                        <div class="footer-item-text" style="color:#777">推荐</div>
-                    </div>
-                    <div class="footer-item">
-                        <div class="footer-item-icon-wrap" style="height:0.23rem"><img class="footer-item-icon"
-                                data-param="70_!_t_!_!_50_!_!_!" src="//t13img.yangkeduo.com/cart/2018-09-02/bb0d9124521ad997e4a970c5251a130b.png?imageMogr2/sharpen/1%7CimageView2/2/w/1300/q/70/format/webp" />
-                        </div>
-                        <div class="footer-item-text" style="color:#777">搜索</div>
-                    </div>
-                    <div class="footer-item">
-                        <div class="footer-item-icon-wrap" style="height:0.23rem"><img class="footer-item-icon"
-                                data-param="70_!_t_!_!_50_!_!_!" src="//t13img.yangkeduo.com/cart/2018-09-02/40e2c153f09720b43044dfa82f771714.png?imageMogr2/sharpen/1%7CimageView2/2/w/1300/q/70/format/webp" />
-                        </div>
-                        <div class="footer-item-text" style="color:#777">聊天</div>
-                    </div>
-                    <div class="footer-item active-footer-item">
-                        <div class="footer-item-icon-wrap" style="height:0.23rem"><img class="footer-item-icon"
-                                data-param="70_!_t_!_!_50_!_!_!" src="//t13img.yangkeduo.com/cart/2018-09-02/8d4c80854ebcc4c34628c15f1581527c.png?imageMogr2/sharpen/1%7CimageView2/2/w/1300/q/70/format/webp" />
-                        </div>
-                        <div class="footer-item-text" style="color:#df2127">个人中心</div>
-                    </div>
-                </div>
-                <div class="iphonex-extra-height"></div>
-            </div>
             <section class="personal-section">
                 <div class="personal-header status-strong">
                     <div class="info">
-                        <div class="profile-wrapper">
-                            <div class="img-wrapper" onclick="location.href='my_setting.html'"><img class="avatar" alt=""
+                        <div class="profile-wrapper" onclick="location.href='my_setting.html'">
+                            <div class="img-wrapper"><img class="avatar" alt=""
                                     style="position:absolute; width:64px;height:64px;" :src="userAvatar" />
                             </div>
                             <div class="nickname-wrapper">
-                                <p class="nickname">{{userName}}</p><i class="mobile-icon"></i>
-                                <div class="strong-entrance">勋章墙</div>
+                                <div class="strong-entrance">{{userName}}</div>
                             </div>
                         </div>
                         <div class="part-return-wrapper">
                             <div class="part-return-entrance" data-active="ghost-gray">
-                                <div></div><span>拼单返现</span>
+                                <div></div><span>购物返现</span>
                             </div>
                         </div>
-                    </div>
-                    <div class="pincard-entrance" data-active="before-white">
-                        <div style="position:relative;padding-top:0.01rem">品牌卡折扣专场<span class="list-info"><span class="title">清风7折疯抢</span></span></div>
                     </div>
                 </div>
                 <div class="order-menu">
@@ -116,10 +76,10 @@
                         <div class="others" @click="goOrderList(0)">查看全部</div>
                     </div>
                     <div class="top-menu-wrapper" id="top">
-                        <div class="top-menu">
+                        <div class="top-menu" style="height: 0.57rem">
                             <div class="top-menu-item" @click="goOrderList(1)">
                                 <div class="order-unpayed"></div>
-                                <div class="short-number-tag white-circle">1</div>
+                                <!--<div class="short-number-tag white-circle">1</div>-->
                                 <div class="title">待付款</div>
                             </div>
                             <div class="top-menu-item" @click="goOrderList(2)">
@@ -142,10 +102,10 @@
                 </div>
                 <div class="middle-menu-wrapper" id="middle">
                     <div class="middle-menu">
-                        <div class="middle-menu-item">
+                        <div class="middle-menu-item" @click="tipMsg('点击您的头像，绑定手机号和密码。电脑访问商家后台地址：shop.0571sd.com ')">
                             <div class="coupons"></div>
                             <div></div>
-                            <div class="title">优惠券</div>
+                            <div class="title">商家</div>
                         </div>
                         <div class="middle-menu-item">
                             <div class="goods-collection"></div>
@@ -157,78 +117,73 @@
                             <div></div>
                             <div class="title">店铺收藏</div>
                         </div>
-                        <div class="middle-menu-item">
+                        <div class="middle-menu-item" onclick="location.href='set_address.html'">
                             <div class="footprint-big"></div>
-                            <div></div>
-                            <div class="title">历史浏览</div>
-                        </div>
-                        <div class="middle-menu-item">
-                            <div class="after-sales"></div>
-                            <div></div>
-                            <div class="title">退款售后</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="bottom-menu-wrapper" id="bottom">
-                    <div class="bottom-menu">
-                        <div class="bottom-menu-item">
-                            <div class="img-wrapper"><img class="icon-img" style="position:absolute" src="data:img/jpg;base64,R0lGODlhAQABAIABAAAAAP///yH5BAEAAAEALAAAAAABAAEAAAICTAEAOw==" />
-                            </div>
-                            <div class="title">新人红包</div>
-                        </div>
-                        <div class="bottom-menu-item">
-                            <div class="img-wrapper"><img class="icon-img" style="position:absolute" src="data:img/jpg;base64,R0lGODlhAQABAIABAAAAAP///yH5BAEAAAEALAAAAAABAAEAAAICTAEAOw==" />
-                            </div>
-                            <div></div>
-                            <div class="title">邀请好友</div>
-                        </div>
-                        <div class="bottom-menu-item" onclick="window.location.href='./address.html'">
-                            <div class="img-wrapper"><img class="icon-img" style="position:absolute" src="data:img/jpg;base64,R0lGODlhAQABAIABAAAAAP///yH5BAEAAAEALAAAAAABAAEAAAICTAEAOw==" />
-                            </div>
                             <div></div>
                             <div class="title">收货地址</div>
                         </div>
-                        <div class="bottom-menu-item">
-                            <div class="img-wrapper"><img class="icon-img" style="position:absolute" src="data:img/jpg;base64,R0lGODlhAQABAIABAAAAAP///yH5BAEAAAEALAAAAAABAAEAAAICTAEAOw==" />
-                            </div>
+                        <div class="middle-menu-item" onclick="location.href='share.html'">
+                            <div class="after-sales"></div>
                             <div></div>
-                            <div class="title">我的评价</div>
-                        </div>
-                        <div class="bottom-menu-item">
-                            <div class="img-wrapper"><img class="icon-img" style="position:absolute" src="data:img/jpg;base64,R0lGODlhAQABAIABAAAAAP///yH5BAEAAAEALAAAAAABAAEAAAICTAEAOw==" />
-                            </div>
-                            <div></div>
-                            <div class="title">官方客服</div>
-                        </div>
-                        <div class="bottom-menu-item">
-                            <div class="img-wrapper"><img class="icon-img" style="position:absolute" src="data:img/jpg;base64,R0lGODlhAQABAIABAAAAAP///yH5BAEAAAEALAAAAAABAAEAAAICTAEAOw==" />
-                            </div>
-                            <div></div>
-                            <div class="title">设置</div>
+                            <div class="title">分享赚钱</div>
                         </div>
                     </div>
                 </div>
+                <div class="order-menu" onclick="location.href='wxsubscribe.html'">
+                    <div class="order-title"><div class="my-orders">商城公众号</div></div>
+                </div>
+                <div class="order-menu">
+                    <div class="order-title"><div class="my-orders">我的资产</div></div>
+                </div>
                 <ul class="userGoldType">
-                    <li v-for="item in goldList" @click="goListDetail(item.type)">
+                    <li  @click="goListDetail(2)">
                         <div class="goldTypeNum">
-                            <p v-if="item.type==1">FGC</p>
-                            <p v-if="item.type==2">积分</p>
-                            <p v-if="item.type==3">商家贷款</p>
-                            <p v-if="item.type==4">红包</p>
-                            <a><img src="./image/jy_jr_icon.png" alt="" style="width:9px;"></a>
+                            <p>积分</p>
+                            <a><span>{{goldList.score}}</span><img src="./image/jy_jr_icon.png" alt="" style="width:6px;margin-right: 0.08rem;"></a>
                         </div>
                     </li>
-                    <!-- <li>
-                        <div class="goldTypeNum" onclick="window.location.href='my_wallent.html?moneyType=' + 1">
-                            <p>FGC</p>
-                            <a><img src="./image/jy_jr_icon.png" alt="" style="width:9px;"></a>
+                    <li  @click="goListDetail(4)">
+                        <div class="goldTypeNum">
+                            <p>红包</p>
+                            <a><span>{{goldList.redpack}}</span><img src="./image/jy_jr_icon.png" alt="" style="width:6px;margin-right: 0.08rem;"></a>
                         </div>
-                    </li> -->
+                    </li>
+                    <li  @click="goListDetail(3)">
+                        <div class="goldTypeNum">
+                            <p >商家货款</p>
+                            <a><span>{{goldList.shopmoney}}</span><img src="./image/jy_jr_icon.png" alt="" style="width:6px;margin-right: 0.08rem;"></a>
+                        </div>
+                    </li>
                 </ul>
             </section>
-            <div id="order-recommend-list">
-                <div id="recommend-head">精选推荐</div>
-                <div id="recommend-wrapper"></div>
+            <div class="common-footer-module" style="background-color:#ffffff;color:#e0e0e0">
+                <div class="footer-items">
+                    <div class="footer-item" onclick="location.href='index.html'">
+                        <div class="footer-item-icon-wrap" style="height:0.23rem">
+                            <img class="footer-item-icon" src="./image/shouye.png">
+                        </div>
+                        <div class="footer-item-text" style="color:#777" >首页</div>
+                    </div>
+                    <div class="footer-item" onclick="window.location.href='search.html'">
+                        <div class="footer-item-icon-wrap" style="height:0.23rem">
+                            <img class="footer-item-icon" src="./image/sousuo.png">
+                        </div>
+                        <div class="footer-item-text" style="color:#777">搜索</div>
+                    </div>
+                    <div class="footer-item" onclick="window.location.href='chart_list.html'">
+                        <div class="footer-item-icon-wrap" style="height:0.23rem">
+                            <img class="footer-item-icon" src="./image/liaotian.png">
+                        </div>
+                        <div class="footer-item-text" style="color:#777">聊天</div>
+                    </div>
+                    <div class="footer-item active-footer-item">
+                        <div class="footer-item-icon-wrap" style="height:0.23rem">
+                            <img class="footer-item-icon" src="./image/liaotiana.png">
+                        </div>
+                        <div class="footer-item-text" style="color:#df2127">个人中心</div>
+                    </div>
+                </div>
+                <div class="iphonex-extra-height"></div>
             </div>
         </div>
     </div>
@@ -240,27 +195,27 @@
 <script src="./script/common.js"></script>
 <script src="./script/aui-toast.js"></script>
 <script src="./script/vue.js"></script>
+<script src="./script/mlayer/layer.js"></script>
+<script src="http://res.wx.qq.com/open/js/jweixin-1.4.0.js"></script>
 <script>
-    var user;
-    user = getStorage("user");
-     console.log(JSON.stringify(user))
+    checkLogin();
     new Vue({
         el: "#main",
         data: {
             goldList: '',
-            userAvatar:user.avatar,
-            userName:user.nick_name,
+            userAvatar:userInfo.avatar,
+            userName:userInfo.nick_name,
         },
         methods: {
             getUserMoney: function () {
                 var self = this;
-
                 $.ajax({
                     type: 'POST',
                     url: PHP_SERVE_URL + '/customer/assets',
                     data: {
-                        openId: user.open_id,
+                        openId: userInfo.open_id,
                     },
+                    dataType: "json",
                     success: function (ret, res) {
                         if (ret.code == 0) {
                             self.goldList = ret.data;
@@ -272,15 +227,62 @@
                 window.location.href = "my_wallent.html?moneyType=" + type;
             },
             goOrderList:function(orType){
-                var self = this
-                console.log(0)
                 window.location.href="my_order.html?orType="+orType;
-            }
-
+            },
+            tipMsg:function (msg) {
+                layer.open({
+                    content: msg
+                    ,btn: '确定'
+                });
+            },
         },
         mounted: function () {
             var self = this;
             self.getUserMoney();
         },
-    })
+    });
+    getWxSign();
+    function getWxSign() {
+        var userInfoShare = JSON.parse(getStorage('userInfo'));
+        if(!userInfoShare){
+            userInfoShare.open_id = 0;
+        }
+        $.ajax({
+            type: 'POST',
+            url: PHP_SERVE_URL + '/weixin/jssdkConfig',
+            data: {
+                url: location.href.split('#')[0],
+            },
+            dataType: "json",
+            success: function (ret, res) {
+                if (ret.code == 0) {
+                    wx.config({
+                        debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+                        appId: ret.data.appId, // 必填，公众号的唯一标识
+                        timestamp: ret.data.timestamp, // 必填，生成签名的时间戳
+                        nonceStr: ret.data.nonceStr, // 必填，生成签名的随机串
+                        signature: ret.data.signature,// 必填，签名
+                        jsApiList: ['updateAppMessageShareData','updateTimelineShareData','onMenuShareTimeline','onMenuShareAppMessage'] // 必填，需要使用的JS接口列表
+                    });
+                    wx.ready(function() {
+                        wx.updateAppMessageShareData({
+                            title: 'F购商城', // 分享标题
+                            desc: 'F购商城实现商家与消费者共赢的，买的越多赚得越多！', // 分享描述
+                            link: PHP_SERVE_URL+'/sharelogin.html?lopenId='+userInfoShare.open_id, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+                            imgUrl: 'http://media1.0571sd.com/tmp/fgouhead.jpg', // 分享图标
+                            success: function (res) {
+                            }
+                        });
+                        wx.updateTimelineShareData({
+                            title: 'F购商城', // 分享标题
+                            link: PHP_SERVE_URL+'/sharelogin.html?lopenId='+userInfoShare.open_id, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+                            imgUrl: 'http://media1.0571sd.com/tmp/fgouhead.jpg', // 分享图标
+                            success: function () {
+                            }
+                        });
+                    });
+                }
+            }
+        })
+    }
 </script>
